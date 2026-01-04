@@ -1,0 +1,59 @@
+@prefix : <http://example.org/movielens/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+
+<http://example.org/movielens/> rdf:type owl:Ontology ;
+    rdfs:comment "An ontology for the MovieLens dataset, mapped to Schema.org." .
+
+### Classes
+
+:Movie rdf:type owl:Class ;
+    rdfs:subClassOf schema:Movie ;
+    rdfs:label "Movie" .
+
+:User rdf:type owl:Class ;
+    rdfs:subClassOf schema:Person ;
+    rdfs:label "User" .
+
+:Genre rdf:type owl:Class ;
+    rdfs:subClassOf schema:DefinedTerm ;
+    rdfs:label "Genre" .
+
+:Rating rdf:type owl:Class ;
+    rdfs:subClassOf schema:Rating ;
+    rdfs:label "Rating" .
+
+### Properties
+
+:hasGenre rdf:type owl:ObjectProperty ;
+    rdfs:domain :Movie ;
+    rdfs:range :Genre ;
+    rdfs:subPropertyOf schema:genre .
+
+:ratedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Rating ;
+    rdfs:range :User ;
+    rdfs:subPropertyOf schema:author .
+
+:ratingOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :Rating ;
+    rdfs:range :Movie ;
+    rdfs:subPropertyOf schema:itemReviewed .
+
+:ratingValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Rating ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf schema:ratingValue .
+
+:taggedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Movie ;
+    rdfs:range :User .
+
+:hasTagLabel rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Movie ;
+    rdfs:range xsd:string .
+
