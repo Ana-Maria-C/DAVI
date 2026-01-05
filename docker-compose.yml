@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  fuseki:
+    image: secoresearch/fuseki
+    container_name: wade-fuseki
+    ports:
+      - "3030:3030"
+    environment:
+      - ADMIN_PASSWORD=admin
+    volumes:
+      - ./data/fuseki_data:/fuseki
+    restart: always
+
+# Frontend container can be added here later
+# API container can be added here later
