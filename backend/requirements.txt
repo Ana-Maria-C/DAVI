@@ -1,4 +1,8 @@
 fastapi
 uvicorn[standard]
 rdflib
-pyoxigraph
+SPARQLWrapper
+pydantic
+requests
+pydantic-settings
+python-multipart
