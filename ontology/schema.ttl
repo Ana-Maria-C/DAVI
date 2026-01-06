@@ -5,6 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 
 <http://example.org/movielens/> rdf:type owl:Ontology ;
     rdfs:comment "An ontology for the MovieLens dataset, mapped to Schema.org." .
@@ -56,4 +57,60 @@
 :hasTagLabel rdf:type owl:DatatypeProperty ;
     rdfs:domain :Movie ;
     rdfs:range xsd:string .
+
+### Reasoning & Hierarchy (Intelligence)
+
+:subCategoryOf rdf:type owl:TransitiveProperty ;
+    rdfs:domain :Genre ;
+    rdfs:range :Genre ;
+    rdfs:label "subCategory of" .
+
+# Define a specific namespace prefix for Genres to match data generation
+@prefix genre: <http://example.org/movielens/Genre/> .
+
+# Super-Categories (High-Level Concepts) - We place them in the same Genre/ namespace
+genre:Emotional rdf:type :Genre ; rdfs:label "Emotional" .
+genre:Exciting rdf:type :Genre ; rdfs:label "Exciting" .
+genre:Intellectual rdf:type :Genre ; rdfs:label "Intellectual" .
+genre:FamilyFriendly rdf:type :Genre ; rdfs:label "Family Friendly" .
+
+# Mapping MovieLens Genres to Super-Categories (The "Reasoning" Logical Layer)
+# Data uses http://example.org/movielens/Genre/{Name}
+# So we must map those URIs.
+
+# Exciting Logic
+genre:Action :subCategoryOf genre:Exciting .
+genre:Adventure :subCategoryOf genre:Exciting .
+genre:Thriller :subCategoryOf genre:Exciting .
+genre:Horror :subCategoryOf genre:Exciting .
+genre:Sci-Fi :subCategoryOf genre:Exciting .
+
+# Emotional Logic
+genre:Drama :subCategoryOf genre:Emotional .
+genre:Romance :subCategoryOf genre:Emotional .
+genre:War :subCategoryOf genre:Emotional .
+
+# Intellectual Logic
+genre:Documentary :subCategoryOf genre:Intellectual .
+genre:Mystery :subCategoryOf genre:Intellectual .
+genre:Crime :subCategoryOf genre:Intellectual .
+genre:Film-Noir :subCategoryOf genre:Intellectual .
+
+# Family Logic
+genre:Children :subCategoryOf genre:FamilyFriendly .
+genre:Animation :subCategoryOf genre:FamilyFriendly .
+genre:Musical :subCategoryOf genre:FamilyFriendly .
+
+### Provenance (PROV-O)
+
+:MovieLensDataset a prov:Entity ;
+    rdfs:label "Official MovieLens Dataset" ;
+    prov:wasAttributedTo "GroupLens Research" .
+
+# Every Movie is derived from the dataset (implies provenance)
+:Movie rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty prov:wasDerivedFrom ;
+    owl:hasValue :MovieLensDataset
+] .
 

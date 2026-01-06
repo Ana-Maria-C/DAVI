@@ -41,3 +41,43 @@ def get_graph(service: MovieService = Depends(get_service)):
     Returns data in {nodes: [], links: []} format for D3.js visualization.
     """
     return service.get_graph_visualization()
+
+@router.get("/genres", summary="Get Genre Hierarchy (For Smart Filters)")
+def get_genres(service: MovieService = Depends(get_service)):
+    """
+    Returns genres grouped by their super-categories (Emotional, Exciting, etc.).
+    """
+    return service.get_genres()
+
+
+from app.models.movie_models import MovieCreate, MovieUpdate, RatingCreate
+
+@router.post("/movies", status_code=201, summary="Create a new Movie")
+def create_movie(movie: MovieCreate, service: MovieService = Depends(get_service)):
+    try:
+        new_id = service.create_movie(movie.title, movie.genres)
+        return {"id": new_id, "message": "Movie created successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/movies/{movie_id}", summary="Get Movie Details by ID")
+def get_movie(movie_id: str, service: MovieService = Depends(get_service)):
+    movie = service.get_movie_by_id(movie_id)
+    if not movie:
+        raise HTTPException(status_code=404, detail="Movie not found")
+    return movie
+
+@router.put("/movies/{movie_id}", summary="Update Movie")
+def update_movie(movie_id: str, movie: MovieUpdate, service: MovieService = Depends(get_service)):
+    service.update_movie(movie_id, movie.title, movie.genres)
+    return {"message": "Movie updated successfully"}
+
+@router.delete("/movies/{movie_id}", summary="Delete Movie (Cascading)")
+def delete_movie(movie_id: str, service: MovieService = Depends(get_service)):
+    service.delete_movie(movie_id)
+    return {"message": "Movie deleted successfully"}
+
+@router.post("/ratings", status_code=201, summary="Add a Rating")
+def add_rating(rating: RatingCreate, service: MovieService = Depends(get_service)):
+    service.add_rating(rating.user_id, rating.movie_id, rating.value)
+    return {"message": "Rating added successfully"}

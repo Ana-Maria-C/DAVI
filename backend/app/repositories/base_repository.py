@@ -24,3 +24,19 @@ class BaseRepository:
             return results["boolean"]
         except Exception as e:
             return False
+
+    def execute_update(self, query: str):
+        """Executes an UPDATE query (INSERT, DELETE)."""
+
+        update_sparql = SPARQLWrapper(settings.UPDATE_ENDPOINT)
+        update_sparql.setQuery(query)
+        update_sparql.setMethod("POST")
+        
+        update_sparql.setCredentials("admin", "admin")
+        
+        try:
+            update_sparql.query()
+            return True
+        except Exception as e:
+            print(f"SPARQL Update Error: {e}")
+            raise e
