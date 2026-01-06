@@ -1,0 +1,14 @@
+{
+  "/api": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/sparql": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/resource": {
+    "target": "http://localhost:8000",
+    "secure": false
+  }
+}

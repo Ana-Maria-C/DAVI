@@ -1,0 +1,36 @@
+.card {
+    background: var(--card-bg, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+
+    .card-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color, #eee);
+
+        h3 {
+            margin: 0;
+            color: var(--text-primary, #222831);
+        }
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+:host-context(.dark-theme) {
+    .card {
+        background: #2D333B;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+        .card-header {
+            border-bottom: 1px solid #444;
+
+            h3 {
+                color: #fff;
+            }
+        }
+    }
+}

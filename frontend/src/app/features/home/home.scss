@@ -1,0 +1,78 @@
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 3rem;
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+
+        .highlight {
+            background: linear-gradient(120deg, var(--primary-color), #00FFF5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+
+    .description {
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-size: 1.1rem;
+    }
+
+    .cta-group {
+        display: flex;
+        justify-content: center;
+
+        app-button {
+            width: 180px;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+
+    app-card {
+        height: 100%;
+        display: block;
+
+        ::ng-deep .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .card-body {
+                flex: 1;
+            }
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+    }
+}
