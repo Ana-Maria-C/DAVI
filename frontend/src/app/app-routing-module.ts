@@ -8,7 +8,19 @@ const routes: Routes = [
     path: '',
     component: ShellComponent,
     children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      {
+        path: 'movies',
+        loadChildren: () => import('./features/movies/movies-module').then(m => m.MoviesModule)
+      },
+      {
+        path: 'resource',
+        loadChildren: () => import('./features/resource-viewer/resource-viewer-module').then(m => m.ResourceViewerModule)
+      },
+      {
+        path: 'sparql',
+        loadChildren: () => import('./features/sparql/sparql-module').then(m => m.SparqlModule)
+      }
     ]
   }
 ];

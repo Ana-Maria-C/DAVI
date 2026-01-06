@@ -1,0 +1,119 @@
+.console-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.query-area {
+    margin-bottom: 2rem;
+
+    textarea {
+        width: 100%;
+        background: var(--bg-dark-800);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        font-family: monospace;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        resize: vertical;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.error-msg {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4d4d;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+.results-area {
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        h3 {
+            margin: 0;
+        }
+    }
+
+    .raw-json {
+        background: #1e1e1e;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        overflow-x: auto;
+        margin-bottom: 1rem;
+
+        pre {
+            margin: 0;
+            color: #d4d4d4;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+    }
+
+    h3 {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+
+    th,
+    td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        font-weight: 600;
+        color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

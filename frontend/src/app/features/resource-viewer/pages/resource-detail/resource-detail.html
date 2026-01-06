@@ -1,0 +1,39 @@
+<div class="resource-container">
+    <div *ngIf="uri; else noUri">
+        <h2>Resource Details</h2>
+        <code class="uri-header">{{ uri }}</code>
+
+        <app-card class="properties-card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prop of properties$ | async">
+                            <td>
+                                <a [routerLink]="[]" [queryParams]="{ uri: prop.p }">{{ prop.p | slice:0:50 }}...</a>
+                            </td>
+                            <td>
+                                <ng-container *ngIf="prop.type === 'uri'; else literal">
+                                    <a [routerLink]="[]" [queryParams]="{ uri: prop.o }">{{ prop.o }}</a>
+                                </ng-container>
+                                <ng-template #literal>
+                                    {{ prop.o }}
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </app-card>
+    </div>
+    <ng-template #noUri>
+        <div class="empty-state">
+            <p>No Resource URI specified.</p>
+        </div>
+    </ng-template>
+</div>

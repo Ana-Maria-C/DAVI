@@ -1,8 +1,16 @@
 <aside class="sidebar">
     <nav class="nav-links">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a routerLink="/movies" routerLinkActive="active">Movies</a>
-        <a routerLink="/sparql" routerLinkActive="active">SPARQL</a>
-        <a routerLink="/extensions" routerLinkActive="active">Extensions</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeSidebar()">
+            <span class="icon">🏠</span> Home
+        </a>
+        <a routerLink="/movies" routerLinkActive="active" (click)="closeSidebar()">
+            <span class="icon">🎬</span> Movies
+        </a>
+        <a routerLink="/sparql" routerLinkActive="active" (click)="closeSidebar()">
+            <span class="icon">🔮</span> SPARQL
+        </a>
+        <a routerLink="/extensions" routerLinkActive="active" (click)="closeSidebar()">
+            <span class="icon">🧩</span> Extensions
+        </a>
     </nav>
 </aside>

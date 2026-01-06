@@ -1,0 +1,55 @@
+<div class="console-container">
+    <h2>SPARQL Console</h2>
+
+    <div class="query-area">
+        <textarea [(ngModel)]="query" rows="10" placeholder="Enter SPARQL Query..."></textarea>
+        <div class="actions">
+            <app-button (click)="executeQuery()" [disabled]="isLoading">
+                {{ isLoading ? 'Running...' : 'Execute Query' }}
+            </app-button>
+        </div>
+    </div>
+
+    <div class="error-msg" *ngIf="error">
+        {{ error }}
+    </div>
+
+    <div class="results-area" *ngIf="rawResponse">
+        <div class="results-header">
+            <h3>Results ({{ results.length }})</h3>
+            <app-button variant="outline" size="sm" (click)="showRawJson = !showRawJson">
+                {{ showRawJson ? 'Show Table' : 'Show JSON' }}
+            </app-button>
+        </div>
+
+        <div class="raw-json" *ngIf="showRawJson">
+            <pre>{{ rawResponse | json }}</pre>
+        </div>
+
+        <app-card *ngIf="!showRawJson && columns.length > 0">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let col of columns">{{ col }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of results">
+                            <td *ngFor="let col of columns">
+                                <!-- Determine if URI or Literal for linking -->
+                                <ng-container *ngIf="row[col]?.type === 'uri'; else literal">
+                                    <a [routerLink]="['/resource']" [queryParams]="{ uri: row[col].value }">{{
+                                        row[col].value }}</a>
+                                </ng-container>
+                                <ng-template #literal>
+                                    {{ row[col]?.value }}
+                                </ng-template>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>

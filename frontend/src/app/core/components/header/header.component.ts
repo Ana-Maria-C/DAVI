@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
+import { SidebarService } from '../../services/sidebar.service';
 
 @Component({
     selector: 'app-header',
@@ -8,5 +9,9 @@ import { ThemeService } from '../../services/theme.service';
     standalone: false
 })
 export class HeaderComponent {
-    constructor(public themeService: ThemeService) { }
+    constructor(public themeService: ThemeService, private sidebarService: SidebarService) { }
+
+    toggleSidebar() {
+        this.sidebarService.toggle();
+    }
 }

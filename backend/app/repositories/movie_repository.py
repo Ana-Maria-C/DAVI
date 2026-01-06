@@ -1,8 +1,9 @@
 from typing import List, Optional, Dict
 from app.repositories.base_repository import BaseRepository
 
+
 class MovieRepository(BaseRepository):
-    
+
     def check_genre_exists(self, genre_label: str) -> bool:
         query = f"""
             PREFIX : <http://example.org/movielens/>
@@ -53,6 +54,33 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_select(query)
 
+    def get_movies(self, limit: int, offset: int, sort: str = "title"):
+        # Validate sort parameter to prevent injection
+        allowed_sorts = ["title", "year"]
+        if sort not in allowed_sorts:
+            sort = "title"
+
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            SELECT ?mid ?title ?year ?director ?poster ?description
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title .
+                OPTIONAL {{ ?m :movieId ?mid }}
+                OPTIONAL {{ ?m :year ?year }}
+                OPTIONAL {{ ?m :director ?d . ?d rdfs:label ?director }}
+                OPTIONAL {{ ?m :poster ?poster }}
+                OPTIONAL {{ ?m :description ?description }}
+            }}
+            ORDER BY ?{sort}
+            LIMIT {limit}
+            OFFSET {offset}
+        """
+        return self.execute_select(query)
+
     def get_stats(self):
         query = """
             PREFIX : <http://example.org/movielens/>
@@ -78,7 +106,7 @@ class MovieRepository(BaseRepository):
             "movies": count_class("http://example.org/movielens/Movie"),
             "users": count_class("http://example.org/movielens/User"),
             "genres": count_class("http://example.org/movielens/Genre"),
-            "ratings": count_class("http://example.org/movielens/Rating")
+            "ratings": count_class("http://example.org/movielens/Rating"),
         }
 
     def get_trends(self):
@@ -197,8 +225,6 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_select(query)
 
-
-
     def get_max_movie_id(self) -> int:
         query = """
             PREFIX : <http://example.org/movielens/>
@@ -222,7 +248,9 @@ class MovieRepository(BaseRepository):
 
         genre_triples = ""
         for g in genres:
-            genre_triples += f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
+            genre_triples += (
+                f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
+            )
 
         query = f"""
             PREFIX : <http://example.org/movielens/>
@@ -264,16 +292,20 @@ class MovieRepository(BaseRepository):
         return {
             "id": movie_id,
             "title": res[0]["title"]["value"],
-            "genres": res[0]["genres"]["value"].split("|") if res[0].get("genres") else []
+            "genres": (
+                res[0]["genres"]["value"].split("|") if res[0].get("genres") else []
+            ),
         }
 
     def update_movie(self, movie_id: str, title: str, genres: List[str]):
         movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
-        
+
         genre_triples = ""
         for g in genres:
-            genre_triples += f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
-            
+            genre_triples += (
+                f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
+            )
+
         query = f"""
             PREFIX : <http://example.org/movielens/>
             PREFIX schema: <http://schema.org/>
@@ -296,7 +328,7 @@ class MovieRepository(BaseRepository):
 
     def delete_movie(self, movie_id: str):
         movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
-        
+
         query = f"""
             PREFIX : <http://example.org/movielens/>
             
@@ -324,7 +356,7 @@ class MovieRepository(BaseRepository):
         rating_uri = f"<http://example.org/movielens/Rating/{rating_id}>"
         user_uri = f"<http://example.org/movielens/User/{user_id}>"
         movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
-        
+
         query = f"""
             PREFIX : <http://example.org/movielens/>
             PREFIX schema: <http://schema.org/>
