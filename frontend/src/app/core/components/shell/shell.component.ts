@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../../services/sidebar.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-shell',
@@ -6,4 +8,14 @@ import { Component } from '@angular/core';
     styleUrls: ['./shell.component.scss'],
     standalone: false
 })
-export class ShellComponent { }
+export class ShellComponent {
+    isSidebarOpen$: Observable<boolean>;
+
+    constructor(private sidebarService: SidebarService) {
+        this.isSidebarOpen$ = this.sidebarService.isOpen$;
+    }
+
+    closeSidebar() {
+        this.sidebarService.close();
+    }
+}

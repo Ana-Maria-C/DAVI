@@ -1,0 +1,57 @@
+.resource-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.uri-header {
+    display: block;
+    background: var(--bg-dark-800);
+    padding: 1rem;
+    border-radius: 8px;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    word-break: break-all;
+    font-size: 0.9rem;
+}
+
+.properties-card {
+    display: block;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-primary);
+
+    th,
+    td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        font-weight: 600;
+        color: var(--text-secondary);
+        width: 30%;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

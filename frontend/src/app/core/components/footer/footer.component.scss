@@ -1,3 +1,9 @@
+:host {
+    display: block;
+    width: 100%;
+    margin-top: auto; // Crucial: pushes this component to the bottom of the flex container
+}
+
 .footer {
     text-align: center;
     padding: 0.8rem;
@@ -5,7 +11,6 @@
     color: var(--text-secondary);
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
-    margin-top: auto;
 
     transition: background-color 0.3s, color 0.3s;
 }
