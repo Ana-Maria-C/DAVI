@@ -1,0 +1,28 @@
+<div class="home-container">
+    <div class="hero">
+        <h1>Welcome to <span class="highlight">DaVi</span></h1>
+        <p class="subtitle">Explore. Visualise. Understand.</p>
+        <p class="description">
+            Dive into the MovieLens dataset with the power of Semantic Web tech.
+            Discover hidden connections, analyze trends, and visualize knowledge like never before.
+        </p>
+
+        <div class="cta-group">
+            <app-button variant="primary" routerLink="/movies">Explore Movies</app-button>
+            <app-button variant="outline" routerLink="/sparql">Run Query</app-button>
+        </div>
+    </div>
+
+    <div class="features-grid">
+        <app-card title="Semantic Search">
+            <p>Leverage simplified SPARQL queries to find exactly what you're looking for, powered by our custom
+                Ontology.</p>
+        </app-card>
+        <app-card title="Visual Analytics">
+            <p>Uncover patterns with dynamic charts and graph visualizations that bring data to life.</p>
+        </app-card>
+        <app-card title="Intelligent Filtering">
+            <p>Filter not just by properties, but by relationships inferred by the reasoning engine.</p>
+        </app-card>
+    </div>
+</div>
