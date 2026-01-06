@@ -19,11 +19,13 @@ class MovieRepository(BaseRepository):
     def search_movies(self, genre: Optional[str], limit: int, offset: int):
         filter_clause = ""
         if genre:
-            # EXTENSION 1: Intelligent Semantic Filtering
-            # Use 'rdfs:subClassOf*' if Genres were a hierarchy (e.g. Action -> Superhero).
+            # EXTENSION 1 (Enhanced): Intelligent Semantic Filtering with Reasoning
+            # We use the transitive property :subCategoryOf* defined in schema.ttl
+            # This allows searching for "Exciting" and getting "Action", "Horror", etc.
             filter_clause = f"""
                 ?m :hasGenre ?g .
-                ?g rdfs:label ?gLabel .
+                ?g :subCategoryOf* ?superG .
+                ?superG rdfs:label ?gLabel .
                 FILTER(REGEX(?gLabel, "{genre}", "i"))
             """
 
@@ -32,7 +34,7 @@ class MovieRepository(BaseRepository):
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             
-            SELECT ?mid ?title (GROUP_CONCAT(?gLabel; separator="|") as ?genres)
+            SELECT ?mid ?title (GROUP_CONCAT(DISTINCT ?finalGLabel; separator="|") as ?genres)
             WHERE {{
                 ?m a :Movie ;
                    schema:name ?title .
@@ -42,7 +44,7 @@ class MovieRepository(BaseRepository):
                 
                 OPTIONAL {{ 
                     ?m :hasGenre ?gx . 
-                    ?gx rdfs:label ?gLabel 
+                    ?gx rdfs:label ?finalGLabel 
                 }}
             }}
             GROUP BY ?mid ?title
@@ -127,9 +129,11 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_select(query)
 
-    def get_graph_data(self, limit=50):
+    def get_graph_data(self, limit=30):
         """
-        Returns triples constructed specifically for graph visualization (Nodes + Links).
+        Returns triples for graph visualization (Nodes + Links).
+        Enriched to include Movies, Genres, and connected Tags.
+        Optimized to handle Tags as Literals by generating pseudo-URIs.
         """
         query = f"""
             PREFIX : <http://example.org/movielens/>
@@ -138,17 +142,199 @@ class MovieRepository(BaseRepository):
 
             SELECT ?s ?sLabel ?p ?o ?oLabel ?sType ?oType
             WHERE {{
-                {{
-                    SELECT ?s WHERE {{ ?s a :Movie }} LIMIT {limit}
-                }}
-                ?s ?p ?o .
-                ?s a ?sType .
-                OPTIONAL {{ ?s schema:name ?sLabel }}
+                # 1. Select a set of central movies
+                {{ SELECT ?s WHERE {{ ?s a :Movie }} LIMIT {limit} }}
                 
-                # Only include links to Genres or other internal resources, not literals usually
-                FILTER(ISIRI(?o)) 
-                ?o a ?oType .
-                OPTIONAL {{ ?o rdfs:label ?oLabel }}
+                {{
+                    # Case A: Linked Resources (Genres) - Outgoing
+                    ?s ?p ?o .
+                    FILTER(ISIRI(?o)) # Ensure it's a resource (Genre, etc.)
+                    
+                    ?s a ?sType .
+                    ?o a ?oType .
+                    OPTIONAL {{ ?s schema:name ?sLabel }}
+                    OPTIONAL {{ ?o rdfs:label ?oLabel }}
+                }}
+                UNION
+                {{
+                    # Case B: Tags (which are Literals in the data)
+                    # We convert them to pseudo-nodes for visualization
+                    ?s :hasTagLabel ?tagVal .
+                    
+                    BIND(:hasTagLabel as ?p)
+                    # Generate a unique synthetic URI for the tag node
+                    BIND(IRI(CONCAT("urn:tag:", ENCODE_FOR_URI(?tagVal))) as ?o)
+                    BIND(?tagVal as ?oLabel)
+                    BIND(<http://example.org/movielens/Tag> as ?oType)
+                    
+                    ?s a ?sType .
+                    OPTIONAL {{ ?s schema:name ?sLabel }}
+                }}
             }}
         """
         return self.execute_select(query)
+
+    def get_genres_hierarchy(self):
+        """
+        Returns all genres and their super-categories (if any).
+        Useful for building a 'Smart Filter' dropdown on Frontend.
+        """
+        query = """
+            PREFIX : <http://example.org/movielens/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT ?genre ?genreLabel ?superCategory ?superCategoryLabel
+            WHERE {
+                ?genre a :Genre ;
+                       rdfs:label ?genreLabel .
+                
+                OPTIONAL {
+                    ?genre :subCategoryOf ?superCategory .
+                    ?superCategory rdfs:label ?superCategoryLabel .
+                }
+            }
+            ORDER BY ?superCategoryLabel ?genreLabel
+        """
+        return self.execute_select(query)
+
+
+
+    def get_max_movie_id(self) -> int:
+        query = """
+            PREFIX : <http://example.org/movielens/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT (MAX(?idVal) as ?maxId)
+            WHERE {
+                ?m a :Movie ;
+                   :movieId ?id .
+                BIND(xsd:integer(?id) as ?idVal)
+            }
+        """
+        res = self.execute_select(query)
+        try:
+            return int(res[0]["maxId"]["value"])
+        except:
+            return 0
+
+    def create_movie(self, title: str, genres: List[str]):
+        new_id = self.get_max_movie_id() + 1
+        movie_uri = f"<http://example.org/movielens/Movie/{new_id}>"
+
+        genre_triples = ""
+        for g in genres:
+            genre_triples += f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
+
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            PREFIX prov: <http://www.w3.org/ns/prov#>
+            
+            INSERT DATA {{
+                {movie_uri} a :Movie ;
+                    :movieId "{new_id}" ;
+                    schema:name "{title}" ;
+                    {genre_triples}
+                    prov:wasDerivedFrom :MovieLensDataset .
+            }}
+        """
+        self.execute_update(query)
+        return new_id
+
+    def get_movie_by_id(self, movie_id: str):
+        movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT ?title (GROUP_CONCAT(?gLabel; separator="|") as ?genres)
+            WHERE {{
+                {movie_uri} schema:name ?title .
+                OPTIONAL {{ 
+                    {movie_uri} :hasGenre ?g .
+                    ?g rdfs:label ?gLabel .
+                }}
+            }}
+            GROUP BY ?title
+        """
+        res = self.execute_select(query)
+        if not res:
+            return None
+        return {
+            "id": movie_id,
+            "title": res[0]["title"]["value"],
+            "genres": res[0]["genres"]["value"].split("|") if res[0].get("genres") else []
+        }
+
+    def update_movie(self, movie_id: str, title: str, genres: List[str]):
+        movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
+        
+        genre_triples = ""
+        for g in genres:
+            genre_triples += f"    :hasGenre <http://example.org/movielens/Genre/{g}> ;\n"
+            
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            
+            DELETE {{
+                {movie_uri} schema:name ?oldTitle .
+                {movie_uri} :hasGenre ?oldGenre .
+            }}
+            INSERT {{
+                {movie_uri} schema:name "{title}" .
+                {movie_uri} {genre_triples.strip()[:-1] if genre_triples else ""} .
+            }}
+            WHERE {{
+                OPTIONAL {{ {movie_uri} schema:name ?oldTitle }}
+                OPTIONAL {{ {movie_uri} :hasGenre ?oldGenre }}
+            }}
+        """
+        self.execute_update(query)
+        return True
+
+    def delete_movie(self, movie_id: str):
+        movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
+        
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            
+            DELETE {{
+                ?m ?p ?o .
+                ?r ?rp ?ro .
+            }}
+            WHERE {{
+                BIND({movie_uri} as ?m)
+                
+                # 1. Movie triples
+                ?m ?p ?o .
+                
+                # 2. Related Ratings
+                OPTIONAL {{
+                    ?r :ratingOf ?m .
+                    ?r ?rp ?ro .
+                }}
+            }}
+        """
+        return self.execute_update(query)
+
+    def add_rating(self, user_id: str, movie_id: str, rating_val: float):
+        rating_id = f"{user_id}_{movie_id}"
+        rating_uri = f"<http://example.org/movielens/Rating/{rating_id}>"
+        user_uri = f"<http://example.org/movielens/User/{user_id}>"
+        movie_uri = f"<http://example.org/movielens/Movie/{movie_id}>"
+        
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            INSERT DATA {{
+                 {rating_uri} a :Rating ;
+                     :ratedBy {user_uri} ;
+                     :ratingOf {movie_uri} ;
+                     :ratingValue "{rating_val}"^^xsd:float .
+            }}
+        """
+        return self.execute_update(query)

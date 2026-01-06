@@ -35,17 +35,32 @@ def upload_data():
     headers = {"Content-Type": "text/turtle;charset=utf-8"}
     AUTH = ('admin', 'admin')
     
-    print(f"Uploading {DATA_FILE} to {url}...")
     try:
+        print(f"Uploading {DATA_FILE}...")
+        headers = {"Content-Type": "text/turtle;charset=utf-8"}
         with open(file_path, "rb") as f:
             data = f.read()
             r = requests.put(url, data=data, headers=headers, auth=AUTH)
             if r.status_code in [200, 201, 204]:
                 print("Data uploaded successfully!")
             else:
-                print(f"Upload failed: {r.status_code} - {r.text}")
+                print(f"Error uploading data: {r.status_code} {r.text}")
+
+        schema_path = os.path.join(os.path.dirname(__file__), "../ontology/schema.ttl")
+        if os.path.exists(schema_path):
+            print(f"Uploading schema from {schema_path}...")
+            with open(schema_path, "rb") as f:
+                schema_data = f.read()
+                r_schema = requests.post(url, data=schema_data, headers=headers, auth=AUTH)
+                if r_schema.status_code in [200, 201, 204]:
+                    print("Ontology Schema uploaded successfully!")
+                else:
+                    print(f"Error uploading schema: {r_schema.status_code} {r_schema.text}")
+        else:
+            print("Warning: schema.ttl not found, skipping schema upload.")
+
     except Exception as e:
-        print(f"Error uploading data: {e}")
+        print(f"Failed to connect to Fuseki: {e}")
 
 if __name__ == "__main__":
     print("Ensure Fuseki is running...")

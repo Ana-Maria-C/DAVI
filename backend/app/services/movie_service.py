@@ -67,3 +67,46 @@ class MovieService:
             "nodes": list(nodes.values()),
             "links": links
         }
+
+    def get_genres(self):
+        raw_data = self.repository.get_genres_hierarchy()
+        # Group by SuperCategory for easier frontend consumption
+        hierarchy = {}
+        uncategorized = []
+
+        for row in raw_data:
+            g_label = row["genreLabel"]["value"]
+            super_cat = row.get("superCategoryLabel", {}).get("value")
+
+            if super_cat:
+                if super_cat not in hierarchy:
+                    hierarchy[super_cat] = []
+                hierarchy[super_cat].append(g_label)
+            else:
+                # Avoid duplicates if a genre appears multiple times? 
+                # Our query lists genres. If a genre has NO super cat, it goes here.
+                # However, our super categories themselves are genres (e.g. Emotional). 
+                # We might want to filter them out from "uncategorized" list if they are keys in hierarchy.
+                uncategorized.append(g_label)
+        
+        final_uncategorized = [g for g in uncategorized if g not in hierarchy]
+        
+        return {
+            "categories": hierarchy,
+            "other": final_uncategorized
+        }
+
+    def create_movie(self, title: str, genres: List[str]):
+        return self.repository.create_movie(title, genres)
+
+    def get_movie_by_id(self, movie_id: str):
+         return self.repository.get_movie_by_id(movie_id)
+
+    def update_movie(self, movie_id: str, title: str, genres: List[str]):
+         return self.repository.update_movie(movie_id, title, genres)
+    
+    def delete_movie(self, movie_id: str):
+         return self.repository.delete_movie(movie_id)
+
+    def add_rating(self, user_id: str, movie_id: str, value: float):
+         return self.repository.add_rating(user_id, movie_id, value)

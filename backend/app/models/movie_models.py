@@ -26,3 +26,16 @@ class TrendDTO(BaseModel):
     genre: str
     movie_count: int
     average_rating: float
+
+class MovieCreate(BaseModel):
+    title: str
+    genres: List[str]
+
+class MovieUpdate(BaseModel):
+    title: str
+    genres: List[str]
+
+class RatingCreate(BaseModel):
+    user_id: str
+    movie_id: str
+    value: float
