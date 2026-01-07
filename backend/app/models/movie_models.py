@@ -13,6 +13,7 @@ class MovieDTO(BaseModel):
     uri: Optional[str] = None
     genres: List[str] = []
     average_rating: Optional[float] = None
+    year: Optional[int] = None
 
     class Config:
         json_schema_extra = {

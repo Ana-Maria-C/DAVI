@@ -28,12 +28,19 @@ def get_movies(
 @router.get("/movies/search", response_model=List[MovieDTO], summary="Search Movies")
 def search_movies(
     genre: Optional[str] = None,
+    year_min: Optional[int] = None,
+    year_max: Optional[int] = None,
+    rating_min: Optional[float] = None,
+    rating_max: Optional[float] = None,
+    sort: str = "title",
     limit: int = 20,
     offset: int = 0,
     service: MovieService = Depends(get_service),
 ):
     try:
-        return service.search_movies(genre, limit, offset)
+        return service.search_movies(
+            genre, year_min, year_max, rating_min, rating_max, sort, limit, offset
+        )
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
 

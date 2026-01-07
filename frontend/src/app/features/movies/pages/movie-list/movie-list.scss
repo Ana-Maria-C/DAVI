@@ -1,3 +1,26 @@
+/* Layout */
+.layout-container {
+    display: flex;
+    height: calc(100vh - 64px); // Adjust based on header
+    overflow: hidden;
+}
+
+.sidebar-container {
+    width: 280px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--surface-border);
+    background: var(--surface-card);
+    height: 100%;
+    overflow: hidden;
+}
+
+.content-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+    background-color: var(--surface-ground);
+}
+
 .movies-container {
     padding: 2rem;
     max-width: 1400px;

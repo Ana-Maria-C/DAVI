@@ -1,50 +1,58 @@
-<div class="movies-container">
-    <div class="header-section">
-        <h2>Movies Library</h2>
-        <div class="controls">
-            <div class="sort-control">
-                <label>Sort by:</label>
-                <select (change)="onSortChange($event)">
-                    <option value="title">Title</option>
-                </select>
+<div class="layout-container">
+    <div class="sidebar-container">
+        <app-faceted-search-sidebar></app-faceted-search-sidebar>
+    </div>
+    <div class="content-container">
+        <div class="movies-container">
+            <div class="header-section">
+                <h2>Movies Library</h2>
+                <div class="controls">
+                    <div class="sort-control">
+                        <label>Sort by:</label>
+                        <select (change)="onSortChange($event)">
+                            <option value="title">Title</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+                    <div class="pagination">
+                        <app-button variant="outline" size="sm" (click)="prevPage()"
+                            [disabled]="page === 0">Previous</app-button>
+                        <span class="page-info">Page {{ page + 1 }}</span>
+                        <app-button variant="outline" size="sm" (click)="nextPage()">Next</app-button>
+                    </div>
+                </div>
             </div>
-            <div class="pagination">
-                <app-button variant="outline" size="sm" (click)="prevPage()"
-                    [disabled]="page === 0">Previous</app-button>
-                <span class="page-info">Page {{ page + 1 }}</span>
-                <app-button variant="outline" size="sm" (click)="nextPage()">Next</app-button>
+
+            <!-- Loading State -->
+            <div *ngIf="!(movies$ | async)" class="loading">
+                Loading movies...
+            </div>
+
+            <!-- Empty State -->
+            <div *ngIf="(movies$ | async)?.length === 0" class="empty-state">
+                <div class="empty-icon">🎬</div>
+                <h3>No Movies Found</h3>
+                <p>It looks like there are no movies in the database yet.</p>
+                <p>Try running the data upload script or check back later!</p>
+            </div>
+
+            <div class="movies-grid">
+                <app-card *ngFor="let movie of movies$ | async">
+                    <div class="movie-card-content">
+                        <!-- Icon Placeholder since we don't have posters anymore -->
+                        <div class="poster-placeholder">
+                            <span class="placeholder-icon">🎬</span>
+                        </div>
+                        <h3>{{ movie.title }}</h3>
+                        <p class="meta" *ngIf="movie.genres?.length">
+                            {{ movie.genres!.join(', ') }}
+                        </p>
+                    </div>
+                    <div card-actions>
+                        <app-button variant="outline" size="sm">Details</app-button>
+                    </div>
+                </app-card>
             </div>
         </div>
-    </div>
-
-    <!-- Loading State -->
-    <div *ngIf="!(movies$ | async)" class="loading">
-        Loading movies...
-    </div>
-
-    <!-- Empty State -->
-    <div *ngIf="(movies$ | async)?.length === 0" class="empty-state">
-        <div class="empty-icon">🎬</div>
-        <h3>No Movies Found</h3>
-        <p>It looks like there are no movies in the database yet.</p>
-        <p>Try running the data upload script or check back later!</p>
-    </div>
-
-    <div class="movies-grid">
-        <app-card *ngFor="let movie of movies$ | async">
-            <div class="movie-card-content">
-                <!-- Icon Placeholder since we don't have posters anymore -->
-                <div class="poster-placeholder">
-                    <span class="placeholder-icon">🎬</span>
-                </div>
-                <h3>{{ movie.title }}</h3>
-                <p class="meta" *ngIf="movie.genres?.length">
-                    {{ movie.genres!.join(', ') }}
-                </p>
-            </div>
-            <div card-actions>
-                <app-button variant="outline" size="sm">Details</app-button>
-            </div>
-        </app-card>
     </div>
 </div>

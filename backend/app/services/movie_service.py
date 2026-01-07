@@ -1,4 +1,5 @@
 from typing import List, Optional
+import re
 from app.repositories.movie_repository import MovieRepository
 from app.models.movie_models import MovieDTO, TrendDTO, GenreDTO
 
@@ -11,24 +12,66 @@ class MovieService:
         return self.repository.get_stats()
 
     def search_movies(
-        self, genre: Optional[str], limit: int, offset: int
+        self,
+        genre: Optional[str] = None,
+        year_min: Optional[int] = None,
+        year_max: Optional[int] = None,
+        rating_min: Optional[float] = None,
+        rating_max: Optional[float] = None,
+        sort: str = "title",
+        limit: int = 20,
+        offset: int = 0,
     ) -> List[MovieDTO]:
         if genre and not self.repository.check_genre_exists(genre):
             raise ValueError(f"Genre '{genre}' is not defined in the Knowledge Graph.")
 
-        raw_results = self.repository.search_movies(genre, limit, offset)
+        # 1. Fetch Candidates (No Limit/Offset here to allow correct filtering)
+        raw_results = self.repository.search_movies(
+            genre=genre,
+            year_min=None,
+            year_max=None,
+            rating_min=rating_min,
+            rating_max=rating_max,
+            limit=None,  # Fetch all to filter in memory
+            offset=None,
+        )
 
-        movies = []
+        all_movies = []
         for row in raw_results:
-            movies.append(
+            title = row["title"]["value"] if "title" in row else "Unknown"
+
+            # Extract Year
+            year = 0
+            match = re.search(r"\((\d{4})\)", title)
+            if match:
+                year = int(match.group(1))
+
+            # Filter by Year
+            if year_min is not None and year < year_min:
+                continue
+            if year_max is not None and year > year_max:
+                continue
+
+            all_movies.append(
                 MovieDTO(
                     id=row["mid"]["value"] if "mid" in row else "",
-                    title=row["title"]["value"] if "title" in row else "Unknown",
+                    title=title,
                     genres=row["genres"]["value"].split("|") if "genres" in row else [],
                     uri=None,
+                    year=year,  # Assign extracted year for sorting if needed
                 )
             )
-        return movies
+
+        # 3. Sort (In-Memory)
+        if sort == "year":
+            all_movies.sort(key=lambda m: m.year or 0, reverse=True)
+        else:  # Default or "title"
+            all_movies.sort(key=lambda m: m.title)
+
+        # 4. Paginate
+        start = offset
+        end = offset + limit
+        return all_movies[start:end]
 
     def get_movies(self, limit: int, offset: int, sort: str) -> List[MovieDTO]:
         raw_results = self.repository.get_movies(limit, offset, sort)
@@ -125,3 +168,10 @@ class MovieService:
 
     def add_rating(self, user_id: str, movie_id: str, value: float):
         return self.repository.add_rating(user_id, movie_id, value)
+
+    def get_facet_data(self):
+        return {
+            "genres": self.get_genres(),
+            "yearRange": self.repository.get_year_range(),
+            "ratingRange": self.repository.get_rating_range(),
+        }

@@ -17,23 +17,49 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_ask(query)
 
-    def search_movies(self, genre: Optional[str], limit: int, offset: int):
-        filter_clause = ""
+    def search_movies(
+        self,
+        genre: Optional[str] = None,
+        year_min: Optional[int] = None,
+        year_max: Optional[int] = None,
+        rating_min: Optional[float] = None,
+        rating_max: Optional[float] = None,
+        limit: Optional[int] = 20,
+        offset: Optional[int] = 0,
+    ):
+        filters = []
+
         if genre:
             # EXTENSION 1 (Enhanced): Intelligent Semantic Filtering with Reasoning
-            # We use the transitive property :subCategoryOf* defined in schema.ttl
-            # This allows searching for "Exciting" and getting "Action", "Horror", etc.
-            filter_clause = f"""
+            filters.append(
+                f"""
                 ?m :hasGenre ?g .
                 ?g :subCategoryOf* ?superG .
                 ?superG rdfs:label ?gLabel .
                 FILTER(REGEX(?gLabel, "{genre}", "i"))
             """
+            )
 
+        # Removed SPARQL Year filtering as requested to use In-Memory extraction
+        # if year_min is not None:
+        #     filters.append(f"?m :year ?year . FILTER(xsd:integer(?year) >= {year_min})")
+        # if year_max is not None:
+        #     filters.append(f"?m :year ?year . FILTER(xsd:integer(?year) <= {year_max})")
+
+        if rating_min is not None or rating_max is not None:
+            pass
+
+        filter_clause = "\n".join(filters)
+
+        limit_clause = f"LIMIT {limit}" if limit is not None else ""
+        offset_clause = f"OFFSET {offset}" if offset is not None else ""
+
+        # Basic query structure
         query = f"""
             PREFIX : <http://example.org/movielens/>
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             
             SELECT ?mid ?title (GROUP_CONCAT(DISTINCT ?finalGLabel; separator="|") as ?genres)
             WHERE {{
@@ -44,14 +70,52 @@ class MovieRepository(BaseRepository):
                 {filter_clause}
                 
                 OPTIONAL {{ 
+                    ?m :year ?year .
+                }}
+
+                OPTIONAL {{ 
                     ?m :hasGenre ?gx . 
                     ?gx rdfs:label ?finalGLabel 
                 }}
             }}
             GROUP BY ?mid ?title
-            LIMIT {limit}
-            OFFSET {offset}
+            {limit_clause}
+            {offset_clause}
         """
+        # If rating filter is needed, wrap in subquery or use HAVING
+        if rating_min is not None or rating_max is not None:
+            min_r = rating_min if rating_min is not None else 0
+            max_r = rating_max if rating_max is not None else 5
+
+            query = f"""
+                PREFIX : <http://example.org/movielens/>
+                PREFIX schema: <http://schema.org/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                
+                SELECT ?mid ?title (GROUP_CONCAT(DISTINCT ?finalGLabel; separator="|") as ?genres) (AVG(?rVal) as ?avgRating)
+                WHERE {{
+                    ?m a :Movie ;
+                       schema:name ?title .
+                    OPTIONAL {{ ?m :movieId ?mid }} .
+                    
+                    {filter_clause}
+                    
+                    # Rating Filter
+                    ?r :ratingOf ?m ;
+                       :ratingValue ?rVal .
+                    
+                    OPTIONAL {{ 
+                        ?m :hasGenre ?gx . 
+                        ?gx rdfs:label ?finalGLabel 
+                    }}
+                }}
+                GROUP BY ?mid ?title
+                HAVING (AVG(?rVal) >= {min_r} && AVG(?rVal) <= {max_r})
+                {limit_clause}
+                {offset_clause}
+            """
+
         return self.execute_select(query)
 
     def get_movies(self, limit: int, offset: int, sort: str = "title"):
@@ -241,6 +305,50 @@ class MovieRepository(BaseRepository):
             return int(res[0]["maxId"]["value"])
         except:
             return 0
+
+    def get_year_range(self):
+        query = """
+            PREFIX : <http://example.org/movielens/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT (MIN(?y) as ?minYear) (MAX(?y) as ?maxYear)
+            WHERE {
+                ?m a :Movie ;
+                   :year ?year .
+                BIND(xsd:integer(?year) as ?y)
+            }
+        """
+        res = self.execute_select(query)
+        if res and "minYear" in res[0] and "maxYear" in res[0]:
+            try:
+                return {
+                    "min": int(res[0]["minYear"]["value"]),
+                    "max": int(res[0]["maxYear"]["value"]),
+                }
+            except:
+                return {"min": 1900, "max": 2025}
+        return {"min": 1900, "max": 2025}
+
+    def get_rating_range(self):
+        query = """
+            PREFIX : <http://example.org/movielens/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT (MIN(?v) as ?minRating) (MAX(?v) as ?maxRating)
+            WHERE {
+                ?r a :Rating ;
+                   :ratingValue ?val .
+                BIND(xsd:float(?val) as ?v)
+            }
+        """
+        res = self.execute_select(query)
+        if res and "minRating" in res[0] and "maxRating" in res[0]:
+            try:
+                return {
+                    "min": float(res[0]["minRating"]["value"]),
+                    "max": float(res[0]["maxRating"]["value"]),
+                }
+            except:
+                return {"min": 0, "max": 5}
+        return {"min": 0, "max": 5}
 
     def create_movie(self, title: str, genres: List[str]):
         new_id = self.get_max_movie_id() + 1
