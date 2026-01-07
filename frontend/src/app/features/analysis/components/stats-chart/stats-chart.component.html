@@ -1,0 +1,37 @@
+<div class="stats-container">
+    <div class="cards">
+        <div class="card">
+            <h3>Movies</h3>
+            <p>{{stats?.counts?.movies}}</p>
+        </div>
+        <div class="card">
+            <h3>Users</h3>
+            <p>{{stats?.counts?.users}}</p>
+        </div>
+        <div class="card">
+            <h3>Genres</h3>
+            <p>{{stats?.counts?.genres}}</p>
+        </div>
+        <div class="card">
+            <h3>Ratings</h3>
+            <p>{{stats?.counts?.ratings}}</p>
+        </div>
+    </div>
+
+    <div class="charts-row">
+        <div class="chart-box">
+            <h3>Genre Distribution</h3>
+            <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="genreData" [gradient]="gradient"
+                [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelDistribution">
+            </ngx-charts-bar-vertical>
+        </div>
+        <div class="chart-box">
+            <h3>Average Ratings by Genre</h3>
+            <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="ratingData" [gradient]="gradient"
+                [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabelRating">
+            </ngx-charts-bar-vertical>
+        </div>
+    </div>
+</div>

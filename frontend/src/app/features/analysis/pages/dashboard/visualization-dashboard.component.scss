@@ -1,0 +1,26 @@
+.dashboard-container {
+    padding: 20px;
+
+    h1 {
+        color: var(--text-primary);
+        margin-bottom: 20px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .graph-section {
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        padding: 20px;
+        height: 600px;
+
+        h2 {
+            margin-top: 0;
+            color: #ddd;
+        }
+    }
+}

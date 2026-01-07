@@ -1,0 +1,15 @@
+<div class="dashboard-container">
+    <h1>Layered Visualization Extension</h1>
+
+    <ng-container *ngIf="statsData$ | async as stats; else loadingTpl">
+        <div class="content">
+            <div class="stats-section">
+                <app-stats-chart [stats]="stats"></app-stats-chart>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #loadingTpl>
+        <div class="loading">Loading analysis data...</div>
+    </ng-template>
+</div>
