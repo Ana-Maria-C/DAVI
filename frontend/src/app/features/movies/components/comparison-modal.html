@@ -9,7 +9,7 @@
             <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th>Metric</th>
+                        <th>Movie Title</th>
                         <th *ngFor="let movie of data">{{ movie.title }}</th>
                     </tr>
                 </thead>
@@ -17,6 +17,10 @@
                     <tr>
                         <td class="label-cell">Year</td>
                         <td *ngFor="let movie of data">{{ movie.year }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Genres</td>
+                        <td *ngFor="let movie of data">{{ movie.genres }}</td>
                     </tr>
                     <tr>
                         <td class="label-cell">Rating</td>

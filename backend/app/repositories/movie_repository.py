@@ -628,13 +628,18 @@ class MovieRepository(BaseRepository):
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             
-            SELECT ?mid ?title (AVG(?rVal) as ?avgRating) (COUNT(?r) as ?reviewCount)
+            SELECT ?mid ?title (AVG(?rVal) as ?avgRating) (COUNT(?r) as ?reviewCount) (GROUP_CONCAT(DISTINCT ?genreName; separator=", ") as ?genres)
             WHERE {{
                 VALUES ?m {{ {uris_str} }}
                 
                 ?m a :Movie ;
                    schema:name ?title .
                 
+                OPTIONAL {{ 
+                    ?m :hasGenre ?g .
+                    ?g rdfs:label ?genreName .
+                }}
+
                 OPTIONAL {{ ?m :movieId ?mid }}
                 
                 OPTIONAL {{

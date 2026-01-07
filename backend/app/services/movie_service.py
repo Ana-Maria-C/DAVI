@@ -121,6 +121,7 @@ class MovieService:
                     "id": row["mid"]["value"],
                     "title": title,
                     "year": year,
+                    "genres": row["genres"]["value"] if "genres" in row else "",
                     "average_rating": (
                         float(row["avgRating"]["value"]) if "avgRating" in row else 0.0
                     ),
