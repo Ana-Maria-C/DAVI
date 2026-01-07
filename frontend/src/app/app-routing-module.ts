@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'sparql',
         loadChildren: () => import('./features/sparql/sparql-module').then(m => m.SparqlModule)
+      },
+      {
+        path: 'extensions',
+        loadChildren: () => import('./features/analysis/analysis-module').then(m => m.AnalysisModule)
       }
     ]
   }

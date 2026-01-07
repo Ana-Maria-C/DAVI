@@ -1,50 +1,75 @@
-<div class="movies-container">
-    <div class="header-section">
-        <h2>Movies Library</h2>
-        <div class="controls">
-            <div class="sort-control">
-                <label>Sort by:</label>
-                <select (change)="onSortChange($event)">
-                    <option value="title">Title</option>
-                </select>
-            </div>
-            <div class="pagination">
-                <app-button variant="outline" size="sm" (click)="prevPage()"
-                    [disabled]="page === 0">Previous</app-button>
-                <span class="page-info">Page {{ page + 1 }}</span>
-                <app-button variant="outline" size="sm" (click)="nextPage()">Next</app-button>
-            </div>
-        </div>
+<div class="layout-container">
+    <div class="sidebar-container">
+        <app-faceted-search-sidebar></app-faceted-search-sidebar>
     </div>
-
-    <!-- Loading State -->
-    <div *ngIf="!(movies$ | async)" class="loading">
-        Loading movies...
-    </div>
-
-    <!-- Empty State -->
-    <div *ngIf="(movies$ | async)?.length === 0" class="empty-state">
-        <div class="empty-icon">🎬</div>
-        <h3>No Movies Found</h3>
-        <p>It looks like there are no movies in the database yet.</p>
-        <p>Try running the data upload script or check back later!</p>
-    </div>
-
-    <div class="movies-grid">
-        <app-card *ngFor="let movie of movies$ | async">
-            <div class="movie-card-content">
-                <!-- Icon Placeholder since we don't have posters anymore -->
-                <div class="poster-placeholder">
-                    <span class="placeholder-icon">🎬</span>
+    <div class="content-container">
+        <div class="movies-container">
+            <div class="header-section">
+                <h2>Movies Library</h2>
+                <div class="controls">
+                    <div class="sort-control">
+                        <label>Sort by:</label>
+                        <select (change)="onSortChange($event)">
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
+                    <div class="pagination">
+                        <app-button variant="outline" size="sm" (click)="prevPage()"
+                            [disabled]="page === 0">Previous</app-button>
+                        <span class="page-info">Page {{ page + 1 }}</span>
+                        <app-button variant="outline" size="sm" (click)="nextPage()">Next</app-button>
+                    </div>
                 </div>
-                <h3>{{ movie.title }}</h3>
-                <p class="meta" *ngIf="movie.genres?.length">
-                    {{ movie.genres!.join(', ') }}
-                </p>
             </div>
-            <div card-actions>
-                <app-button variant="outline" size="sm">Details</app-button>
+
+            <!-- Loading State -->
+            <div *ngIf="isLoading" class="loading">
+                Loading movies...
             </div>
-        </app-card>
+
+            <!-- Empty State -->
+            <div *ngIf="!isLoading && movies.length === 0" class="empty-state">
+                <div class="empty-icon">🎬</div>
+                <h3>No Movies Found</h3>
+                <p>It looks like there are no movies in the database yet.</p>
+                <p>Try running the data upload script or check back later!</p>
+            </div>
+
+            <div class="movies-grid">
+                <app-card *ngFor="let movie of movies" [class.selected-card]="isSelected(movie)">
+                    <div class="movie-card-content">
+                        <!-- Icon Placeholder since we don't have posters anymore -->
+                        <div class="poster-placeholder">
+                            <span class="placeholder-icon">🎬</span>
+                        </div>
+                        <h3>{{ movie.title }}</h3>
+                        <p class="meta" *ngIf="movie.genres?.length">
+                            {{ movie.genres!.join(', ') }}
+                        </p>
+
+                        <div class="rating-badge" *ngIf="movie.average_rating">
+                            ⭐ {{ movie.average_rating | number:'1.1-1' }}
+                        </div>
+                    </div>
+                    <div card-actions class="card-actions-row">
+                        <app-button variant="outline" size="sm" (click)="openDetails(movie)">Details</app-button>
+                        <app-button [variant]="isSelected(movie) ? 'primary' : 'outline'" size="sm"
+                            (click)="toggleSelection(movie)">
+                            {{ isSelected(movie) ? '✓ Selected' : '+ Compare' }}
+                        </app-button>
+                    </div>
+                </app-card>
+            </div>
+
+            <button class="fab-compare" *ngIf="selectedMovies.length >= 2" (click)="openComparisonModal()">
+                Compare ({{ selectedMovies.length }})
+            </button>
+
+            <app-comparison-modal *ngIf="showComparisonModal" [data]="comparisonData" (close)="closeComparisonModal()">
+            </app-comparison-modal>
+
+            <app-movie-details-modal *ngIf="showDetailsModal" [movie]="selectedDetailsMovie" (close)="closeDetails()">
+            </app-movie-details-modal>
+        </div>
     </div>
 </div>

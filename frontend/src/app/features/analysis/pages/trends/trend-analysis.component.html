@@ -1,0 +1,104 @@
+<div class="trends-container">
+    <div class="header-section">
+        <h1>Trend Analysis</h1>
+        <p>Discover the most significant movies across history.</p>
+    </div>
+
+    <div class="charts-row">
+        <!-- Most Famous -->
+        <div class="chart-box">
+            <div class="box-header">
+                <h2>🏆 Most Famous Movies</h2>
+                <span class="subtitle">Most User Reviews</span>
+            </div>
+
+            <div class="movie-list scrollable" *ngIf="mostFamousMovies$ | async as movies">
+                <div class="movie-item" *ngFor="let m of movies; let i = index">
+                    <span class="rank">#{{i+1}}</span>
+                    <div class="details">
+                        <span class="title">{{ m.title.value }}</span>
+                        <span class="meta">{{ m.reviewCount.value }} reviews • {{ m.avgRating.value | number:'1.1-1' }}
+                            ⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Highest Rated -->
+        <div class="chart-box">
+            <div class="box-header">
+                <h2>⭐ Highest Rated</h2>
+                <span class="subtitle">Best Average Scores</span>
+            </div>
+
+            <div class="movie-list scrollable" *ngIf="highestRatedMovies$ | async as movies">
+                <div class="movie-item" *ngFor="let m of movies; let i = index">
+                    <span class="rank">#{{i+1}}</span>
+                    <div class="details">
+                        <span class="title">{{ m.title.value }}</span>
+                        <span class="meta">{{ m.avgRating.value | number:'1.1-1' }} ⭐ • {{ m.reviewCount.value }}
+                            reviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="yearly-section">
+        <div class="section-header">
+            <h2>📅 Yearly Breakdown</h2>
+            <div class="year-selector">
+                <label>Year:</label>
+                <select #yearSelect [value]="selectedYear$ | async" (change)="onYearChange(yearSelect.value)">
+                    <option *ngFor="let y of availableYears" [value]="y">{{ y }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="charts-row" *ngIf="yearlyTrends$ | async as data">
+            <div class="chart-box">
+                <h3>Most Famous in {{ yearSelect.value }}</h3>
+                <ng-container *ngIf="data.famous && data.famous.length > 0; else emptyFamous">
+                    <div class="movie-list scrollable">
+                        <div class="movie-item" *ngFor="let m of data.famous; let i = index">
+                            <span class="rank">#{{i+1}}</span>
+                            <div class="details">
+                                <span class="title">{{ m.title.value }}</span>
+                                <span class="meta">{{ m.reviewCount.value }} reviews • {{ m.avgRating.value |
+                                    number:'1.1-1' }} ⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #emptyFamous>
+                    <div class="empty-state-small">
+                        <div class="empty-icon">😴</div>
+                        <p>No famous movies found for {{ yearSelect.value }}</p>
+                    </div>
+                </ng-template>
+            </div>
+
+            <div class="chart-box">
+                <h3>Top Rated in {{ yearSelect.value }}</h3>
+                <ng-container *ngIf="data.rated && data.rated.length > 0; else emptyRated">
+                    <div class="movie-list scrollable">
+                        <div class="movie-item" *ngFor="let m of data.rated; let i = index">
+                            <span class="rank">#{{i+1}}</span>
+                            <div class="details">
+                                <span class="title">{{ m.title.value }}</span>
+                                <span class="meta">{{ m.avgRating.value | number:'1.1-1' }} ⭐ • {{ m.reviewCount.value
+                                    }} reviews</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #emptyRated>
+                    <div class="empty-state-small">
+                        <div class="empty-icon">🕸️</div>
+                        <p>No rated movies found for {{ yearSelect.value }}</p>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

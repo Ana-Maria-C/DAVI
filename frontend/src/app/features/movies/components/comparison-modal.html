@@ -1,0 +1,39 @@
+<div class="modal-backdrop" (click)="onClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Movie Comparison</h2>
+            <button class="close-btn" (click)="onClose()">&times;</button>
+        </div>
+
+        <div class="modal-body custom-scrollbar">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th *ngFor="let movie of data">{{ movie.title }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">Year</td>
+                        <td *ngFor="let movie of data">{{ movie.year }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Genres</td>
+                        <td *ngFor="let movie of data">{{ movie.genres }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Rating</td>
+                        <td *ngFor="let movie of data">
+                            <span class="rating-badge">⭐ {{ movie.average_rating | number:'1.1-1' }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Reviews</td>
+                        <td *ngFor="let movie of data">{{ movie.review_count }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

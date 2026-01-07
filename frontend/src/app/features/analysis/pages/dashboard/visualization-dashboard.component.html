@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+    <h1>Layered Visualization Extension</h1>
+
+    <ng-container *ngIf="statsData$ | async as stats; else loadingTpl">
+        <div class="content">
+            <div class="stats-section">
+                <app-stats-chart [stats]="stats"></app-stats-chart>
+            </div>
+
+            <div class="graph-section" *ngIf="graphData$ | async as graph">
+                <h2>3D Knowledge Graph</h2>
+                <app-network-graph [nodes]="graph.nodes" [links]="graph.links"></app-network-graph>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #loadingTpl>
+        <div class="loading">Loading analysis data...</div>
+    </ng-template>
+
+
+    <!-- Trend Analysis Section -->
+    <app-trend-analysis></app-trend-analysis>
+</div>

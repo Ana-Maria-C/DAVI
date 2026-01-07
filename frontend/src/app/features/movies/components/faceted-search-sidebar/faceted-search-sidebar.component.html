@@ -1,0 +1,54 @@
+<div class="sidebar" *ngIf="facets">
+    <h3>Filters</h3>
+
+    <div class="filter-group">
+        <h4>Genres</h4>
+        <div *ngFor="let category of facets.genres.categories | keyvalue">
+            <h5>{{category.key}}</h5>
+            <div class="checkbox-group">
+                <label *ngFor="let g of category.value" class="checkbox-container">
+                    <input type="checkbox" [checked]="filters.genre === g" (change)="toggleGenre(g)">
+                    <span class="checkmark"></span>
+                    {{g}}
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="facets.genres.other.length > 0">
+            <h5>Other</h5>
+            <div class="checkbox-group">
+                <label *ngFor="let g of facets.genres.other" class="checkbox-container">
+                    <input type="checkbox" [checked]="filters.genre === g" (change)="toggleGenre(g)">
+                    <span class="checkmark"></span>
+                    {{g}}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <h4>Year</h4>
+        <div class="range-inputs">
+            <input type="number" [min]="facets.yearRange.min" [max]="facets.yearRange.max"
+                [value]="filters.yearMin || facets.yearRange.min"
+                (change)="updateYear($any($event.target).value, filters.yearMax || facets.yearRange.max)">
+            <span>-</span>
+            <input type="number" [min]="facets.yearRange.min" [max]="facets.yearRange.max"
+                [value]="filters.yearMax || facets.yearRange.max"
+                (change)="updateYear(filters.yearMin || facets.yearRange.min, $any($event.target).value)">
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <h4>Rating</h4>
+        <div class="range-inputs">
+            <input type="number" step="0.5" [min]="facets.ratingRange.min" [max]="facets.ratingRange.max"
+                [value]="filters.ratingMin || facets.ratingRange.min"
+                (change)="updateRating($any($event.target).value, filters.ratingMax || facets.ratingRange.max)">
+            <span>-</span>
+            <input type="number" step="0.5" [min]="facets.ratingRange.min" [max]="facets.ratingRange.max"
+                [value]="filters.ratingMax || facets.ratingRange.max"
+                (change)="updateRating(filters.ratingMin || facets.ratingRange.min, $any($event.target).value)">
+        </div>
+    </div>
+</div>

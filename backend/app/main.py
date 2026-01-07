@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api.routes import movies, sparql, resources
+from app.api.routes import movies, sparql, resources, analysis
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -24,6 +24,9 @@ app.include_router(movies.router, prefix=settings.API_PREFIX)
 app.include_router(
     sparql.router, prefix=settings.API_PREFIX
 )  # Now it will be /api/sparql
+app.include_router(
+    analysis.router, prefix=f"{settings.API_PREFIX}/analysis"
+)  # /api/v1/analysis
 app.include_router(resources.router, prefix="")  # Root /resource/...
 
 

@@ -1,0 +1,59 @@
+.stats-container {
+    .cards {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+
+        .card {
+            background: var(--bg-dark-800);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+
+            h3 {
+                color: var(--text-secondary);
+                margin: 0 0 10px 0;
+                font-size: 0.9rem;
+            }
+
+            p {
+                color: var(--text-primary);
+                font-size: 2rem;
+                margin: 0;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .charts-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        .chart-box {
+            background: var(--bg-dark-800);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            h3 {
+                color: var(--text-primary);
+                margin-bottom: 20px;
+                flex-shrink: 0;
+            }
+
+            ngx-charts-bar-vertical {
+                flex-grow: 1;
+                display: block;
+                overflow: hidden;
+            }
+        }
+    }
+}
