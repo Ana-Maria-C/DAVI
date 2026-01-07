@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { AnalysisService } from '../../../../core/services/analysis.service';
 import { MoviesService } from '../../../../core/services/movies.service';
 import { Movie } from '../../../../core/models/movie.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,7 +10,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movie-list.scss'],
 })
 export class MovieListComponent implements OnInit {
-  movies$: Observable<Movie[]> | null = null;
+  movies: Movie[] = [];
+  isLoading = false;
   page = 0;
   pageSize = 20;
   sort = 'title';
@@ -34,14 +34,26 @@ export class MovieListComponent implements OnInit {
   }
 
   loadMovies() {
-    // We now use searchMovies for everything to ensure In-Memory sorting (Year) works correctly
-    // even without filters.
-    this.movies$ = this.moviesService.searchMovies(
+    this.isLoading = true;
+    this.moviesService.searchMovies(
       this.filters,
       this.pageSize,
       this.page * this.pageSize,
       this.sort
-    );
+    ).subscribe({
+      next: (data) => {
+        this.zone.run(() => {
+          this.movies = data;
+          this.isLoading = false;
+          this.cdr.detectChanges();
+        });
+      },
+      error: (err) => {
+        console.error('Error loading movies:', err);
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   nextPage() {

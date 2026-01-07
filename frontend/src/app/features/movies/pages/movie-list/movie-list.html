@@ -23,12 +23,12 @@
             </div>
 
             <!-- Loading State -->
-            <div *ngIf="!(movies$ | async)" class="loading">
+            <div *ngIf="isLoading" class="loading">
                 Loading movies...
             </div>
 
             <!-- Empty State -->
-            <div *ngIf="(movies$ | async)?.length === 0" class="empty-state">
+            <div *ngIf="!isLoading && movies.length === 0" class="empty-state">
                 <div class="empty-icon">🎬</div>
                 <h3>No Movies Found</h3>
                 <p>It looks like there are no movies in the database yet.</p>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="movies-grid">
-                <app-card *ngFor="let movie of movies$ | async" [class.selected-card]="isSelected(movie)">
+                <app-card *ngFor="let movie of movies" [class.selected-card]="isSelected(movie)">
                     <div class="movie-card-content">
                         <!-- Icon Placeholder since we don't have posters anymore -->
                         <div class="poster-placeholder">
