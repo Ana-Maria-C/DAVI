@@ -236,27 +236,15 @@
     transition: all 0.3s ease;
 }
 
-.btn-compare-toggle {
-    background: transparent;
-    border: 1px solid var(--border-color, #333);
-    color: var(--text-secondary, #aaa);
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
-    margin-left: 0.5rem;
-
-    &:hover {
-        border-color: var(--primary-color, #00ADB5);
-        color: var(--primary-color, #00ADB5);
-    }
-
-    &.selected {
-        background: var(--primary-color, #00ADB5);
-        border-color: var(--primary-color, #00ADB5);
-        color: #fff;
-    }
+.card-actions-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
+    gap: 1rem;
 }
 
 .fab-compare {

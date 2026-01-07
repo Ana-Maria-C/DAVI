@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { AnalysisService } from '../../../../core/services/analysis.service';
 import { MoviesService } from '../../../../core/services/movies.service';
 import { Movie } from '../../../../core/models/movie.model';
@@ -20,7 +20,8 @@ export class MovieListComponent implements OnInit {
   constructor(
     private moviesService: MoviesService,
     private analysisService: AnalysisService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
   ) { }
 
   ngOnInit() {
@@ -79,9 +80,11 @@ export class MovieListComponent implements OnInit {
 
     const ids = this.selectedMovies.map(m => m.id);
     this.moviesService.compareMovies(ids).subscribe(data => {
-      this.comparisonData = data;
-      this.showComparisonModal = true;
-      this.cdr.detectChanges();
+      this.zone.run(() => {
+        this.comparisonData = data;
+        this.showComparisonModal = true;
+        this.cdr.detectChanges();
+      });
     });
   }
 

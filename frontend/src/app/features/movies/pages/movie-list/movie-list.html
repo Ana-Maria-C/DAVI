@@ -51,12 +51,12 @@
                             ⭐ {{ movie.average_rating | number:'1.1-1' }}
                         </div>
                     </div>
-                    <div card-actions>
+                    <div card-actions class="card-actions-row">
                         <app-button variant="outline" size="sm">Details</app-button>
-                        <button class="btn-compare-toggle" [class.selected]="isSelected(movie)"
+                        <app-button [variant]="isSelected(movie) ? 'primary' : 'outline'" size="sm"
                             (click)="toggleSelection(movie)">
                             {{ isSelected(movie) ? '✓ Selected' : '+ Compare' }}
-                        </button>
+                        </app-button>
                     </div>
                 </app-card>
             </div>
