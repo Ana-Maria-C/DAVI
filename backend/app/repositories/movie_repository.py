@@ -203,7 +203,6 @@ class MovieRepository(BaseRepository):
                 }
             }
             GROUP BY ?gLabel
-            HAVING (COUNT(?m) > 10)
             ORDER BY DESC(?avgRating)
         """
         return self.execute_select(query)
