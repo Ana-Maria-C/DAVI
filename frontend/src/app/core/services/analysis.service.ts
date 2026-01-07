@@ -45,4 +45,16 @@ export class AnalysisService {
     getStatistics(): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/stats`);
     }
+
+    getMostFamousMovies(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/trends/famous`);
+    }
+
+    getHighestRatedMovies(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/trends/rated`);
+    }
+
+    getYearlyTrends(year: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/trends/yearly/${year}`);
+    }
 }

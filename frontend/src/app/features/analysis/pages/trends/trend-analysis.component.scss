@@ -1,0 +1,192 @@
+.trends-container {
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+
+    .header-section {
+        margin-bottom: 24px;
+
+        h1 {
+            font-size: 1.5rem; // Matched to common header size
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+.charts-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    .chart-box {
+        flex: 1;
+        min-width: 300px;
+        background: var(--bg-dark-800);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        height: 400px; // Fixed height for consistency
+
+        .box-header {
+            margin-bottom: 16px;
+
+            h2 {
+                margin: 0 0 4px 0;
+                font-size: 1.1rem;
+                color: var(--primary-color, #bb86fc);
+            }
+
+            .subtitle {
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+            }
+        }
+
+        h3 {
+            margin: 0 0 16px 0;
+            font-size: 1.1rem;
+            color: var(--secondary-color, #03dac6);
+        }
+
+        .scrollable {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 4px; // Space for scrollbar
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 3px;
+            }
+        }
+    }
+}
+
+.yearly-section {
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .year-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            label {
+                color: var(--text-secondary);
+                font-size: 0.9rem;
+            }
+
+            select {
+                padding: 6px 12px;
+                background: var(--bg-dark-900, #121212);
+                color: var(--text-primary);
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                font-size: 0.95rem;
+                cursor: pointer;
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--primary-color, #bb86fc);
+                }
+            }
+        }
+    }
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .movie-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 6px;
+        border: 1px solid transparent;
+        transition: all 0.2s;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-color);
+            transform: translateX(4px);
+        }
+
+        .rank {
+            font-weight: 700;
+            color: var(--secondary-color, #03dac6);
+            width: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-weight: 500;
+                color: var(--text-primary);
+                font-size: 0.95rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px; // Prevent long titles from breaking layout
+            }
+
+            .meta {
+                font-size: 0.75rem;
+                color: var(--text-secondary);
+                margin-top: 2px;
+            }
+        }
+    }
+}
+
+.empty-state-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+
+    .empty-icon {
+        font-size: 9rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+}

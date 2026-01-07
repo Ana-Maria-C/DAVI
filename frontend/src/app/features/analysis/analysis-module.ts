@@ -6,6 +6,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { VisualizationDashboardComponent } from './pages/dashboard/visualization-dashboard.component';
 import { StatsChartComponent } from './components/stats-chart/stats-chart.component';
 import { NetworkGraphComponent } from './components/network-graph/network-graph.component';
+import { TrendAnalysisComponent } from './pages/trends/trend-analysis.component';
 
 const routes: Routes = [
     { path: '', component: VisualizationDashboardComponent }
@@ -15,7 +16,8 @@ const routes: Routes = [
     declarations: [
         VisualizationDashboardComponent,
         StatsChartComponent,
-        NetworkGraphComponent
+        NetworkGraphComponent,
+        TrendAnalysisComponent
     ],
     imports: [
         CommonModule,

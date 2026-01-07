@@ -67,3 +67,12 @@ class AnalysisService:
             "genreDistribution": genre_distribution,
             "genreRatings": avg_rating_per_genre,
         }
+
+    def get_top_reviewed_movies(self, limit=10):
+        return self.repository.get_most_reviewed_movies(limit)
+
+    def get_top_rated_movies(self, limit=10, min_reviews=20):
+        return self.repository.get_highest_rated_movies(limit, min_reviews)
+
+    def get_yearly_trends_data(self, year):
+        return self.repository.get_yearly_trends_data(year)

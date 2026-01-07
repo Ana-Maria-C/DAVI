@@ -208,6 +208,98 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_select(query)
 
+    def get_most_reviewed_movies(self, limit=10):
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            
+            SELECT ?mid ?title (COUNT(?r) as ?reviewCount) (AVG(?val) as ?avgRating)
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title ;
+                   :movieId ?mid .
+                
+                ?r :ratingOf ?m ;
+                   :ratingValue ?val .
+            }}
+            GROUP BY ?mid ?title
+            ORDER BY DESC(?reviewCount)
+            LIMIT {limit}
+        """
+        return self.execute_select(query)
+
+    def get_highest_rated_movies(self, limit=10, min_reviews=20):
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            
+            SELECT ?mid ?title (AVG(?val) as ?avgRating) (COUNT(?r) as ?reviewCount)
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title ;
+                   :movieId ?mid .
+                
+                ?r :ratingOf ?m ;
+                   :ratingValue ?val .
+            }}
+            GROUP BY ?mid ?title
+            HAVING (COUNT(?r) >= {min_reviews})
+            ORDER BY DESC(?avgRating)
+            LIMIT {limit}
+        """
+        return self.execute_select(query)
+
+    def get_yearly_trends_data(self, year: int):
+        # Top Reviewed in Year
+        famous_query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            SELECT ?mid ?title (COUNT(?r) as ?reviewCount) (AVG(?val) as ?avgRating)
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title ;
+                   :movieId ?mid ;
+                # Filter by extracting year from title "(YYYY)"
+                FILTER(REGEX(?title, "\\\\({year}\\\\)", "i"))
+                
+                ?r :ratingOf ?m ;
+                   :ratingValue ?val .
+            }}
+            GROUP BY ?mid ?title
+            ORDER BY DESC(?reviewCount)
+            LIMIT 10
+        """
+
+        # Best Rated in Year (min 5 reviews to be significant for a single year slice)
+        rated_query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            SELECT ?mid ?title (AVG(?val) as ?avgRating) (COUNT(?r) as ?reviewCount)
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title ;
+                   :movieId ?mid ;
+                # Filter by extracting year from title
+                FILTER(REGEX(?title, "\\\\({year}\\\\)", "i"))
+                
+                ?r :ratingOf ?m ;
+                   :ratingValue ?val .
+            }}
+            GROUP BY ?mid ?title
+            HAVING (COUNT(?r) >= 5) 
+            ORDER BY DESC(?avgRating)
+            LIMIT 10
+        """
+
+        return {
+            "famous": self.execute_select(famous_query),
+            "rated": self.execute_select(rated_query),
+        }
+
     def compare_movies(self, movie_id_1: str, movie_id_2: str):
         """
         Finds common attributes between two movies (Genres, Tags, potentially Users who rated both).
