@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div card-actions class="card-actions-row">
-                        <app-button variant="outline" size="sm">Details</app-button>
+                        <app-button variant="outline" size="sm" (click)="openDetails(movie)">Details</app-button>
                         <app-button [variant]="isSelected(movie) ? 'primary' : 'outline'" size="sm"
                             (click)="toggleSelection(movie)">
                             {{ isSelected(movie) ? '✓ Selected' : '+ Compare' }}
@@ -67,6 +67,9 @@
 
             <app-comparison-modal *ngIf="showComparisonModal" [data]="comparisonData" (close)="closeComparisonModal()">
             </app-comparison-modal>
+
+            <app-movie-details-modal *ngIf="showDetailsModal" [movie]="selectedDetailsMovie" (close)="closeDetails()">
+            </app-movie-details-modal>
         </div>
     </div>
 </div>

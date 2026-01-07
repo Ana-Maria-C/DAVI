@@ -37,4 +37,8 @@ export class MoviesService {
   compareMovies(ids: string[]): Observable<any[]> {
     return this.api.get<any[]>('/api/movies/compare', { ids: ids });
   }
+
+  getMovieById(id: string): Observable<any> {
+    return this.api.get<any>(`/api/movies/${id}`);
+  }
 }

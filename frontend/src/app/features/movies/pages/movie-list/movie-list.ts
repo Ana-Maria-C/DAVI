@@ -93,6 +93,38 @@ export class MovieListComponent implements OnInit {
     this.comparisonData = [];
   }
 
+  showDetailsModal = false;
+  selectedDetailsMovie: any = null;
+
+  openDetails(movie: Movie) {
+    this.moviesService.getMovieById(movie.id).subscribe({
+      next: (data) => {
+        setTimeout(() => {
+          this.zone.run(() => {
+            // Extract year if missing, or use from list
+            let year = 'Unknown';
+            if (data.title) {
+              const match = data.title.match(/\((\d{4})\)/);
+              if (match) {
+                year = match[1];
+              }
+            }
+
+            this.selectedDetailsMovie = { ...data, year };
+            this.showDetailsModal = true;
+            this.cdr.detectChanges();
+          });
+        }, 0);
+      },
+      error: (err) => console.error('Error fetching details:', err)
+    });
+  }
+
+  closeDetails() {
+    this.showDetailsModal = false;
+    this.selectedDetailsMovie = null;
+  }
+
   onSortChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.sort = target.value;

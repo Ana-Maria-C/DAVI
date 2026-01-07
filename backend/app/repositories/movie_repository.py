@@ -519,12 +519,26 @@ class MovieRepository(BaseRepository):
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-            SELECT ?title (GROUP_CONCAT(?gLabel; separator="|") as ?genres)
+            SELECT ?title 
+                   (AVG(?rVal) as ?avgRating) 
+                   (COUNT(?r) as ?reviewCount) 
+                   (GROUP_CONCAT(DISTINCT ?gLabel; separator="|") as ?genres)
+                   (GROUP_CONCAT(DISTINCT ?tagVal; separator="|") as ?tags)
             WHERE {{
                 {movie_uri} schema:name ?title .
+                
                 OPTIONAL {{ 
                     {movie_uri} :hasGenre ?g .
                     ?g rdfs:label ?gLabel .
+                }}
+                
+                OPTIONAL {{
+                    ?r :ratingOf {movie_uri} ;
+                       :ratingValue ?rVal .
+                }}
+                
+                OPTIONAL {{
+                    {movie_uri} :hasTagLabel ?tagVal .
                 }}
             }}
             GROUP BY ?title
@@ -532,11 +546,26 @@ class MovieRepository(BaseRepository):
         res = self.execute_select(query)
         if not res:
             return None
+
+        row = res[0]
         return {
             "id": movie_id,
-            "title": res[0]["title"]["value"],
+            "title": row["title"]["value"],
             "genres": (
-                res[0]["genres"]["value"].split("|") if res[0].get("genres") else []
+                row["genres"]["value"].split("|")
+                if row.get("genres") and row["genres"]["value"]
+                else []
+            ),
+            "tags": (
+                row["tags"]["value"].split("|")
+                if row.get("tags") and row["tags"]["value"]
+                else []
+            ),
+            "average_rating": (
+                float(row["avgRating"]["value"]) if "avgRating" in row else 0.0
+            ),
+            "review_count": (
+                int(row["reviewCount"]["value"]) if "reviewCount" in row else 0
             ),
         }
 
