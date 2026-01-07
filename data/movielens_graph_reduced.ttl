@@ -1,0 +1,3258 @@
+@prefix ml: <http://example.org/movielens/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/movielens/Genre/Animation> a ml:Genre ;
+    rdfs:label "Animation" .
+
+<http://example.org/movielens/Genre/IMAX> a ml:Genre ;
+    rdfs:label "IMAX" .
+
+<http://example.org/movielens/Genre/War> a ml:Genre ;
+    rdfs:label "War" .
+
+<http://example.org/movielens/Rating/103_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/103> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/103_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/103> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/105_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/105> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/105_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/105> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/105_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/105> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/105_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/105> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/105_93790> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/105> ;
+    ml:ratingOf <http://example.org/movielens/Movie/93790> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/109_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/109> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/109_528> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/109> ;
+    ml:ratingOf <http://example.org/movielens/Movie/528> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/111_169912> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/111> ;
+    ml:ratingOf <http://example.org/movielens/Movie/169912> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/111_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/111> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/111_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/111> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/117_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/117> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/119_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/119> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/119_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/119> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/119_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/119> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/121_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/121> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/122_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/122> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/125_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/125> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/125_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/125> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/125_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/125> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/125_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/125> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/125_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/125> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/129_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/129> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/132_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/132> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/132_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/132> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/135_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/135> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/136_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/136> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/136_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/136> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/139_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/139> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/140_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/140> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/140_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/140> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/140_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/140> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/141_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/141> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/141_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/141> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/143_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/143> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/14_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/14> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/152_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/152> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/153_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/153> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/156_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/156> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/15_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/15> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/165_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/165> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/165_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/165> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/166_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/166> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/166_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/166> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/167_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/167> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/169_6702> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/169> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6702> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/170_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/170> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/170_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/170> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/174_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/174> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/175_8362> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/175> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8362> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/177_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/177> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/177_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/177> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/177_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/177> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/177_8718> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/177> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8718> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/177_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/177> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/181_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/181> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/182_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/182> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/182_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/182> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/182_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/182> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/182_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/182> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/185_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/185> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/187_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/187> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/187_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/187> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/18_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/18> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/18_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/18> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/18_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/18> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/190_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/190> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/191_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/191> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/196_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/196> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/199_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/199> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/199_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/199> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/19_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/19> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/200_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/200> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/202_2983> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/202> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2983> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/203_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/203> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/209_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/209> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/20_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/20> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/20_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/20> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/20_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/20> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/211_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/211> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/213_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/213> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/213_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/213> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/214_83> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/214> ;
+    ml:ratingOf <http://example.org/movielens/Movie/83> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/217_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/217> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/219_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/219> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/219_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/219> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/219_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/219> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/21_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/21> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/21_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/21> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/220_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/220> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/221_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/221> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/222_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/222> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/222_97860> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/222> ;
+    ml:ratingOf <http://example.org/movielens/Movie/97860> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/226_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/226> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/226_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/226> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/226_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/226> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/229_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/229> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/22_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/22> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/22_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/22> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/232_27837> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/232> ;
+    ml:ratingOf <http://example.org/movielens/Movie/27837> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/232_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/232> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/232_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/232> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/232_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/232> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/232_8362> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/232> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8362> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/233_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/233> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/233_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/233> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/234_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/234> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/235_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/235> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/238_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/238> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/239_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/239> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/240_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/240> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/240_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/240> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/246_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/246> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/247_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/247> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/247_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/247> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/249_97860> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/249> ;
+    ml:ratingOf <http://example.org/movielens/Movie/97860> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/24_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/24> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/24_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/24> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/254_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/254> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/260_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/260> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/260_6337> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/260> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6337> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/263_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/263> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/273_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/273> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_27837> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/27837> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_3235> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/3235> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/274_6702> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/274> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6702> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/275_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/275> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/275_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/275> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/279_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/279> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/279_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/279> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/282_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/282> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/282_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/282> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/284_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/284> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/286_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/286> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/287_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/287> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/287_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/287> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/288_6337> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/288> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6337> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/28_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/28> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/292_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/292> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/292_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/292> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/292_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/292> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/294_3235> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/294> ;
+    ml:ratingOf <http://example.org/movielens/Movie/3235> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/294_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/294> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_6702> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6702> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/298_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/298> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/300_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/300> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/301_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/301> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/305_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/305> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/305_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/305> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/305_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/305> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_6702> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6702> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/307_8362> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/307> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8362> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/308_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/308> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/313_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/313> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/317_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/317> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/317_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/317> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/317_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/317> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/318_4825> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/318> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4825> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/318_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/318> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/318_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/318> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/318_97860> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/318> ;
+    ml:ratingOf <http://example.org/movielens/Movie/97860> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/319_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/319> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/321_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/321> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/323_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/323> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/325_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/325> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/325_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/325> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/326_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/326> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/326_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/326> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/326_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/326> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/326_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/326> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/328_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/328> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/32_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/32> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/330_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/330> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/331_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/331> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/334_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/334> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/334_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/334> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/339_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/339> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/339_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/339> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/339_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/339> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/339_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/339> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/344_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/344> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/344_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/344> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/351_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/351> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/351_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/351> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/351_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/351> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/352_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/352> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/352_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/352> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/353_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/353> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/354_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/354> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/356_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/356> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/357_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/357> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/357_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/357> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/361_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/361> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/365_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/365> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/369_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/369> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/372_271> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/372> ;
+    ml:ratingOf <http://example.org/movielens/Movie/271> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/373_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/373> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/373_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/373> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/376_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/376> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/380_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/380> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/380_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/380> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/380_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/380> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/380_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/380> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/380_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/380> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/381_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/381> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/381_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/381> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/385_206> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/385> ;
+    ml:ratingOf <http://example.org/movielens/Movie/206> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/385_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/385> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/387_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/387> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/387_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/387> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/38_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/38> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/38_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/38> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/391_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/391> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/391_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/391> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/393_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/393> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/393_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/393> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/395_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/395> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/3_7899> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/3> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7899> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/401_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/401> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/405_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/405> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/408_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/408> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/408_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/408> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/410_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/410> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/411_271> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/411> ;
+    ml:ratingOf <http://example.org/movielens/Movie/271> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/411_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/411> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/411_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/411> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_27837> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/27837> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_352> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/352> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_6337> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6337> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_7010> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7010> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_8362> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8362> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/414_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/414> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/416_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/416> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/418_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/418> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/419_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/419> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/419_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/419> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/41_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/41> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/41_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/41> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/41_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/41> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/424_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/424> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/425_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/425> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/427_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/427> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/429_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/429> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/432_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/432> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/432_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/432> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/434_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/434> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/436_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/436> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/438_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/438> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/438_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/438> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/438_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/438> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/43_271> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/43> ;
+    ml:ratingOf <http://example.org/movielens/Movie/271> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/43_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/43> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/446_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/446> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_140525> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/140525> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_528> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/528> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_80241> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80241> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/448_97860> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/448> ;
+    ml:ratingOf <http://example.org/movielens/Movie/97860> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/453_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/453> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/455_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/455> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/45_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/45> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/460_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/460> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/462_183317> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/462> ;
+    ml:ratingOf <http://example.org/movielens/Movie/183317> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/462_6935> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/462> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6935> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/462_7181> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/462> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7181> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/462_7786> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/462> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7786> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/464_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/464> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/466_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/466> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/46_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/46> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/470_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/470> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_4080> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4080> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_48698> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/48698> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_6337> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6337> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/474_8482> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/474> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8482> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/475_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/475> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/475_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/475> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/477_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/477> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/477_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/477> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/47_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/47> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/480_27837> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/480> ;
+    ml:ratingOf <http://example.org/movielens/Movie/27837> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/480_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/480> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/480_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/480> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/480_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/480> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/483_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/483> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/483_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/483> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/483_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/483> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/484_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/484> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/484_80241> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/484> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80241> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/487_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/487> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/489_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/489> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/490_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/490> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/492_103> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/492> ;
+    ml:ratingOf <http://example.org/movielens/Movie/103> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/492_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/492> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/495_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/495> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/495_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/495> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/495_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/495> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/49_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/49> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/4_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/4> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/501_103> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/501> ;
+    ml:ratingOf <http://example.org/movielens/Movie/103> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/503_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/503> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "1.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/509_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/509> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/509_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/509> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/50_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/50> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/50_32875> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/50> ;
+    ml:ratingOf <http://example.org/movielens/Movie/32875> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/50_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/50> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/511_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/511> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/514_40478> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/514> ;
+    ml:ratingOf <http://example.org/movielens/Movie/40478> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/514_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/514> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/514_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/514> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/517_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/517> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/517_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/517> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/51_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/51> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/521_103> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/521> ;
+    ml:ratingOf <http://example.org/movielens/Movie/103> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/522_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/522> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/525_159849> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/525> ;
+    ml:ratingOf <http://example.org/movielens/Movie/159849> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/528_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/528> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/528_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/528> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/52_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/52> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/533_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/533> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/534_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/534> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/542_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/542> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/551_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/551> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/552_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/552> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/553_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/553> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/553_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/553> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/555_4080> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/555> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4080> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/559_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/559> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/560_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/560> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/560_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/560> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/560_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/560> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/560_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/560> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/561_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/561> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/561_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/561> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/561_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/561> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/562_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/562> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/563_80241> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/563> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80241> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/567_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/567> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/570_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/570> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/578_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/578> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/57_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/57> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/580_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/580> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/580_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/580> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/580_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/580> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/584_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/584> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/585_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/585> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/586_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/586> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/589_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/589> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/58_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/58> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/590_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/590> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/590_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/590> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/590_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/590> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/592_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/592> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/594_8482> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/594> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8482> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/596_113280> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/596> ;
+    ml:ratingOf <http://example.org/movielens/Movie/113280> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/596_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/596> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/596_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/596> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/598_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/598> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_3235> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/3235> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_528> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/528> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_8718> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/8718> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/599_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/599> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/600_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/600> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/600_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/600> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/602_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/602> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/603_206> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/603> ;
+    ml:ratingOf <http://example.org/movielens/Movie/206> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_26796> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/26796> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_2843> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/2843> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_47538> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/47538> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/606_7010> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/606> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7010> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/608_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/608> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/608_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/608> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/608_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/608> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/608_829> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/608> ;
+    ml:ratingOf <http://example.org/movielens/Movie/829> ;
+    ml:ratingValue "1.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_162350> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/162350> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/610_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/610> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/62_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/62> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/62_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/62> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/63_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/63> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/64_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/64> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/64_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/64> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/64_5954> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/64> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5954> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/66_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/66> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/66_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/66> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/67_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/67> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_139385> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/139385> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "2.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_51709> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/51709> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_55232> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/55232> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_6297> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6297> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_7010> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/7010> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/68_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/68> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/69_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/69> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/6_271> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/6> ;
+    ml:ratingOf <http://example.org/movielens/Movie/271> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/6_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/6> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/6_352> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/6> ;
+    ml:ratingOf <http://example.org/movielens/Movie/352> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/6_355> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/6> ;
+    ml:ratingOf <http://example.org/movielens/Movie/355> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/70_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/70> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/73_81562> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/73> ;
+    ml:ratingOf <http://example.org/movielens/Movie/81562> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/73_89492> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/73> ;
+    ml:ratingOf <http://example.org/movielens/Movie/89492> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/74_48698> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/74> ;
+    ml:ratingOf <http://example.org/movielens/Movie/48698> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/77_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/77> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "2.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/80_4848> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/80> ;
+    ml:ratingOf <http://example.org/movielens/Movie/4848> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/80_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/80> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/80_80831> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/80> ;
+    ml:ratingOf <http://example.org/movielens/Movie/80831> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/82_6702> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/82> ;
+    ml:ratingOf <http://example.org/movielens/Movie/6702> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/83_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/83> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "0.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/86_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/86> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/88_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/88> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/89_155589> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/89> ;
+    ml:ratingOf <http://example.org/movielens/Movie/155589> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/89_169912> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/89> ;
+    ml:ratingOf <http://example.org/movielens/Movie/169912> ;
+    ml:ratingValue "3.5"^^xsd:float .
+
+<http://example.org/movielens/Rating/8_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/8> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/91_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/91> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/94_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/94> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "3.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/95_5418> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/95> ;
+    ml:ratingOf <http://example.org/movielens/Movie/5418> ;
+    ml:ratingValue "5.0"^^xsd:float .
+
+<http://example.org/movielens/Rating/99_282> a ml:Rating ;
+    ml:ratedBy <http://example.org/movielens/User/99> ;
+    ml:ratingOf <http://example.org/movielens/Movie/282> ;
+    ml:ratingValue "4.0"^^xsd:float .
+
+<http://example.org/movielens/Genre/Film-Noir> a ml:Genre ;
+    rdfs:label "Film-Noir" .
+
+<http://example.org/movielens/Genre/Musical> a ml:Genre ;
+    rdfs:label "Musical" .
+
+<http://example.org/movielens/Genre/Western> a ml:Genre ;
+    rdfs:label "Western" .
+
+<http://example.org/movielens/Genre/nan> a ml:Genre ;
+    rdfs:label "nan" .
+
+<http://example.org/movielens/Movie/113280> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 113280 ;
+    schema1:name "White Frog (2012)"^^xsd:string .
+
+<http://example.org/movielens/Movie/140525> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Crime>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Mystery> ;
+    ml:movieId 140525 ;
+    schema1:name "Secret in Their Eyes (2015)"^^xsd:string .
+
+<http://example.org/movielens/Movie/155589> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/nan> ;
+    ml:movieId 155589 ;
+    schema1:name "Noin 7 veljestä (1968)"^^xsd:string .
+
+<http://example.org/movielens/Movie/159849> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 159849 ;
+    schema1:name "Bo Burnham: Make Happy (2016)"^^xsd:string .
+
+<http://example.org/movielens/Movie/183317> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 183317 ;
+    schema1:name "Patti Rocks (1988)"^^xsd:string .
+
+<http://example.org/movielens/Movie/26796> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 26796 ;
+    schema1:name "Heart in Winter, A (Un coeur en hiver) (1992)"^^xsd:string .
+
+<http://example.org/movielens/Movie/2983> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 2983 ;
+    schema1:name "Ipcress File, The (1965)"^^xsd:string .
+
+<http://example.org/movielens/Movie/32875> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 32875 ;
+    schema1:name "Holiday (Jour de fête) (1949)"^^xsd:string .
+
+<http://example.org/movielens/Movie/40478> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Horror>,
+        <http://example.org/movielens/Genre/Sci-Fi>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 40478 ;
+    schema1:name "Night of the Lepus (1972)"^^xsd:string .
+
+<http://example.org/movielens/Movie/47538> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action>,
+        <http://example.org/movielens/Genre/Adventure>,
+        <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Crime> ;
+    ml:movieId 47538 ;
+    schema1:name "Crime Busters (1977)"^^xsd:string .
+
+<http://example.org/movielens/Movie/4825> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 4825 ;
+    schema1:name "Swamp, The (Ciénaga, La) (2001)"^^xsd:string .
+
+<http://example.org/movielens/Movie/6935> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Documentary> ;
+    ml:movieId 6935 ;
+    schema1:name "Revolution Will Not Be Televised, The (a.k.a. Chavez: Inside the Coup) (2003)"^^xsd:string .
+
+<http://example.org/movielens/Movie/7181> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 7181 ;
+    schema1:name "Ship of Fools (1965)"^^xsd:string .
+
+<http://example.org/movielens/Movie/7786> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Documentary> ;
+    ml:movieId 7786 ;
+    schema1:name "Genghis Blues (1999)"^^xsd:string .
+
+<http://example.org/movielens/Movie/7899> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action> ;
+    ml:movieId 7899 ;
+    schema1:name "Master of the Flying Guillotine (Du bi quan wang da po xue di zi) (1975)"^^xsd:string .
+
+<http://example.org/movielens/Movie/83> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 83 ;
+    schema1:name "Once Upon a Time... When We Were Colored (1995)"^^xsd:string .
+
+<http://example.org/movielens/Movie/93790> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 93790 ;
+    schema1:name "Detachment (2011)"^^xsd:string .
+
+<http://example.org/movielens/User/117> a ml:User .
+
+<http://example.org/movielens/User/121> a ml:User .
+
+<http://example.org/movielens/User/122> a ml:User .
+
+<http://example.org/movielens/User/129> a ml:User .
+
+<http://example.org/movielens/User/135> a ml:User .
+
+<http://example.org/movielens/User/139> a ml:User .
+
+<http://example.org/movielens/User/14> a ml:User .
+
+<http://example.org/movielens/User/143> a ml:User .
+
+<http://example.org/movielens/User/15> a ml:User .
+
+<http://example.org/movielens/User/152> a ml:User .
+
+<http://example.org/movielens/User/153> a ml:User .
+
+<http://example.org/movielens/User/156> a ml:User .
+
+<http://example.org/movielens/User/167> a ml:User .
+
+<http://example.org/movielens/User/169> a ml:User .
+
+<http://example.org/movielens/User/174> a ml:User .
+
+<http://example.org/movielens/User/175> a ml:User .
+
+<http://example.org/movielens/User/181> a ml:User .
+
+<http://example.org/movielens/User/185> a ml:User .
+
+<http://example.org/movielens/User/19> a ml:User .
+
+<http://example.org/movielens/User/190> a ml:User .
+
+<http://example.org/movielens/User/191> a ml:User .
+
+<http://example.org/movielens/User/196> a ml:User .
+
+<http://example.org/movielens/User/200> a ml:User .
+
+<http://example.org/movielens/User/202> a ml:User .
+
+<http://example.org/movielens/User/203> a ml:User .
+
+<http://example.org/movielens/User/209> a ml:User .
+
+<http://example.org/movielens/User/211> a ml:User .
+
+<http://example.org/movielens/User/214> a ml:User .
+
+<http://example.org/movielens/User/217> a ml:User .
+
+<http://example.org/movielens/User/220> a ml:User .
+
+<http://example.org/movielens/User/221> a ml:User .
+
+<http://example.org/movielens/User/229> a ml:User .
+
+<http://example.org/movielens/User/234> a ml:User .
+
+<http://example.org/movielens/User/235> a ml:User .
+
+<http://example.org/movielens/User/238> a ml:User .
+
+<http://example.org/movielens/User/239> a ml:User .
+
+<http://example.org/movielens/User/246> a ml:User .
+
+<http://example.org/movielens/User/254> a ml:User .
+
+<http://example.org/movielens/User/263> a ml:User .
+
+<http://example.org/movielens/User/273> a ml:User .
+
+<http://example.org/movielens/User/28> a ml:User .
+
+<http://example.org/movielens/User/284> a ml:User .
+
+<http://example.org/movielens/User/286> a ml:User .
+
+<http://example.org/movielens/User/3> a ml:User .
+
+<http://example.org/movielens/User/300> a ml:User .
+
+<http://example.org/movielens/User/301> a ml:User .
+
+<http://example.org/movielens/User/308> a ml:User .
+
+<http://example.org/movielens/User/313> a ml:User .
+
+<http://example.org/movielens/User/319> a ml:User .
+
+<http://example.org/movielens/User/32> a ml:User .
+
+<http://example.org/movielens/User/321> a ml:User .
+
+<http://example.org/movielens/User/323> a ml:User .
+
+<http://example.org/movielens/User/328> a ml:User .
+
+<http://example.org/movielens/User/330> a ml:User .
+
+<http://example.org/movielens/User/331> a ml:User .
+
+<http://example.org/movielens/User/353> a ml:User .
+
+<http://example.org/movielens/User/354> a ml:User .
+
+<http://example.org/movielens/User/356> a ml:User .
+
+<http://example.org/movielens/User/361> a ml:User .
+
+<http://example.org/movielens/User/365> a ml:User .
+
+<http://example.org/movielens/User/369> a ml:User .
+
+<http://example.org/movielens/User/372> a ml:User .
+
+<http://example.org/movielens/User/376> a ml:User .
+
+<http://example.org/movielens/User/395> a ml:User .
+
+<http://example.org/movielens/User/4> a ml:User .
+
+<http://example.org/movielens/User/401> a ml:User .
+
+<http://example.org/movielens/User/405> a ml:User .
+
+<http://example.org/movielens/User/410> a ml:User .
+
+<http://example.org/movielens/User/416> a ml:User .
+
+<http://example.org/movielens/User/418> a ml:User .
+
+<http://example.org/movielens/User/424> a ml:User .
+
+<http://example.org/movielens/User/425> a ml:User .
+
+<http://example.org/movielens/User/427> a ml:User .
+
+<http://example.org/movielens/User/429> a ml:User .
+
+<http://example.org/movielens/User/434> a ml:User .
+
+<http://example.org/movielens/User/436> a ml:User .
+
+<http://example.org/movielens/User/446> a ml:User .
+
+<http://example.org/movielens/User/45> a ml:User .
+
+<http://example.org/movielens/User/453> a ml:User .
+
+<http://example.org/movielens/User/455> a ml:User .
+
+<http://example.org/movielens/User/46> a ml:User .
+
+<http://example.org/movielens/User/460> a ml:User .
+
+<http://example.org/movielens/User/464> a ml:User .
+
+<http://example.org/movielens/User/466> a ml:User .
+
+<http://example.org/movielens/User/47> a ml:User .
+
+<http://example.org/movielens/User/470> a ml:User .
+
+<http://example.org/movielens/User/487> a ml:User .
+
+<http://example.org/movielens/User/489> a ml:User .
+
+<http://example.org/movielens/User/49> a ml:User .
+
+<http://example.org/movielens/User/490> a ml:User .
+
+<http://example.org/movielens/User/501> a ml:User .
+
+<http://example.org/movielens/User/503> a ml:User .
+
+<http://example.org/movielens/User/51> a ml:User .
+
+<http://example.org/movielens/User/511> a ml:User .
+
+<http://example.org/movielens/User/52> a ml:User .
+
+<http://example.org/movielens/User/521> a ml:User .
+
+<http://example.org/movielens/User/522> a ml:User .
+
+<http://example.org/movielens/User/525> a ml:User .
+
+<http://example.org/movielens/User/533> a ml:User .
+
+<http://example.org/movielens/User/534> a ml:User .
+
+<http://example.org/movielens/User/542> a ml:User .
+
+<http://example.org/movielens/User/551> a ml:User .
+
+<http://example.org/movielens/User/552> a ml:User .
+
+<http://example.org/movielens/User/555> a ml:User .
+
+<http://example.org/movielens/User/559> a ml:User .
+
+<http://example.org/movielens/User/562> a ml:User .
+
+<http://example.org/movielens/User/563> a ml:User .
+
+<http://example.org/movielens/User/567> a ml:User .
+
+<http://example.org/movielens/User/57> a ml:User .
+
+<http://example.org/movielens/User/570> a ml:User .
+
+<http://example.org/movielens/User/578> a ml:User .
+
+<http://example.org/movielens/User/58> a ml:User .
+
+<http://example.org/movielens/User/584> a ml:User .
+
+<http://example.org/movielens/User/585> a ml:User .
+
+<http://example.org/movielens/User/586> a ml:User .
+
+<http://example.org/movielens/User/589> a ml:User .
+
+<http://example.org/movielens/User/592> a ml:User .
+
+<http://example.org/movielens/User/594> a ml:User .
+
+<http://example.org/movielens/User/598> a ml:User .
+
+<http://example.org/movielens/User/602> a ml:User .
+
+<http://example.org/movielens/User/603> a ml:User .
+
+<http://example.org/movielens/User/63> a ml:User .
+
+<http://example.org/movielens/User/67> a ml:User .
+
+<http://example.org/movielens/User/69> a ml:User .
+
+<http://example.org/movielens/User/70> a ml:User .
+
+<http://example.org/movielens/User/74> a ml:User .
+
+<http://example.org/movielens/User/77> a ml:User .
+
+<http://example.org/movielens/User/8> a ml:User .
+
+<http://example.org/movielens/User/82> a ml:User .
+
+<http://example.org/movielens/User/83> a ml:User .
+
+<http://example.org/movielens/User/86> a ml:User .
+
+<http://example.org/movielens/User/88> a ml:User .
+
+<http://example.org/movielens/User/91> a ml:User .
+
+<http://example.org/movielens/User/94> a ml:User .
+
+<http://example.org/movielens/User/95> a ml:User .
+
+<http://example.org/movielens/User/99> a ml:User .
+
+<http://example.org/movielens/Genre/Children> a ml:Genre ;
+    rdfs:label "Children" .
+
+<http://example.org/movielens/Movie/169912> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 169912 ;
+    schema1:name "Denis Leary: No Cure for Cancer (1993)"^^xsd:string .
+
+<http://example.org/movielens/Movie/206> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Documentary> ;
+    ml:movieId 206 ;
+    schema1:name "Unzipped (1995)"^^xsd:string .
+
+<http://example.org/movielens/Movie/352> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 352 ;
+    schema1:name "Crooklyn (1994)"^^xsd:string .
+
+<http://example.org/movielens/Movie/4080> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 4080 ;
+    schema1:name "Baby Boom (1987)"^^xsd:string .
+
+<http://example.org/movielens/Movie/48698> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Documentary> ;
+    ml:movieId 48698 ;
+    schema1:name "Deliver Us from Evil (2006)"^^xsd:string .
+
+<http://example.org/movielens/Movie/8482> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Fantasy>,
+        <http://example.org/movielens/Genre/Horror> ;
+    ml:movieId 8482 ;
+    schema1:name "Picture of Dorian Gray, The (1945)"^^xsd:string .
+
+<http://example.org/movielens/Movie/8718> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 8718 ;
+    schema1:name "Snake Pit, The (1948)"^^xsd:string .
+
+<http://example.org/movielens/User/103> a ml:User .
+
+<http://example.org/movielens/User/109> a ml:User .
+
+<http://example.org/movielens/User/132> a ml:User .
+
+<http://example.org/movielens/User/136> a ml:User .
+
+<http://example.org/movielens/User/141> a ml:User .
+
+<http://example.org/movielens/User/165> a ml:User .
+
+<http://example.org/movielens/User/166> a ml:User .
+
+<http://example.org/movielens/User/170> a ml:User .
+
+<http://example.org/movielens/User/187> a ml:User .
+
+<http://example.org/movielens/User/199> a ml:User .
+
+<http://example.org/movielens/User/21> a ml:User .
+
+<http://example.org/movielens/User/213> a ml:User .
+
+<http://example.org/movielens/User/22> a ml:User .
+
+<http://example.org/movielens/User/222> a ml:User .
+
+<http://example.org/movielens/User/233> a ml:User .
+
+<http://example.org/movielens/User/24> a ml:User .
+
+<http://example.org/movielens/User/240> a ml:User .
+
+<http://example.org/movielens/User/247> a ml:User .
+
+<http://example.org/movielens/User/260> a ml:User .
+
+<http://example.org/movielens/User/275> a ml:User .
+
+<http://example.org/movielens/User/279> a ml:User .
+
+<http://example.org/movielens/User/282> a ml:User .
+
+<http://example.org/movielens/User/287> a ml:User .
+
+<http://example.org/movielens/User/294> a ml:User .
+
+<http://example.org/movielens/User/325> a ml:User .
+
+<http://example.org/movielens/User/334> a ml:User .
+
+<http://example.org/movielens/User/344> a ml:User .
+
+<http://example.org/movielens/User/352> a ml:User .
+
+<http://example.org/movielens/User/357> a ml:User .
+
+<http://example.org/movielens/User/373> a ml:User .
+
+<http://example.org/movielens/User/38> a ml:User .
+
+<http://example.org/movielens/User/381> a ml:User .
+
+<http://example.org/movielens/User/385> a ml:User .
+
+<http://example.org/movielens/User/387> a ml:User .
+
+<http://example.org/movielens/User/391> a ml:User .
+
+<http://example.org/movielens/User/393> a ml:User .
+
+<http://example.org/movielens/User/408> a ml:User .
+
+<http://example.org/movielens/User/419> a ml:User .
+
+<http://example.org/movielens/User/43> a ml:User .
+
+<http://example.org/movielens/User/432> a ml:User .
+
+<http://example.org/movielens/User/475> a ml:User .
+
+<http://example.org/movielens/User/477> a ml:User .
+
+<http://example.org/movielens/User/484> a ml:User .
+
+<http://example.org/movielens/User/492> a ml:User .
+
+<http://example.org/movielens/User/509> a ml:User .
+
+<http://example.org/movielens/User/517> a ml:User .
+
+<http://example.org/movielens/User/528> a ml:User .
+
+<http://example.org/movielens/User/553> a ml:User .
+
+<http://example.org/movielens/User/600> a ml:User .
+
+<http://example.org/movielens/User/62> a ml:User .
+
+<http://example.org/movielens/User/66> a ml:User .
+
+<http://example.org/movielens/User/73> a ml:User .
+
+<http://example.org/movielens/User/89> a ml:User .
+
+<http://example.org/movielens/Genre/Fantasy> a ml:Genre ;
+    rdfs:label "Fantasy" .
+
+<http://example.org/movielens/Movie/103> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Mystery>,
+        <http://example.org/movielens/Genre/Sci-Fi>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 103 ;
+    schema1:name "Unforgettable (1996)"^^xsd:string .
+
+<http://example.org/movielens/Movie/3235> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 3235 ;
+    schema1:name "Where the Buffalo Roam (1980)"^^xsd:string .
+
+<http://example.org/movielens/Movie/528> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 528 ;
+    schema1:name "Scout, The (1994)"^^xsd:string .
+
+<http://example.org/movielens/Movie/7010> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 7010 ;
+    schema1:name "Lover, The (Amant, L') (1992)"^^xsd:string .
+
+<http://example.org/movielens/Movie/80241> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 80241 ;
+    schema1:name "Going the Distance (2010)"^^xsd:string .
+
+<http://example.org/movielens/User/111> a ml:User .
+
+<http://example.org/movielens/User/119> a ml:User .
+
+<http://example.org/movielens/User/140> a ml:User .
+
+<http://example.org/movielens/User/18> a ml:User .
+
+<http://example.org/movielens/User/20> a ml:User .
+
+<http://example.org/movielens/User/219> a ml:User .
+
+<http://example.org/movielens/User/226> a ml:User .
+
+<http://example.org/movielens/User/292> a ml:User .
+
+<http://example.org/movielens/User/305> a ml:User .
+
+<http://example.org/movielens/User/317> a ml:User .
+
+<http://example.org/movielens/User/351> a ml:User .
+
+<http://example.org/movielens/User/41> a ml:User .
+
+<http://example.org/movielens/User/411> a ml:User .
+
+<http://example.org/movielens/User/438> a ml:User .
+
+<http://example.org/movielens/User/483> a ml:User .
+
+<http://example.org/movielens/User/495> a ml:User .
+
+<http://example.org/movielens/User/50> a ml:User .
+
+<http://example.org/movielens/User/514> a ml:User .
+
+<http://example.org/movielens/User/561> a ml:User .
+
+<http://example.org/movielens/User/580> a ml:User .
+
+<http://example.org/movielens/User/590> a ml:User .
+
+<http://example.org/movielens/User/596> a ml:User .
+
+<http://example.org/movielens/User/64> a ml:User .
+
+<http://example.org/movielens/User/80> a ml:User .
+
+<http://example.org/movielens/Genre/Documentary> a ml:Genre ;
+    rdfs:label "Documentary" .
+
+<http://example.org/movielens/Genre/Sci-Fi> a ml:Genre ;
+    rdfs:label "Sci-Fi" .
+
+<http://example.org/movielens/Movie/271> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 271 ;
+    schema1:name "Losing Isaiah (1995)"^^xsd:string .
+
+<http://example.org/movielens/Movie/27837> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action>,
+        <http://example.org/movielens/Genre/Adventure> ;
+    ml:movieId 27837 ;
+    schema1:name "Flight of the Phoenix (2004)"^^xsd:string .
+
+<http://example.org/movielens/Movie/6337> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Crime>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:hasTagLabel "gambling" ;
+    ml:movieId 6337 ;
+    schema1:name "Owning Mahowny (2003)"^^xsd:string .
+
+<http://example.org/movielens/Movie/8362> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 8362 ;
+    schema1:name "Raising Helen (2004)"^^xsd:string .
+
+<http://example.org/movielens/Movie/97860> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Crime>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 97860 ;
+    schema1:name "Killing Them Softly (2012)"^^xsd:string .
+
+<http://example.org/movielens/User/182> a ml:User .
+
+<http://example.org/movielens/User/318> a ml:User .
+
+<http://example.org/movielens/User/326> a ml:User .
+
+<http://example.org/movielens/User/339> a ml:User .
+
+<http://example.org/movielens/User/462> a ml:User .
+
+<http://example.org/movielens/User/480> a ml:User .
+
+<http://example.org/movielens/User/560> a ml:User .
+
+<http://example.org/movielens/User/6> a ml:User .
+
+<http://example.org/movielens/User/608> a ml:User .
+
+<http://example.org/movielens/Genre/Adventure> a ml:Genre ;
+    rdfs:label "Adventure" .
+
+<http://example.org/movielens/Genre/Horror> a ml:Genre ;
+    rdfs:label "Horror" .
+
+<http://example.org/movielens/Movie/6702> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy> ;
+    ml:movieId 6702 ;
+    schema1:name "Dickie Roberts: Former Child Star (2003)"^^xsd:string .
+
+<http://example.org/movielens/User/105> a ml:User .
+
+<http://example.org/movielens/User/125> a ml:User .
+
+<http://example.org/movielens/User/177> a ml:User .
+
+<http://example.org/movielens/User/232> a ml:User .
+
+<http://example.org/movielens/User/380> a ml:User .
+
+<http://example.org/movielens/Genre/Action> a ml:Genre ;
+    rdfs:label "Action" .
+
+<http://example.org/movielens/Genre/Crime> a ml:Genre ;
+    rdfs:label "Crime" .
+
+<http://example.org/movielens/Genre/Mystery> a ml:Genre ;
+    rdfs:label "Mystery" .
+
+<http://example.org/movielens/Genre/Romance> a ml:Genre ;
+    rdfs:label "Romance" .
+
+<http://example.org/movielens/Movie/162350> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action>,
+        <http://example.org/movielens/Genre/Western> ;
+    ml:movieId 162350 ;
+    schema1:name "The Magnificent Seven (2016)"^^xsd:string .
+
+<http://example.org/movielens/User/249> a ml:User .
+
+<http://example.org/movielens/User/288> a ml:User .
+
+<http://example.org/movielens/User/298> a ml:User .
+
+<http://example.org/movielens/User/307> a ml:User .
+
+<http://example.org/movielens/Movie/51709> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Horror>,
+        <http://example.org/movielens/Genre/Sci-Fi>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 51709 ;
+    schema1:name "Host, The (Gwoemul) (2006)"^^xsd:string .
+
+<http://example.org/movielens/Movie/80831> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Horror>,
+        <http://example.org/movielens/Genre/Mystery> ;
+    ml:movieId 80831 ;
+    schema1:name "Let Me In (2010)"^^xsd:string .
+
+<http://example.org/movielens/User/606> a ml:User .
+
+<http://example.org/movielens/Movie/2843> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Romance> ;
+    ml:movieId 2843 ;
+    schema1:name "Black Cat, White Cat (Crna macka, beli macor) (1998)"^^xsd:string .
+
+<http://example.org/movielens/Movie/829> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Fantasy>,
+        <http://example.org/movielens/Genre/Musical> ;
+    ml:movieId 829 ;
+    schema1:name "Joe's Apartment (1996)"^^xsd:string .
+
+<http://example.org/movielens/User/274> a ml:User .
+
+<http://example.org/movielens/User/474> a ml:User .
+
+<http://example.org/movielens/User/610> a ml:User .
+
+<http://example.org/movielens/User/68> a ml:User .
+
+<http://example.org/movielens/Genre/Thriller> a ml:Genre ;
+    rdfs:label "Thriller" .
+
+<http://example.org/movielens/Movie/55232> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action>,
+        <http://example.org/movielens/Genre/Horror>,
+        <http://example.org/movielens/Genre/Sci-Fi>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 55232 ;
+    schema1:name "Resident Evil: Extinction (2007)"^^xsd:string .
+
+<http://example.org/movielens/User/448> a ml:User .
+
+<http://example.org/movielens/User/599> a ml:User .
+
+<http://example.org/movielens/User/414> a ml:User .
+
+<http://example.org/movielens/Genre/Comedy> a ml:Genre ;
+    rdfs:label "Comedy" .
+
+<http://example.org/movielens/Movie/81562> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Adventure>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 81562 ;
+    schema1:name "127 Hours (2010)"^^xsd:string .
+
+<http://example.org/movielens/Movie/6297> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Adventure>,
+        <http://example.org/movielens/Genre/Children>,
+        <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Mystery> ;
+    ml:hasTagLabel "children" ;
+    ml:movieId 6297 ;
+    schema1:name "Holes (2003)"^^xsd:string .
+
+<http://example.org/movielens/Movie/5954> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Crime>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:hasTagLabel "crime|nightclub" ;
+    ml:movieId 5954 ;
+    schema1:name "25th Hour (2002)"^^xsd:string .
+
+<http://example.org/movielens/Genre/Drama> a ml:Genre ;
+    rdfs:label "Drama" .
+
+<http://example.org/movielens/Movie/89492> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:movieId 89492 ;
+    schema1:name "Moneyball (2011)"^^xsd:string .
+
+<http://example.org/movielens/Movie/139385> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Adventure>,
+        <http://example.org/movielens/Genre/Drama> ;
+    ml:hasTagLabel "cinematography|visually appealing|Visually Striking",
+        "leonardo DiCarpio|survival|tom hardy|visually appealing" ;
+    ml:movieId 139385 ;
+    schema1:name "The Revenant (2015)"^^xsd:string .
+
+<http://example.org/movielens/Movie/282> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Drama> ;
+    ml:hasTagLabel "disability|twins" ;
+    ml:movieId 282 ;
+    schema1:name "Nell (1994)"^^xsd:string .
+
+<http://example.org/movielens/Movie/355> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Children>,
+        <http://example.org/movielens/Genre/Comedy>,
+        <http://example.org/movielens/Genre/Fantasy> ;
+    ml:movieId 355 ;
+    schema1:name "Flintstones, The (1994)"^^xsd:string .
+
+<http://example.org/movielens/Movie/4848> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Crime>,
+        <http://example.org/movielens/Genre/Drama>,
+        <http://example.org/movielens/Genre/Film-Noir>,
+        <http://example.org/movielens/Genre/Mystery>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 4848 ;
+    schema1:name "Mulholland Drive (2001)"^^xsd:string .
+
+<http://example.org/movielens/Movie/5418> a ml:Movie ;
+    ml:hasGenre <http://example.org/movielens/Genre/Action>,
+        <http://example.org/movielens/Genre/Mystery>,
+        <http://example.org/movielens/Genre/Thriller> ;
+    ml:movieId 5418 ;
+    schema1:name "Bourne Identity, The (2002)"^^xsd:string .
+
