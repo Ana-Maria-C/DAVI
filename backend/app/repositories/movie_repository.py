@@ -191,7 +191,7 @@ class MovieRepository(BaseRepository):
             PREFIX : <http://example.org/movielens/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-            SELECT ?gLabel (COUNT(?m) as ?movieCount) (AVG(?val) as ?avgRating)
+            SELECT ?gLabel (COUNT(DISTINCT ?m) as ?movieCount) (AVG(?val) as ?avgRating)
             WHERE {
                 ?m a :Movie ;
                    :hasGenre ?g .
