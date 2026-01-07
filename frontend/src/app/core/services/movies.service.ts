@@ -34,7 +34,7 @@ export class MoviesService {
   }
 
   // Helper method removed as API now returns generic Movie objects directly
-  private transformBindings(bindings: any[]): Movie[] {
-    return bindings; // No-op if needed, but better to remove usage
+  compareMovies(ids: string[]): Observable<any[]> {
+    return this.api.get<any[]>('/api/movies/compare', { ids: ids });
   }
 }

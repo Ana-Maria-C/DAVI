@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Query
 from typing import List, Optional
 from app.services.movie_service import MovieService
 from app.models.movie_models import MovieDTO, TrendDTO
@@ -50,12 +50,14 @@ def get_trends(service: MovieService = Depends(get_service)):
     return service.get_trends()
 
 
-@router.get("/movies/compare", summary="Compare two movies (Extension 2)")
-def compare_movies(m1: int, m2: int, service: MovieService = Depends(get_service)):
+@router.get("/movies/compare", summary="Compare multiple movies")
+def compare_movies(
+    ids: List[int] = Query(...), service: MovieService = Depends(get_service)
+):
     """
-    Compares two movies and returns their common attributes (Intersection).
+    Compares selected movies and returns their details (Title, Year, Rating, Reviews).
     """
-    return service.compare_movies(m1, m2)
+    return service.compare_movies(ids)
 
 
 @router.get("/movies/graph", summary="Get Graph Visualization Data (Extension 3)")

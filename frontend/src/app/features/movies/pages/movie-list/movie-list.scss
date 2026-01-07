@@ -225,3 +225,75 @@
         overflow: hidden;
     }
 }
+
+// Comparison Features
+
+.selected-card {
+    border: 2px solid var(--primary-color, #00ADB5) !important;
+    border-radius: 12px;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 173, 181, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-compare-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color, #333);
+    color: var(--text-secondary, #aaa);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    margin-left: 0.5rem;
+
+    &:hover {
+        border-color: var(--primary-color, #00ADB5);
+        color: var(--primary-color, #00ADB5);
+    }
+
+    &.selected {
+        background: var(--primary-color, #00ADB5);
+        border-color: var(--primary-color, #00ADB5);
+        color: #fff;
+    }
+}
+
+.fab-compare {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, var(--primary-color, #00ADB5), #00FFF5);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 173, 181, 0.4);
+    cursor: pointer;
+    z-index: 900;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 173, 181, 0.5);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

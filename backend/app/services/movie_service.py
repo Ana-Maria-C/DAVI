@@ -101,8 +101,36 @@ class MovieService:
             )
         return trends
 
-    def compare_movies(self, id1: int, id2: int):
-        return self.repository.compare_movies(str(id1), str(id2))
+    def compare_movies(self, movie_ids: List[int]):
+        # Convert IDs to strings for repository
+        ids_str = [str(mid) for mid in movie_ids]
+        raw_results = self.repository.get_movies_by_ids(ids_str)
+
+        comparison_data = []
+        for row in raw_results:
+            title = row["title"]["value"]
+
+            # Extract Year
+            year = "Unknown"
+            match = re.search(r"\((\d{4})\)", title)
+            if match:
+                year = match.group(1)
+
+            comparison_data.append(
+                {
+                    "id": row["mid"]["value"],
+                    "title": title,
+                    "year": year,
+                    "average_rating": (
+                        float(row["avgRating"]["value"]) if "avgRating" in row else 0.0
+                    ),
+                    "review_count": (
+                        int(row["reviewCount"]["value"]) if "reviewCount" in row else 0
+                    ),
+                }
+            )
+
+        return comparison_data
 
     def get_graph_visualization(self):
         raw_data = self.repository.get_graph_data(limit=30)

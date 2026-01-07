@@ -613,3 +613,35 @@ class MovieRepository(BaseRepository):
             }}
         """
         return self.execute_update(query)
+
+    def get_movies_by_ids(self, movie_ids: List[str]):
+        if not movie_ids:
+            return []
+
+        # VALUES clause construction with URIs
+        uris_str = " ".join(
+            [f"<http://example.org/movielens/Movie/{mid}>" for mid in movie_ids]
+        )
+
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            
+            SELECT ?mid ?title (AVG(?rVal) as ?avgRating) (COUNT(?r) as ?reviewCount)
+            WHERE {{
+                VALUES ?m {{ {uris_str} }}
+                
+                ?m a :Movie ;
+                   schema:name ?title .
+                
+                OPTIONAL {{ ?m :movieId ?mid }}
+                
+                OPTIONAL {{
+                    ?r :ratingOf ?m ;
+                       :ratingValue ?rVal .
+                }}
+            }}
+            GROUP BY ?mid ?title
+        """
+        return self.execute_select(query)

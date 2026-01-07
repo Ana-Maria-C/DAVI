@@ -36,7 +36,7 @@
             </div>
 
             <div class="movies-grid">
-                <app-card *ngFor="let movie of movies$ | async">
+                <app-card *ngFor="let movie of movies$ | async" [class.selected-card]="isSelected(movie)">
                     <div class="movie-card-content">
                         <!-- Icon Placeholder since we don't have posters anymore -->
                         <div class="poster-placeholder">
@@ -53,9 +53,20 @@
                     </div>
                     <div card-actions>
                         <app-button variant="outline" size="sm">Details</app-button>
+                        <button class="btn-compare-toggle" [class.selected]="isSelected(movie)"
+                            (click)="toggleSelection(movie)">
+                            {{ isSelected(movie) ? '✓ Selected' : '+ Compare' }}
+                        </button>
                     </div>
                 </app-card>
             </div>
+
+            <button class="fab-compare" *ngIf="selectedMovies.length >= 2" (click)="openComparisonModal()">
+                Compare ({{ selectedMovies.length }})
+            </button>
+
+            <app-comparison-modal *ngIf="showComparisonModal" [data]="comparisonData" (close)="closeComparisonModal()">
+            </app-comparison-modal>
         </div>
     </div>
 </div>

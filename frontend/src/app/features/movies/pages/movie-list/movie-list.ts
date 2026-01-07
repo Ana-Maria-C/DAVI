@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AnalysisService } from '../../../../core/services/analysis.service';
 import { MoviesService } from '../../../../core/services/movies.service';
 import { Movie } from '../../../../core/models/movie.model';
@@ -19,7 +19,8 @@ export class MovieListComponent implements OnInit {
 
   constructor(
     private moviesService: MoviesService,
-    private analysisService: AnalysisService
+    private analysisService: AnalysisService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -52,6 +53,41 @@ export class MovieListComponent implements OnInit {
       this.page--;
       this.loadMovies();
     }
+  }
+
+  selectedMovies: Movie[] = [];
+  showComparisonModal = false;
+  comparisonData: any[] = [];
+
+  toggleSelection(movie: Movie) {
+    const index = this.selectedMovies.findIndex(m => m.id === movie.id);
+    if (index >= 0) {
+      this.selectedMovies.splice(index, 1);
+    } else {
+      if (this.selectedMovies.length < 3) {
+        this.selectedMovies.push(movie);
+      }
+    }
+  }
+
+  isSelected(movie: Movie): boolean {
+    return this.selectedMovies.some(m => m.id === movie.id);
+  }
+
+  openComparisonModal() {
+    if (this.selectedMovies.length < 2) return;
+
+    const ids = this.selectedMovies.map(m => m.id);
+    this.moviesService.compareMovies(ids).subscribe(data => {
+      this.comparisonData = data;
+      this.showComparisonModal = true;
+      this.cdr.detectChanges();
+    });
+  }
+
+  closeComparisonModal() {
+    this.showComparisonModal = false;
+    this.comparisonData = [];
   }
 
   onSortChange(event: Event) {
