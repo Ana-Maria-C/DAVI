@@ -244,16 +244,26 @@ class MovieRepository(BaseRepository):
             PREFIX : <http://example.org/movielens/>
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-            SELECT ?s ?sLabel ?p ?o ?oLabel ?sType ?oType
+             SELECT ?s ?sLabel ?p ?o ?oLabel ?sType ?oType
             WHERE {{
-                # 1. Select a set of central movies
-                {{ SELECT ?s WHERE {{ ?s a :Movie }} LIMIT {limit} }}
+                # 1. Select Top 50 Most Popular Movies (by rating count)
+                {{ 
+                    SELECT ?s 
+                    WHERE {{ 
+                        ?s a :Movie .
+                        ?r :ratingOf ?s .
+                    }} 
+                    GROUP BY ?s 
+                    ORDER BY DESC(COUNT(?r)) 
+                    LIMIT {limit} 
+                }}
                 
                 {{
                     # Case A: Linked Resources (Genres) - Outgoing
                     ?s ?p ?o .
-                    FILTER(ISIRI(?o)) # Ensure it's a resource (Genre, etc.)
+                    FILTER(ISIRI(?o)) 
                     
                     ?s a ?sType .
                     ?o a ?oType .
@@ -262,16 +272,36 @@ class MovieRepository(BaseRepository):
                 }}
                 UNION
                 {{
-                    # Case B: Tags (which are Literals in the data)
-                    # We convert them to pseudo-nodes for visualization
+                    # Case B: Tags
                     ?s :hasTagLabel ?tagVal .
-                    
                     BIND(:hasTagLabel as ?p)
-                    # Generate a unique synthetic URI for the tag node
                     BIND(IRI(CONCAT("urn:tag:", ENCODE_FOR_URI(?tagVal))) as ?o)
                     BIND(?tagVal as ?oLabel)
                     BIND(<http://example.org/movielens/Tag> as ?oType)
                     
+                    ?s a ?sType .
+                    OPTIONAL {{ ?s schema:name ?sLabel }}
+                }}
+                UNION
+                {{
+                    # Case C: Average Rating Node
+                    # Calculate average rating for the movie and link to a "Rating Node"
+                    {{
+                        SELECT ?s (AVG(?val) as ?avgVal)
+                        WHERE {{
+                            ?s a :Movie .
+                            ?r :ratingOf ?s ;
+                               :ratingValue ?val .
+                        }}
+                        GROUP BY ?s
+                    }}
+                    BIND(:hasRatingValue as ?p)
+                    # Create a rating bucket/node (e.g., "4.5")
+                    BIND(xsd:string(ROUND(?avgVal * 2) / 2) as ?ratingStr) 
+                    BIND(IRI(CONCAT("urn:rating:", ?ratingStr)) as ?o)
+                    BIND(CONCAT("Rating: ", ?ratingStr) as ?oLabel)
+                    BIND(<http://example.org/movielens/RatingGroup> as ?oType)
+
                     ?s a ?sType .
                     OPTIONAL {{ ?s schema:name ?sLabel }}
                 }}

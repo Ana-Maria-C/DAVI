@@ -38,6 +38,10 @@ export class AnalysisService {
         this.activeFiltersSubject.next(filters);
     }
 
+    getGraphData(): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/graph`);
+    }
+
     getStatistics(): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/stats`);
     }

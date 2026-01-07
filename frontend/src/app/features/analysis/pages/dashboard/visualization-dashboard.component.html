@@ -6,6 +6,11 @@
             <div class="stats-section">
                 <app-stats-chart [stats]="stats"></app-stats-chart>
             </div>
+
+            <div class="graph-section" *ngIf="graphData$ | async as graph">
+                <h2>3D Knowledge Graph</h2>
+                <app-network-graph [nodes]="graph.nodes" [links]="graph.links"></app-network-graph>
+            </div>
         </div>
     </ng-container>
 

@@ -24,6 +24,14 @@ def get_facets(service: MovieService = Depends(get_service)):
     return service.get_facet_data()
 
 
+@router.get("/graph", summary="Get Network Graph Data")
+def get_graph(service: AnalysisService = Depends(get_analysis_service)):
+    """
+    Returns Nodes and Links for Network Visualization.
+    """
+    return service.get_network_graph_data()
+
+
 @router.get("/stats", summary="Get Statistical Analysis")
 def get_stats(service: AnalysisService = Depends(get_analysis_service)):
     """
