@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { SparqlService } from '../../../../core/services/sparql.service';
 
 @Component({
@@ -16,7 +16,11 @@ export class SparqlConsoleComponent {
     rawResponse: any = null;
     showRawJson = false;
 
-    constructor(private sparqlService: SparqlService) { }
+    constructor(
+        private sparqlService: SparqlService,
+        private zone: NgZone,
+        private cdr: ChangeDetectorRef
+    ) { }
 
     executeQuery() {
         this.isLoading = true;
@@ -26,18 +30,24 @@ export class SparqlConsoleComponent {
 
         this.sparqlService.query(this.query).subscribe({
             next: (res) => {
-                console.log('SPARQL Response:', res);
-                this.rawResponse = res;
-                if (res.head && res.head.vars) {
-                    this.columns = res.head.vars;
-                    this.results = res.results.bindings;
-                }
-                this.isLoading = false;
+                this.zone.run(() => {
+                    console.log('SPARQL Response:', res);
+                    this.rawResponse = res;
+                    if (res.head && res.head.vars) {
+                        this.columns = res.head.vars;
+                        this.results = res.results.bindings;
+                    }
+                    this.isLoading = false;
+                    this.cdr.detectChanges();
+                });
             },
             error: (err) => {
-                console.error('SPARQL Error:', err);
-                this.error = err.message || 'An error occurred while executing the query.';
-                this.isLoading = false;
+                this.zone.run(() => {
+                    console.error('SPARQL Error:', err);
+                    this.error = err.message || 'An error occurred while executing the query.';
+                    this.isLoading = false;
+                    this.cdr.detectChanges();
+                });
             }
         });
     }
