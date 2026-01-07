@@ -57,16 +57,15 @@ class MovieService:
                     id=row["mid"]["value"] if "mid" in row else "",
                     title=title,
                     genres=row["genres"]["value"].split("|") if "genres" in row else [],
-                    uri=None,
-                    year=year,  # Assign extracted year for sorting if needed
+                    average_rating=(
+                        float(row["avgRating"]["value"]) if "avgRating" in row else None
+                    ),
                 )
             )
 
         # 3. Sort (In-Memory)
-        if sort == "year":
-            all_movies.sort(key=lambda m: m.year or 0, reverse=True)
-        else:  # Default or "title"
-            all_movies.sort(key=lambda m: m.title)
+        # Default or "title"
+        all_movies.sort(key=lambda m: m.title)
 
         # 4. Paginate
         start = offset
@@ -81,8 +80,10 @@ class MovieService:
                 MovieDTO(
                     id=row["mid"]["value"] if "mid" in row else "",
                     title=row["title"]["value"] if "title" in row else "Unknown",
-                    genres=[],  # Populating genres requires a separate query or GROUP_CONCAT if needed, but for list view this might be fine or we can add it
-                    uri=None,
+                    genres=row["genres"]["value"].split("|") if "genres" in row else [],
+                    average_rating=(
+                        float(row["avgRating"]["value"]) if "avgRating" in row else None
+                    ),
                 )
             )
         return movies

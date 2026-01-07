@@ -10,10 +10,8 @@ class GenreDTO(BaseModel):
 class MovieDTO(BaseModel):
     id: str
     title: str
-    uri: Optional[str] = None
     genres: List[str] = []
     average_rating: Optional[float] = None
-    year: Optional[int] = None
 
     class Config:
         json_schema_extra = {

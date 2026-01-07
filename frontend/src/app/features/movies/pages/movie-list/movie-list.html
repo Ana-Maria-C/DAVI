@@ -11,7 +11,6 @@
                         <label>Sort by:</label>
                         <select (change)="onSortChange($event)">
                             <option value="title">Title</option>
-                            <option value="year">Year</option>
                         </select>
                     </div>
                     <div class="pagination">
@@ -47,6 +46,10 @@
                         <p class="meta" *ngIf="movie.genres?.length">
                             {{ movie.genres!.join(', ') }}
                         </p>
+
+                        <div class="rating-badge" *ngIf="movie.average_rating">
+                            ⭐ {{ movie.average_rating | number:'1.1-1' }}
+                        </div>
                     </div>
                     <div card-actions>
                         <app-button variant="outline" size="sm">Details</app-button>

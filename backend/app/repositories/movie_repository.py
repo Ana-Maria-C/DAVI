@@ -61,7 +61,7 @@ class MovieRepository(BaseRepository):
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
             
-            SELECT ?mid ?title (GROUP_CONCAT(DISTINCT ?finalGLabel; separator="|") as ?genres)
+            SELECT ?mid ?title (GROUP_CONCAT(DISTINCT ?finalGLabel; separator="|") as ?genres) (AVG(?rVal) as ?avgRating)
             WHERE {{
                 ?m a :Movie ;
                    schema:name ?title .
@@ -76,6 +76,11 @@ class MovieRepository(BaseRepository):
                 OPTIONAL {{ 
                     ?m :hasGenre ?gx . 
                     ?gx rdfs:label ?finalGLabel 
+                }}
+                
+                OPTIONAL {{
+                    ?r :ratingOf ?m ;
+                        :ratingValue ?rVal .
                 }}
             }}
             GROUP BY ?mid ?title
@@ -120,7 +125,7 @@ class MovieRepository(BaseRepository):
 
     def get_movies(self, limit: int, offset: int, sort: str = "title"):
         # Validate sort parameter to prevent injection
-        allowed_sorts = ["title", "year"]
+        allowed_sorts = ["title"]
         if sort not in allowed_sorts:
             sort = "title"
 
@@ -129,16 +134,24 @@ class MovieRepository(BaseRepository):
             PREFIX schema: <http://schema.org/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             
-            SELECT ?mid ?title ?year ?director ?poster ?description
+            SELECT ?mid ?title ?director ?poster ?description (AVG(?rVal) as ?avgRating) (GROUP_CONCAT(DISTINCT ?genreLabel; separator="|") as ?genres)
             WHERE {{
                 ?m a :Movie ;
                    schema:name ?title .
                 OPTIONAL {{ ?m :movieId ?mid }}
-                OPTIONAL {{ ?m :year ?year }}
                 OPTIONAL {{ ?m :director ?d . ?d rdfs:label ?director }}
                 OPTIONAL {{ ?m :poster ?poster }}
                 OPTIONAL {{ ?m :description ?description }}
+                OPTIONAL {{
+                    ?r :ratingOf ?m ;
+                       :ratingValue ?rVal .
+                }}
+                OPTIONAL {{
+                    ?m :hasGenre ?g .
+                    ?g rdfs:label ?genreLabel .
+                }}
             }}
+            GROUP BY ?mid ?title ?director ?poster ?description
             ORDER BY ?{sort}
             LIMIT {limit}
             OFFSET {offset}
