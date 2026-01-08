@@ -50,7 +50,6 @@
   * [Tech Stack](#space_invader-tech-stack)
   * [Features](#dart-features)
   * [Color Reference](#art-color-reference)
-  * [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
   * [Installation](#gear-installation)
@@ -136,19 +135,6 @@
 | Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
 | Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
 | Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
-
-
-### :key: Environment Variables
-
-To run this project, you will need to add the following environment variables to your `.env` file
-
-`PROJECT_NAME` ("DAVI")
-
-`FUSEKI_URL` ("http://localhost:3030")
-
-`DATASET_NAME` ("movielens")
-
-`ADMIN_PASSWORD`
 
 ## 	:toolbox: Getting Started
 
