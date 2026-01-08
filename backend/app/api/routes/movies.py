@@ -45,6 +45,26 @@ def search_movies(
         raise HTTPException(status_code=404, detail=str(e))
 
 
+@router.get(
+    "/movies/search_by_title", response_model=List[MovieDTO], summary="Search by Title"
+)
+def search_movies_by_title(
+    title: str,
+    genre: Optional[str] = None,
+    year_min: Optional[int] = None,
+    year_max: Optional[int] = None,
+    rating_min: Optional[float] = None,
+    rating_max: Optional[float] = None,
+    service: MovieService = Depends(get_service),
+):
+    try:
+        return service.search_movies_by_title(
+            title, genre, year_min, year_max, rating_min, rating_max
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
 @router.get("/trends", response_model=List[TrendDTO], summary="Get Trends")
 def get_trends(service: MovieService = Depends(get_service)):
     return service.get_trends()

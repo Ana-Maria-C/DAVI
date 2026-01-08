@@ -88,6 +88,59 @@ class MovieService:
             )
         return movies
 
+    def search_movies_by_title(
+        self,
+        title: str,
+        genre: Optional[str] = None,
+        year_min: Optional[int] = None,
+        year_max: Optional[int] = None,
+        rating_min: Optional[float] = None,
+        rating_max: Optional[float] = None,
+    ) -> List[MovieDTO]:
+        if genre and not self.repository.check_genre_exists(genre):
+            raise ValueError(f"Genre '{genre}' is not defined in the Knowledge Graph.")
+
+        # Fetch Candidates (No Limit here to allow correct filtering in memory if needed, 
+        # but better to do as much as possible in SPARQL now)
+        raw_results = self.repository.search_movies_by_title(
+            title, genre, year_min, year_max, rating_min, rating_max, limit=None
+        )
+        
+        movies = []
+        for row in raw_results:
+            row_title = row["title"]["value"] if "title" in row else "Unknown"
+            
+            # Extract Year (Duplicate logic, ideally refactor)
+            year = 0
+            match = re.search(r"\((\d{4})\)", row_title)
+            if match:
+                year = int(match.group(1))
+
+            # Filter by Year (In-Memory fallback if SPARQL didn't catch it or for robust check)
+            if year_min is not None and year < year_min:
+                continue
+            if year_max is not None and year > year_max:
+                continue
+
+            movies.append(
+                MovieDTO(
+                    id=row["mid"]["value"] if "mid" in row else "",
+                    title=row_title,
+                    genres=row["genres"]["value"].split("|") if "genres" in row else [],
+                    average_rating=(
+                        float(row["avgRating"]["value"]) if "avgRating" in row else None
+                    ),
+                )
+            )
+        
+        # Sort by title
+        movies.sort(key=lambda m: m.title)
+        
+        # We enforce a limit here since we removed it from SPARQL to ensure filtering correctness
+        # or we could re-add limit to SPARQL if filtering is fully pushed down.
+        # For now, let's limit return size to 20 to mimic previous behavior
+        return movies[:20]
+
     def get_trends(self) -> List[TrendDTO]:
         raw_results = self.repository.get_trends()
         trends = []

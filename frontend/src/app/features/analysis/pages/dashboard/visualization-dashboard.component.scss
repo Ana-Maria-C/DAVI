@@ -17,10 +17,47 @@
         border-radius: 8px;
         padding: 20px;
         height: 600px;
+        display: flex;
+        flex-direction: column;
+
+        .graph-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .search-input {
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
+                background-color: var(--bg-dark-900);
+                color: var(--text-primary);
+                width: 250px;
+                font-family: inherit;
+                transition: all 0.2s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 0 2px rgba(0, 173, 181, 0.1);
+                }
+
+                &::placeholder {
+                    color: var(--text-secondary);
+                }
+            }
+        }
 
         h2 {
             margin-top: 0;
             color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        app-network-graph {
+            flex: 1;
+            min-height: 0;
+            display: block;
         }
     }
 }

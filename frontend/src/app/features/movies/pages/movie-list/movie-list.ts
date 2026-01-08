@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
   pageSize = 20;
   sort = 'title';
   filters: any = {};
+  searchTitle: string = '';
 
   constructor(
     private moviesService: MoviesService,
@@ -35,29 +36,58 @@ export class MovieListComponent implements OnInit {
 
   loadMovies() {
     this.isLoading = true;
-    this.moviesService.searchMovies(
-      this.filters,
-      this.pageSize,
-      this.page * this.pageSize,
-      this.sort
-    ).subscribe({
-      next: (data) => {
-        this.zone.run(() => {
-          this.movies = data;
+
+    if (this.searchTitle && this.searchTitle.trim().length > 0) {
+      this.moviesService.searchMoviesByTitle(this.searchTitle, this.filters).subscribe({
+        next: (data) => {
+          this.zone.run(() => {
+            this.movies = data;
+            this.isLoading = false;
+            this.cdr.detectChanges();
+          });
+        },
+        error: (err) => {
+          console.error('Error searching movies:', err);
           this.isLoading = false;
           this.cdr.detectChanges();
-        });
-      },
-      error: (err) => {
-        console.error('Error loading movies:', err);
-        this.isLoading = false;
-        this.cdr.detectChanges();
-      }
-    });
+        }
+      });
+    } else {
+      this.moviesService.searchMovies(
+        this.filters,
+        this.pageSize,
+        this.page * this.pageSize,
+        this.sort
+      ).subscribe({
+        next: (data) => {
+          this.zone.run(() => {
+            this.movies = data;
+            this.isLoading = false;
+            this.cdr.detectChanges();
+          });
+        },
+        error: (err) => {
+          console.error('Error loading movies:', err);
+          this.isLoading = false;
+          this.cdr.detectChanges();
+        }
+      });
+    }
+  }
+
+  onSearchChange() {
+    this.page = 0;
+    this.loadMovies();
   }
 
   nextPage() {
     this.page++;
+    if (this.searchTitle) {
+      // Pagination for search results is not yet implemented in backend/service for title search 
+      // based on current simplified implementation (it returns all matches with limit).
+      // We'll keep it simple for now or disable pagination in search mode.
+      console.warn('Pagination not fully supported for title search in this iteration');
+    }
     this.loadMovies();
   }
 

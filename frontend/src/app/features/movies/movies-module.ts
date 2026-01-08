@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MoviesRoutingModule } from './movies-routing-module';
 import { MovieListComponent } from './pages/movie-list/movie-list';
@@ -19,7 +20,8 @@ import { MovieDetailsModalComponent } from './components/movie-details-modal';
   imports: [
     CommonModule,
     MoviesRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class MoviesModule { }

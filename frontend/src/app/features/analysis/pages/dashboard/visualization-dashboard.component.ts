@@ -12,6 +12,7 @@ import { AnalysisService } from '../../../../core/services/analysis.service';
 export class VisualizationDashboardComponent implements OnInit {
     statsData$: Observable<any> | null = null;
     graphData$: Observable<any> | null = null;
+    searchQuery: string = '';
 
     constructor(private analysisService: AnalysisService) { }
 
