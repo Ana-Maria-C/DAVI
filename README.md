@@ -58,7 +58,6 @@
 - [Usage](#eyes-usage)
 - [Roadmap](#compass-roadmap)
 - [Contributing](#wave-contributing)
-  * [Code of Conduct](#scroll-code-of-conduct)
 - [FAQ](#grey_question-faq)
 - [License](#warning-license)
 - [Contact](#handshake-contact)
@@ -181,7 +180,6 @@ To run the backend tests:
 
 ```bash
 cd backend
-# (Ensure virtualenv is active)
 pytest
 ```
 
@@ -254,10 +252,6 @@ Contributions are always welcome!
 
 See `contributing.md` for ways to get started.
 
-
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## :grey_question: FAQ
 
