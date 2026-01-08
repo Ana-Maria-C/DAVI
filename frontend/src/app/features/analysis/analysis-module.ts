@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
 
 import { VisualizationDashboardComponent } from './pages/dashboard/visualization-dashboard.component';
 import { StatsChartComponent } from './components/stats-chart/stats-chart.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        NgxChartsModule
+        NgxChartsModule,
+        FormsModule
     ]
 })
 export class AnalysisModule { }

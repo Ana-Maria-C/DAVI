@@ -19,6 +19,7 @@ import ForceGraph3D from '3d-force-graph';
 export class NetworkGraphComponent implements OnChanges, AfterViewInit, OnDestroy {
     @Input() nodes: any[] = [];
     @Input() links: any[] = [];
+    @Input() searchTerm: string = '';
 
     @ViewChild('graphContainer') container!: ElementRef;
 
@@ -29,8 +30,16 @@ export class NetworkGraphComponent implements OnChanges, AfterViewInit, OnDestro
     }
 
     ngOnChanges() {
-        if (this.graph && this.nodes.length > 0) {
-            this.updateGraph();
+        if (this.graph) {
+            // If only searchTerm changed, we might just want to re-render, 
+            // but strictly 3d-force-graph usually reacts to graphData change or explicit update.
+            // We can trigger a color update:
+            this.graph.nodeColor(this.graph.nodeColor());
+
+            // If nodes changed, we update data
+            if (this.nodes.length > 0) {
+                this.updateGraph();
+            }
         }
     }
 
@@ -38,27 +47,49 @@ export class NetworkGraphComponent implements OnChanges, AfterViewInit, OnDestro
         const elem = this.container.nativeElement;
 
         this.graph = (ForceGraph3D as any)()(elem)
-            .backgroundColor('#1a1d21') // Matches var(--bg-default) or --bg-dark-900 roughly
+            .backgroundColor('#1a1d21') // Matches var(--bg-default)
             .nodeLabel('label')
-            .nodeAutoColorBy('group')
+            // .nodeAutoColorBy('group') // Removed to handle colors manually
+            .nodeColor((node: any) => this.getNodeColor(node))
             .linkDirectionalParticles(2)
             .linkDirectionalParticleSpeed((d: any) => 0.005)
             .width(elem.offsetWidth)
             .height(elem.offsetHeight);
-
-        // Initial Resize Observer to handle container sizing
-        // Note: In a real app we might want to attach a ResizeObserver to the container
-        // to dynamically update graph.width() and graph.height()
 
         if (this.nodes.length > 0) {
             this.updateGraph();
         }
     }
 
+    getNodeColor(node: any): string {
+        // 1. Highlight Match
+        if (this.searchTerm && this.searchTerm.trim().length > 0) {
+            const term = this.searchTerm.toLowerCase();
+            const label = (node.label || '').toLowerCase();
+            if (label.includes(term)) {
+                return '#FFD700'; // Gold/Yellow for match
+            }
+        }
+
+        // 2. Default Group Colors
+        switch (node.group) {
+            case 'http://example.org/movielens/Movie':
+                return '#4A90E2'; // Blue
+            case 'http://example.org/movielens/Genre':
+                return '#9013FE'; // Purple
+            case 'http://example.org/movielens/Tag':
+                return '#50E3C2'; // Teal/Green
+            case 'http://example.org/movielens/RatingGroup':
+                return '#F5A623'; // Orange
+            default:
+                return '#9B9B9B'; // Grey
+        }
+    }
+
     updateGraph() {
         const gData = {
-            nodes: this.nodes.map(n => ({ id: n.id, label: n.label, group: n.group })),
-            links: this.links.map(l => ({ source: l.source, target: l.target }))
+            nodes: this.nodes.map(n => ({ ...n })), // Clone to avoid mutation issues
+            links: this.links.map(l => ({ ...l }))
         };
 
         this.graph.graphData(gData);

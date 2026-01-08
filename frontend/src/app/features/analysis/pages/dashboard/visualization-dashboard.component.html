@@ -8,8 +8,20 @@
             </div>
 
             <div class="graph-section" *ngIf="graphData$ | async as graph">
-                <h2>3D Knowledge Graph</h2>
-                <app-network-graph [nodes]="graph.nodes" [links]="graph.links"></app-network-graph>
+                <div class="graph-header">
+                    <h2>3D Knowledge Graph</h2>
+                    <input 
+                        type="text" 
+                        class="search-input"
+                        [(ngModel)]="searchQuery" 
+                        placeholder="Search node..." 
+                    >
+                </div>
+                <app-network-graph 
+                    [nodes]="graph.nodes" 
+                    [links]="graph.links"
+                    [searchTerm]="searchQuery">
+                </app-network-graph>
             </div>
         </div>
     </ng-container>

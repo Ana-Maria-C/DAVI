@@ -3,7 +3,7 @@ import os
 
 FUSEKI_URL = "http://localhost:3030"
 DATASET_NAME = "movielens"
-DATA_FILE = "movielens_graph_reduced.ttl"
+DATA_FILE = "movielens_graph.ttl"
 
 def create_dataset():
     """Creates the dataset if it doesn't exist."""

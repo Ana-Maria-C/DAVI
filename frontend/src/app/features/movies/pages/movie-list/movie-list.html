@@ -7,6 +7,13 @@
             <div class="header-section">
                 <h2>Movies Library</h2>
                 <div class="controls">
+                    <input 
+                        type="text" 
+                        class="search-input"
+                        [(ngModel)]="searchTitle" 
+                        (input)="onSearchChange()"
+                        placeholder="Search by title..." 
+                    >
                     <div class="sort-control">
                         <label>Sort by:</label>
                         <select (change)="onSortChange($event)">

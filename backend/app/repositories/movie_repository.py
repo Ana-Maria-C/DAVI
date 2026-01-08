@@ -158,6 +158,74 @@ class MovieRepository(BaseRepository):
         """
         return self.execute_select(query)
 
+    def search_movies_by_title(
+        self,
+        title: str,
+        genre: Optional[str] = None,
+        year_min: Optional[int] = None,
+        year_max: Optional[int] = None,
+        rating_min: Optional[float] = None,
+        rating_max: Optional[float] = None,
+        limit: Optional[int] = 20,
+    ):
+        filters = []
+        
+        # Title Filter
+        filters.append(f'FILTER(REGEX(?title, "{title}", "i"))')
+
+        # Genre Filter
+        if genre:
+            filters.append(
+                f"""
+                ?m :hasGenre ?g .
+                ?g :subCategoryOf* ?superG .
+                ?superG rdfs:label ?gLabel .
+                FILTER(REGEX(?gLabel, "{genre}", "i"))
+            """
+            )
+
+        filter_clause = "\n".join(filters)
+        limit_clause = f"LIMIT {limit}" if limit is not None else ""
+
+        # Rating Filter Logic (Using HAVING for aggregates)
+        min_r = rating_min if rating_min is not None else 0
+        max_r = rating_max if rating_max is not None else 5
+        
+        rating_having = ""
+        if rating_min is not None or rating_max is not None:
+             rating_having = f"HAVING (AVG(?rVal) >= {min_r} && AVG(?rVal) <= {max_r})"
+
+        query = f"""
+            PREFIX : <http://example.org/movielens/>
+            PREFIX schema: <http://schema.org/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            
+            SELECT ?mid ?title (AVG(?rVal) as ?avgRating) (GROUP_CONCAT(DISTINCT ?genreLabel; separator="|") as ?genres)
+            WHERE {{
+                ?m a :Movie ;
+                   schema:name ?title .
+                
+                {filter_clause}
+                
+                OPTIONAL {{ ?m :movieId ?mid }}
+                
+                OPTIONAL {{
+                    ?r :ratingOf ?m ;
+                       :ratingValue ?rVal .
+                }}
+                OPTIONAL {{
+                    ?m :hasGenre ?g .
+                    ?g rdfs:label ?genreLabel .
+                }}
+            }}
+            GROUP BY ?mid ?title
+            {rating_having}
+            ORDER BY ?title
+            {limit_clause}
+        """
+        return self.execute_select(query)
+
     def get_stats(self):
         query = """
             PREFIX : <http://example.org/movielens/>

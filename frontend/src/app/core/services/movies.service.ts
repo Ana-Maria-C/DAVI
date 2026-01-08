@@ -33,6 +33,18 @@ export class MoviesService {
     return this.api.get<Movie[]>('/api/movies/search', params);
   }
 
+  searchMoviesByTitle(title: string, filters: any = {}): Observable<Movie[]> {
+    const params: any = { title };
+
+    if (filters.genre) params.genre = filters.genre;
+    if (filters.yearMin) params.year_min = filters.yearMin.toString();
+    if (filters.yearMax) params.year_max = filters.yearMax.toString();
+    if (filters.ratingMin) params.rating_min = filters.ratingMin.toString();
+    if (filters.ratingMax) params.rating_max = filters.ratingMax.toString();
+
+    return this.api.get<Movie[]>('/api/movies/search_by_title', params);
+  }
+
   // Helper method removed as API now returns generic Movie objects directly
   compareMovies(ids: string[]): Observable<any[]> {
     return this.api.get<any[]>('/api/movies/compare', { ids: ids });
