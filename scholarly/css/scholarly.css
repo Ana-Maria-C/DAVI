@@ -1,0 +1,232 @@
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+    font-family: sans-serif;
+    text-size-adjust: 100%;
+}
+
+body {
+    max-width: 21cm;
+    margin: auto;
+    line-height: 1.6;
+    font-weight: 300;
+    font-family: Roboto, sans-serif;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+[hidden],
+template {
+    display: none;
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:active,
+a:hover {
+    outline: none;
+}
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+dfn {
+    font-style: italic;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+mark {
+    background: yellow;
+    color: black;
+}
+
+small {
+    font-size: 80%;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+img {
+    border: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+figure {
+    margin: 1em 40px;
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+}
+
+pre {
+    overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace;
+    font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+button {
+    overflow: visible;
+    text-transform: none;
+    cursor: pointer;
+}
+
+input {
+    line-height: normal;
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+    border: none;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th {
+    padding: 0;
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 300;
+    font-style: normal;
+    src: url('../fonts/Roboto-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 700;
+    font-style: normal;
+    src: url('../fonts/Roboto-700.woff2') format('woff2');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: 0.0375em;
+}
+
+h1,
+h2 {
+    color: #4b0061;
+}
+
+div.banner {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.banner>img {
+    height: 100%;
+}
+
+div.banner>div.status {
+    color: white;
+    background: #9400bf;
+    width: 350px;
+    padding: 10px;
+    text-align: right;
+}
+
+p.issue {
+    border-left: 3px solid red;
+    padding: 0.5em 1em;
+}
+
+@media (max-width: 577px) {
+    div.status {
+        width: auto;
+    }
+}
+
+@media (max-width: 980px) {
+    body {
+        margin: 0 2em;
+    }
+}

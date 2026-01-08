@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>DAVI: MovieLens Semantic Explorer - Comprehensive Documentation</title>
+    <link rel="stylesheet" href="css/scholarly.css">
+    <script src="js/scholarly.min.js"></script>
+</head>
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>DAVI (MovieLens Semantic Explorer)</h1>
+    </header>
+
+    <div role="contentinfo">
+        <dl>
+            <dt>Authors</dt>
+            <dd>
+                Mihai
+                &amp;
+                Ana-Maria-C
+            </dd>
+            <dt>Project Type</dt>
+            <dd>Semantic Web Application for Movie Exploration</dd>
+            <dt>Repository</dt>
+            <dd><a href="https://github.com/your-repo/davi">GitHub Link</a></dd>
+        </dl>
+    </div>
+
+    <nav id="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#abstract">1. Abstract</a></li>
+            <li><a href="#motivation">2. Project Motivation</a></li>
+            <li>
+                <a href="#technical-architecture">3. Technical Architecture</a>
+                <ul>
+                    <li><a href="#microservices-design">3.1 Microservices Design</a></li>
+                    <li><a href="#technology-stack">3.2 Technology Stack</a></li>
+                    <li><a href="#system-architecture">3.3 System Architecture and API Structure</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#knowledge-model">4. Knowledge Model &amp; Semantics</a>
+                <ul>
+                    <li><a href="#rdf-model">4.1 RDF Class Structure</a></li>
+                    <li><a href="#ontology-diagram">4.2 Ontology Diagram</a></li>
+                    <li><a href="#linked-data">4.3 Linked Data Principles</a></li>
+                </ul>
+            </li>
+            <li><a href="#external-data">5. External Data &amp; SPARQL</a></li>
+            <li>
+                <a href="#user-guide">6. User Guide &amp; Case Studies</a>
+                <ul>
+                    <li><a href="#use-case-graph">6.1 Use Case: Exploring Relationships via 3D Graph</a></li>
+                    <li><a href="#use-case-search">6.2 Use Case: Semantic Search &amp; Filtering</a></li>
+                    <li><a href="#use-case-details">6.3 Use Case: Detailed Movie Analysis</a></li>
+                    <li><a href="#use-case-compare">6.4 Use Case: Comparing Movies</a></li>
+                    <li><a href="#use-case-trends">6.5 Use Case: Visualizing Trends</a></li>
+                </ul>
+            </li>
+            <li><a href="#future-roadmap">7. Future Roadmap</a></li>
+            <li><a href="#acknowledgements">8. Acknowledgements</a></li>
+        </ul>
+    </nav>
+
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+        <h2>1. Abstract</h2>
+        <p>
+            <strong>DAVI (Data Visualization &amp; Interaction)</strong> is a modular Single Page Application (SPA) designed to transform static movie datasets into an interactive Knowledge Graph. By leveraging the <strong>Semantic Web</strong> stack (RDF, SPARQL, Ontologies), DAVI moves beyond traditional relational database limitations, allowing users to explore movies through their hidden connections—shared genres, common tags, and implicit relationships.
+        </p>
+        <p>
+            The system implements a microservices architecture using <strong>FastAPI</strong> as an API Gateway and <strong>Apache Jena Fuseki</strong> as the triple store. The frontend, built with <strong>Angular 21</strong>, features advanced visualizations including a 3D Force-Directed Graph and interactive charts, providing users with a "big picture" view of the <strong>MovieLens 100k</strong> dataset.
+        </p>
+    </section>
+
+    <section id="motivation">
+        <h2>2. Project Motivation</h2>
+        <p>
+            In the modern digital landscape, recommender systems are often "black boxes." Users are fed suggestions without understanding <em>why</em>. DAVI aims to democratize this data by:
+        </p>
+        <ul>
+            <li><strong>Visual Transparency</strong>: Users can literally "see" the connections between a movie they like and its neighbors in the graph.</li>
+            <li><strong>Semantic Reasoning</strong>: Instead of simple text matching, the system understands that "Rom-Com" is a sub-category of "Comedy," enabling smarter filtering.</li>
+            <li><strong>Educational Value</strong>: Demonstrating how Linked Data principles can be applied to real-world entertainment datasets.</li>
+        </ul>
+    </section>
+
+    <section id="technical-architecture">
+        <h2>3. Technical Architecture</h2>
+        
+        <h3 id="microservices-design">3.1 Microservices Design</h3>
+        <p>
+            The project adheres to a clean <strong>Service-Oriented Architecture (SOA)</strong>. Each layer has a distinct responsibility, ensuring modularity and facilitating independent testing.
+        </p>
+        <img src="assets/architecture_diagram.png" alt="Microservices Architecture Diagram" style="width:100%; max-width:800px; height:auto; margin: 20px 0;">
+        
+        <h3 id="technology-stack">3.2 Technology Stack</h3>
+        <p>We selected a modern, robust stack to ensure high performance and developer ergonomics:</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h4>Frontend (Client)</h4>
+                <ul>
+                    <li><strong>Framework</strong>: Angular 21 (Latest) - for component-based logic.</li>
+                    <li><strong>Visualization</strong>: 
+                        <ul>
+                            <li><code>3d-force-graph</code>: WebGL-powered graph rendering.</li>
+                            <li><code>ngx-charts</code>: For statistical bar/pie charts.</li>
+                        </ul>
+                    </li>
+                    <li><strong>UI Library</strong>: Angular Material - ensuring a consistent, accessible design.</li>
+                    <li><strong>State Management</strong>: RxJS - handling asynchronous data streams (filters, search results).</li>
+                </ul>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h4>Backend (Server)</h4>
+                <ul>
+                    <li><strong>Framework</strong>: FastAPI (Python 3.9+) - High-performance, async I/O.</li>
+                    <li><strong>Validation</strong>: Pydantic - Data validation and settings management.</li>
+                    <li><strong>RDF Tools</strong>: 
+                        <ul>
+                            <li><code>SPARQLWrapper</code>: For executing queries against Fuseki.</li>
+                            <li><code>rdflib</code>: For parsing and serializing Turtle (`.ttl`) files.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h4>Data Persistence</h4>
+                <ul>
+                    <li><strong>Triple Store</strong>: Apache Jena Fuseki.</li>
+                    <li><strong>Format</strong>: RDF/Turtle.</li>
+                    <li><strong>Containerization</strong>: Docker & Docker Compose.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3 id="system-architecture">3.3 System Architecture and API Structure</h3>
+        <p>
+            The backend exposes a RESTful API that abstracts the complexity of SPARQL. It transforms frontend JSON requests into SPARQL queries, executes them, and formats the results back to JSON.
+        </p>
+        
+        <h4>Key API Controllers:</h4>
+        <ul>
+            <li><strong>MoviesController (`/movies`)</strong>:
+                <ul>
+                    <li><code>GET /search</code>: The core search engine. Accepts `genre`, `year_min`, `year_max`, `rating_min`. Constructs dynamic SPARQL queries using `FILTER` clauses.</li>
+                    <li><code>GET /graph</code>: Optimized for the 3D visualizer. Returns a distinct set of `nodes` (Movies, Groups) and `links` (Relationships).</li>
+                    <li><code>POST /compare</code>: Accepts a list of Movie IDs and returns their intersection (common attributes).</li>
+                </ul>
+            </li>
+            <li><strong>AnalysisController (`/analysis`)</strong>:
+                <ul>
+                    <li><code>GET /trends</code>: Aggregates data to show "Most Popular Genres" or "Rating Distributions" using SPARQL `GROUP BY`.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    
+    <section id="knowledge-model">
+        <h2>4. Knowledge Model &amp; Semantics</h2>
+        <p>
+            Unlike a SQL schema, our data model is a flexible graph defined by an Ontology. We used <strong>Protégé</strong> to design the schema and <code>schema.ttl</code> to persist it.
+        </p>
+    
+        <h3 id="rdf-model">4.1 RDF Class Structure</h3>
+        <p>The ontology defines the following core classes and properties:</p>
+        <ul>
+            <li>
+                <strong>:Movie</strong> (<code>owl:Class</code>)
+                <ul>
+                    <li>Mapped to <code>schema:Movie</code>.</li>
+                    <li>Properties: <code>:movieId</code> (integer), <code>schema:name</code> (string), <code>:year</code> (gYear), <code>:hasGenre</code> (ObjectProperty), <code>:hasTagLabel</code> (DatatypeProperty).</li>
+                </ul>
+            </li>
+            <li>
+                <strong>:Genre</strong> (<code>owl:Class</code>)
+                <ul>
+                    <li>Instances include `:Action`, `:Comedy`, etc.</li>
+                    <li>Hierarchical property: <code>:subCategoryOf</code> allowing inference (e.g., <code>:War</code> -> <code>:Action</code>).</li>
+                </ul>
+            </li>
+            <li>
+                <strong>:Rating</strong> (<code>owl:Class</code> - Reified Association)
+                <ul>
+                    <li>Since RDF links are binary, we use a Rating node to connect a User and a Movie with a <em>value</em>.</li>
+                    <li>Properties: <code>:ratedBy</code>, <code>:ratingOf</code>, <code>:ratingValue</code> (float).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3 id="ontology-diagram">4.2 Ontology Diagram</h3>
+        <p>Visual representation of the classes and relationships:</p>
+        <img src="assets/ontology_diagram.png" alt="Ontology Diagram" style="width:100%; max-width:600px; height:auto; margin: 20px 0;">
+
+        <h3 id="linked-data">4.3 Linked Data Principles</h3>
+        <p>
+            DAVI respects the 5-star Linked Data principles:
+            <ol>
+                <li><strong>OL</strong>: Data is available on the web (Open License).</li>
+                <li><strong>RE</strong>: Data is machine-readable (RDF/Turtle).</li>
+                <li><strong>OF</strong>: Non-proprietary format (CSV -> converted to TTL).</li>
+                <li><strong>URI</strong>: All entities have URIs (e.g., <code>http://example.org/movielens/Movie/1</code>).</li>
+                <li><strong>LD</strong>: (Planned) Links to extensive context via DBpedia.</li>
+            </ol>
+        </p>
+    </section>
+
+    <section id="external-data">
+        <h2>5. External Data &amp; SPARQL</h2>
+        <p>
+            The system transforms the raw <strong>MovieLens 100k</strong> dataset (CSV) into a semantic graph.
+            The transformation logic (`convert_csv_to_rdf.py`) cleans the data, handles missing values, and mints URIs.
+        </p>
+    
+        <h3>5.1 Advanced SPARQL Queries</h3>
+        <p>
+            We implement non-trivial queries to extract insights. For example, to find "Top Rated Action Movies from the 90s":
+        </p>
+        <pre><code class="language-sparql">
+PREFIX : &lt;http://example.org/movielens/&gt;
+PREFIX schema: &lt;http://schema.org/&gt;
+
+SELECT ?title ?avgRating
+WHERE {
+  ?m a :Movie ;
+     schema:name ?title ;
+     :hasGenre ?g ;
+     :year ?year .
+  
+  ?g rdfs:label "Action" .
+  
+  # Aggregated Requests
+  {
+    SELECT ?m (AVG(?val) as ?avgRating)
+    WHERE { ?r :ratingOf ?m ; :ratingValue ?val . }
+    GROUP BY ?m
+  }
+  
+  FILTER (?year >= 1990 && ?year < 2000)
+  FILTER (?avgRating > 4.0)
+}
+ORDER BY DESC(?avgRating)
+LIMIT 10
+        </code></pre>
+    </section>
+
+    <section id="user-guide">
+        <h2>6. User Guide &amp; Case Studies</h2>
+        
+        <h3 id="use-case-graph">6.1 Use Case: Exploring Relationships via 3D Graph</h3>
+        <div class="use-case">
+            <p><strong>Scenario:</strong> A user wants to find "clusters" of related movies visually rather than scrolling a list.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>User navigates to the <strong>"Graph View"</strong> tab.</li>
+                <li>The system renders 50+ movies as nodes. 
+                    <ul>
+                        <li><span style="color:blue">Blue Nodes</span> = Movies.</li>
+                        <li><span style="color:green">Green Nodes</span> = Genres.</li>
+                    </ul>
+                </li>
+                <li>User <strong>drags</strong> a node; the physics engine (Force Atlas 2) dynamically rearranges the graph.</li>
+                <li>User <strong>hovers</strong> over a "Star Wars" node. The graph highlights the "Action" and "Sci-Fi" genre nodes connected to it.</li>
+                <li>User <strong>clicks</strong> the node to open the Movie Details modal.</li>
+            </ol>
+            <img src="assets/screenshot_3d_graph.png" alt="3D Graph Interaction" style="width:100%; border:1px solid #ddd;">
+        </div>
+
+        <h3 id="use-case-search">6.2 Use Case: Semantic Search &amp; Filtering</h3>
+        <div class="use-case">
+            <p><strong>Scenario:</strong> A user looks for highly-rated movies from a specific era.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>User goes to <strong>"Movie Library"</strong>.</li>
+                <li>In the sidebar, User selects:
+                    <ul>
+                        <li><strong>Genre:</strong> "Thriller"</li>
+                        <li><strong>Year Range:</strong> 1995 - 2000</li>
+                        <li><strong>Rating:</strong> 4 stars+</li>
+                    </ul>
+                </li>
+                <li>The list automatically refreshes. The backend injects these values into a SPARQL <code>FILTER</code> clause.</li>
+                <li>The result shows movies like "Se7en" and "The Usual Suspects."</li>
+            </ol>
+            <img src="assets/screenshot_movie_list.png" alt="Search Interface" style="width:100%; border:1px solid #ddd;">
+        </div>
+
+        <h3 id="use-case-details">6.3 Use Case: Detailed Movie Analysis</h3>
+        <div class="use-case">
+            <p><strong>Scenario:</strong> Assessing if a movie is worth watching.</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li><strong>Tag Cloud:</strong> Displays the most common words users associated with the film (e.g., "Atmospheric", "Twist Ending").</li>
+                <li><strong>Rating Distribution:</strong> A visual breakdown showing if the movie is universally loved or polarizing.</li>
+            </ul>
+            <img src="assets/screenshot_details.png" alt="Movie Details Modal" style="width:100%; border:1px solid #ddd;">
+        </div>
+
+        <h3 id="use-case-compare">6.4 Use Case: Comparing Movies</h3>
+        <div class="use-case">
+            <p><strong>Scenario:</strong> A user can't decide between two movies.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>In the Movie List, user clicks "<strong>+ Compare</strong>" on "Toy Story".</li>
+                <li>User clicks "<strong>+ Compare</strong>" on "Aladdin".</li>
+                <li>User clicks the floating "<strong>Compare (2)</strong>" button.</li>
+                <li>A modal appears showing a side-by-side comparison:
+                    <ul>
+                        <li><strong>Common Genres:</strong> "Animation", "Children".</li>
+                        <li><strong>Rating Delta:</strong> Toy Story (4.2) vs Aladdin (3.8).</li>
+                        <li><strong>Review Count:</strong> Which one is more popular?</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h3 id="use-case-trends">6.5 Use Case: Visualizing Trends</h3>
+        <div class="use-case">
+            <p><strong>Scenario:</strong> Analyzing the popularity of genres over time.</p>
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>User navigates to the <strong>"Trends"</strong> page.</li>
+                <li>A Bar Chart displays "Top Genres by Movie Count".</li>
+                <li>A Pie Chart displays "Distribution of Ratings".</li>
+                <li>These charts are powered by <code>ngx-charts</code> and fed by the `/analysis/stats` endpoint.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="future-roadmap">
+        <h2>7. Future Development Roadmap</h2>
+        <p>While the current iteration meets the core WADe requirements, we envision several enhancements for Version 2.0:</p>
+        
+        <h3>Phase 1: Enhanced Intelligence</h3>
+        <ul>
+            <li><strong>Collaborative Filtering</strong>: Implement Matrix Factorization (ALS) to suggest movies based on user similarity, not just metadata.</li>
+            <li><strong>Federated Queries</strong>: Execute live SPARQL queries against <strong>DBpedia</strong> to fetch the latest director info and actor biographies.</li>
+        </ul>
+
+        <h3>Phase 2: Social Features</h3>
+        <ul>
+            <li><strong>User Accounts</strong>: Fully implement JWT authentication.</li>
+            <li><strong>Watchlists</strong>: Allow users to save custom lists to the Knowledge Graph.</li>
+        </ul>
+    </section>
+
+    <section id="acknowledgements">
+        <h2>8. Acknowledgements</h2>
+        <ul>
+            <li><strong>Open Source Libraries</strong>: Angular, FastAPI, rdflib, 3d-force-graph.</li>
+            <li><strong>Data Source</strong>: <a href="https://grouplens.org/datasets/movielens/">GroupLens Research</a>.</li>
+        </ul>
+    </section>
+</body>
+</html>
