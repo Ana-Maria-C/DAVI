@@ -70,12 +70,12 @@
 
 ## :star2: About the Project
 
-**DAVI** is a robust semantic web platform engineered to interface with the MovieLens dataset. It uses a custom ontology to structure data and Apache Jena Fuseki to provide a powerful SPARQL endpoint. The project aims to facilitate complex semantic queries, intelligent filtering based on inferred relationships, and dynamic data visualization.
+**DAVI** is a robust semantic web platform engineered to interface with the MovieLens dataset. It uses a custom ontology to structure data and Apache Jena Fuseki to provide a powerful SPARQL endpoint. The project aims to facilitate complex semantic queries, intelligent filtering based on inferred relationships, and dynamic data visualization (using 3D Force Graph).
 
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=DAVI+API+Visualization" alt="screenshot" />
+  <img src="https://placehold.co/600x400?text=DAVI+Dashboard" alt="screenshot" />
 </div>
 
 
@@ -84,7 +84,11 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="#">(Planned)</a></li>
+    <li><a href="https://angular.io/">Angular 21</a></li>
+    <li><a href="https://github.com/vasturiano/3d-force-graph">3d-force-graph</a></li>
+    <li><a href="https://swimlane.github.io/ngx-charts/">ngx-charts</a></li>
+    <li><a href="https://material.angular.io/">Angular Material</a></li>
+    <li><a href="https://rxjs.dev/">RxJS</a></li>
   </ul>
 </details>
 
@@ -92,23 +96,23 @@
   <summary>Server</summary>
   <ul>
     <li><a href="https://fastapi.tiangolo.com/">FastAPI</a></li>
-    <li><a href="https://www.python.org/">Python</a></li>
+    <li><a href="https://www.python.org/">Python 3.9+</a></li>
     <li><a href="https://rdflib.readthedocs.io/">RDFLib</a></li>
     <li><a href="https://rdflib.github.io/sparqlwrapper/">SPARQLWrapper</a></li>
   </ul>
 </details>
 
 <details>
-<summary>Database</summary>
+  <summary>Database</summary>
   <ul>
     <li><a href="https://jena.apache.org/documentation/fuseki2/">Apache Jena Fuseki</a></li>
-    <li><a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a></li>
+    <li><a href="https://www.w3.org/TR/sparql11-query/">SPARQL 1.1</a></li>
     <li><a href="https://www.w3.org/TR/rdf11-primer/">RDF/Turtle</a></li>
   </ul>
 </details>
 
 <details>
-<summary>DevOps</summary>
+  <summary>DevOps</summary>
   <ul>
     <li><a href="https://www.docker.com/">Docker</a></li>
     <li><a href="https://docs.docker.com/compose/">Docker Compose</a></li>
@@ -118,10 +122,11 @@
 ### :dart: Features
 
 - **Semantic Querying**: Advanced SPARQL integration for deep data retrieval.
+- **Interactive Visualization**: Explore the movie knowledge graph in 3D using force-directed graphs.
 - **Ontology Awareness**: Fully compliant with a custom `schema.ttl` for strict data structuring.
+- **Smart Filtering**: Filter movies by Genre, Year, and Rating using semantic queries.
+- **Data Analysis**: Visual analytics of movie distribution and trends.
 - **RESTful Architecture**: Clean, documented API endpoints via FastAPI.
-- **Intelligent Reasoning**: Infers new connections between movies, genres, and users.
-- **Resource Abstraction**: Simplifies complex RDF data into consumable JSON resources.
 
 ### :art: Color Reference
 
@@ -137,11 +142,11 @@
 
 To run this project, you will need to add the following environment variables to your `.env` file
 
-`PROJECT_NAME`
+`PROJECT_NAME` ("DAVI")
 
-`FUSEKI_URL`
+`FUSEKI_URL` ("http://localhost:3030")
 
-`DATASET_NAME`
+`DATASET_NAME` ("movielens")
 
 `ADMIN_PASSWORD`
 
@@ -149,7 +154,7 @@ To run this project, you will need to add the following environment variables to
 
 ### :bangbang: Prerequisites
 
-This project uses Docker and Python.
+This project uses Docker, Python, and Node.js.
 
 * Docker
   ```bash
@@ -159,53 +164,86 @@ This project uses Docker and Python.
   ```bash
   python --version
   ```
+* Node.js & npm (for Frontend)
+  ```bash
+  node --version
+  npm --version
+  ```
 
 ### :gear: Installation
 
-Clone the project
+1. **Clone the project**
 
 ```bash
   git clone https://github.com/Ana-Maria-C/DAVI.git
-```
-
-Go to the project directory
-
-```bash
   cd DAVI
 ```
 
-Install Backend Dependencies
+2. **Install Backend Dependencies**
 
 ```bash
   cd backend
+  python -m venv .venv
+  # Windows
+  .venv\Scripts\activate
+  # Linux/Mac
+  source .venv/bin/activate
+  
   pip install -r requirements.txt
+```
+
+3. **Install Frontend Dependencies**
+
+```bash
+  cd ../frontend
+  npm install
 ```
    
 ### :test_tube: Running Tests
 
-To run tests, run the following command
+To run the backend tests:
 
 ```bash
+cd backend
+# (Ensure virtualenv is active)
+pytest
 ```
 
 ### :running: Run Locally
 
-Start the Database (Fuseki)
+1. **Start the Database (Fuseki)**
 
 ```bash
+  # In the root directory
   docker-compose up -d
 ```
 
-Start the Server
+2. **Initialize Data** (First time only)
+
+```bash
+  # Ensure Python venv is active
+  python data/upload_to_fuseki.py
+```
+
+3. **Start the Backend Server**
 
 ```bash
   cd backend
   python -m app.main
 ```
+The server will run at `http://localhost:8000`.
+
+4. **Start the Frontend Application**
+
+```bash
+  cd frontend
+  npm start
+```
+The application will run at `http://localhost:4200`.
 
 ### :triangular_flag_on_post: Deployment
 
-To deploy this project run
+To deploy the entire stack using Docker Compose:
 
 ```bash
   docker-compose up -d --build
@@ -214,11 +252,9 @@ To deploy this project run
 
 ## :eyes: Usage
 
-Use the Swagger UI to interact with the API endpoints.
-
-Visit: `http://localhost:8000/docs`
-
-Or query the Fuseki server directly at: `http://localhost:3030/movielens/sparql`
+- **Web Interface**: Go to `http://localhost:4200` to browse movies, visualize the graph, and analyze data.
+- **API Docs**: Visit `http://localhost:8000/docs` to interact with the Swagger UI.
+- **SPARQL Endpoint**: Query the Fuseki server directly at `http://localhost:3030/movielens/sparql`.
 
 
 ## :compass: Roadmap
@@ -226,8 +262,9 @@ Or query the Fuseki server directly at: `http://localhost:3030/movielens/sparql`
 * [x] Basic Ontology Design
 * [x] FastAPI Service Skeleton
 * [x] Fuseki Integration
-* [ ] Advanced Reasoning / Intelligent Filtering
-* [ ] Frontend Application implementation
+* [x] Angular Frontend Implementation
+* [x] 3D Graph Visualization
+
 
 
 ## :wave: Contributing
@@ -248,11 +285,11 @@ Please read the [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## :grey_question: FAQ
 
-- How do I reset the database?
+- **How do I reset the database?**
 
-  + Delete the `data/fuseki_data` folder and restart the Docker container.
+  + Delete the `data/fuseki_data` folder and restart the Docker container, then run `python data/upload_to_fuseki.py` again.
 
-- Where is the ontology file?
+- **Where is the ontology file?**
 
   + It is located in `ontology/schema.ttl`.
 
@@ -262,18 +299,11 @@ Please read the [Code of Conduct](CODE_OF_CONDUCT.md)
 Distributed under the MIT License. See LICENSE.txt for more information.
 
 
-## :handshake: Contact
-
-Mihai - Project Lead
-
-Project Link: [https://github.com/Ana-Maria-C/DAVI](https://github.com/Ana-Maria-C/DAVI)
-
-
 ## :gem: Acknowledgements
-
-Use this section to mention useful resources and libraries that you have used in your projects.
 
  - [Awesome Readme Template](https://github.com/Louis3797/awesome-readme-template)
  - [MovieLens Dataset](https://grouplens.org/datasets/movielens/)
  - [FastAPI](https://fastapi.tiangolo.com/)
  - [Apache Jena](https://jena.apache.org/)
+ - [Angular](https://angular.io/)
+ - [3d-force-graph](https://github.com/vasturiano/3d-force-graph)
