@@ -11,7 +11,7 @@
   
 <p>
   <a href="">
-    <img src="https://img.shields.io/badge/contributors-1-orange" alt="contributors" />
+    <img src="https://img.shields.io/badge/contributors-2-orange" alt="contributors" />
   </a>
   <a href="">
     <img src="https://img.shields.io/badge/last%20update-January%202026-green" alt="last update" />
@@ -52,7 +52,6 @@
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
   * [Installation](#gear-installation)
-  * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
   * [Deployment](#triangular_flag_on_post-deployment)
 - [Usage](#eyes-usage)
@@ -72,7 +71,29 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://placehold.co/600x400?text=DAVI+Dashboard" alt="screenshot" />
+  <img src="scholarly/assets/image1.PNG" alt="DAVI Dashboard" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+  <p><em>Main Dashboard - Explore movies with smart filters</em></p>
+</div>
+
+<br />
+
+<div align="center"> 
+  <img src="scholarly/assets/image7.PNG" alt="3D Graph Visualization" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+  <p><em>3D Force-Directed Graph - Visualizing relationships between Movies, Genres, and Tags</em></p>
+</div>
+
+<br />
+
+<div align="center"> 
+  <img src="scholarly/assets/image5.PNG" alt="Statistics Dashboard" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+  <p><em>Analytics - Real-time statistics and distribution charts</em></p>
+</div>
+
+<br />
+
+<div align="center"> 
+  <img src="scholarly/assets/image13.PNG" alt="Movie Comparison" width="800" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+  <p><em>Movie Comparison - Side-by-side analysis of attributes</em></p>
 </div>
 
 
@@ -174,15 +195,6 @@ This project uses Docker, Python, and Node.js.
   npm install
 ```
    
-### :test_tube: Running Tests
-
-To run the backend tests:
-
-```bash
-cd backend
-pytest
-```
-
 ### :running: Run Locally
 
 1. **Start the Database (Fuseki)**
@@ -239,8 +251,6 @@ To deploy the entire stack using Docker Compose:
 * [x] Angular Frontend Implementation
 * [x] 3D Graph Visualization
 
-
-
 ## :wave: Contributing
 
 <a href="">
@@ -266,7 +276,7 @@ See `contributing.md` for ways to get started.
 
 ## :warning: License
 
-Distributed under the MIT License. See LICENSE.txt for more information.
+Distributed under the MIT License.
 
 
 ## :gem: Acknowledgements

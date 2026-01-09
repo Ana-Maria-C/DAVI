@@ -12,5 +12,3 @@ services:
       - ./data/fuseki_data:/fuseki
     restart: always
 
-# Frontend container can be added here later
-# API container can be added here later
