@@ -215,7 +215,7 @@ This project uses Docker, Python, and Node.js.
 
 ```bash
   cd backend
-  python -m app.main
+  python -m uvicorn app.main:app --reload
 ```
 The server will run at `http://localhost:8000`.
 

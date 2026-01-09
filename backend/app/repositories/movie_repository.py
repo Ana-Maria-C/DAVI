@@ -40,12 +40,6 @@ class MovieRepository(BaseRepository):
             """
             )
 
-        # Removed SPARQL Year filtering as requested to use In-Memory extraction
-        # if year_min is not None:
-        #     filters.append(f"?m :year ?year . FILTER(xsd:integer(?year) >= {year_min})")
-        # if year_max is not None:
-        #     filters.append(f"?m :year ?year . FILTER(xsd:integer(?year) <= {year_max})")
-
         if rating_min is not None or rating_max is not None:
             pass
 
@@ -714,7 +708,6 @@ class MovieRepository(BaseRepository):
         if not movie_ids:
             return []
 
-        # VALUES clause construction with URIs
         uris_str = " ".join(
             [f"<http://example.org/movielens/Movie/{mid}>" for mid in movie_ids]
         )
