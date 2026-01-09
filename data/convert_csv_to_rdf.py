@@ -26,11 +26,8 @@ def sanitize_uri(text):
 
 def convert_csv_to_rdf(csv_path, output_path):
     print(f"Reading {csv_path}...")
-    # Read entire CSV (warning: for huge files chunking is better, but 100k rows is fine for memory)
     df = pd.read_csv(csv_path)
 
-    # Track unique entities to avoid creating duplicate triples for static things (like Genres)
-    # Ideally, we iterate and build.
 
     print("Converting to RDF...")
 
@@ -81,7 +78,6 @@ def convert_csv_to_rdf(csv_path, output_path):
             processed_movies.add(movie_id)
 
         # 2. Define Rating
-        # We assume every row is a unique rating for a user-movie pair
         g.add((rating_uri, RDF.type, MOVIELENS.Rating))
         g.add(
             (rating_uri, MOVIELENS.ratingValue, Literal(rating_val, datatype=XSD.float))
@@ -95,14 +91,7 @@ def convert_csv_to_rdf(csv_path, output_path):
         # 4. Tags (Optional)
         user_tags = row.get("user_tags")
         if pd.notna(user_tags) and user_tags:
-            # Depending on format, user_tags might be a single tag string or list?
-            # Based on verifying data, it looks like a string.
-            # We can attach it to the movie-user relationship or just the movie?
-            # A tag is usually: User -> tags -> Movie.
-            # Current Schema simplified: Movie hasTagLabel "tag" (anonymous tagging)
-            # OR proper reification. For simplicity let's stick to Movie hasTagLabel for now,
-            # or better: Tag object.
-            # Let's simple: Movie :hasTagLabel "literal_tag"
+
             g.add((movie_uri, MOVIELENS.hasTagLabel, Literal(user_tags)))
 
     print(f"Serialization to {output_path}...")

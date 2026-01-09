@@ -97,7 +97,27 @@
         <p>
             The project adheres to a clean <strong>Service-Oriented Architecture (SOA)</strong>. Each layer has a distinct responsibility, ensuring modularity and facilitating independent testing.
         </p>
-        <img src="assets/architecture_diagram.png" alt="Microservices Architecture Diagram" style="width:100%; max-width:800px; height:auto; margin: 20px 0;">
+        <p>
+            The architecture is visualized using the C4 model to show different levels of abstraction.
+        </p>
+
+        <h4 id="context-diagram">Level 1: System Context</h4>
+        <p>
+            The Context diagram shows how DAVI fits into the ecosystem, interacting with the User and the external MovieLens Dataset.
+        </p>
+        <figure style="margin: 20px 0;">
+            <img src="assets/Diagrama_Context.png" alt="C4 Context Diagram" style="width:100%; max-width:800px; height:auto; border:1px solid #ddd; border-radius: 4px;">
+            <figcaption style="text-align: center; font-style: italic; margin-top: 5px;">Figure: System Context Diagram illustrating user interaction and external dependencies.</figcaption>
+        </figure>
+
+        <h4 id="container-diagram">Level 2: Containers</h4>
+        <p>
+            The Container diagram drills down into the high-level technical blocks: the Angular SPA, the FastAPI Backend, and the Fuseki Triple Store.
+        </p>
+        <figure style="margin: 20px 0;">
+            <img src="assets/Diagrama_Container.png" alt="C4 Container Diagram" style="width:100%; max-width:800px; height:auto; border:1px solid #ddd; border-radius: 4px;">
+            <figcaption style="text-align: center; font-style: italic; margin-top: 5px;">Figure: Container Diagram showing the Dockerized services and their communication protocols.</figcaption>
+        </figure>
         
         <h3 id="technology-stack">3.2 Technology Stack</h3>
         <p>We selected a modern, robust stack to ensure high performance and developer ergonomics:</p>
@@ -146,6 +166,15 @@
         <p>
             The backend exposes a RESTful API that abstracts the complexity of SPARQL. It transforms frontend JSON requests into SPARQL queries, executes them, and formats the results back to JSON.
         </p>
+
+        <h4 id="component-diagram">Level 3: Components</h4>
+        <p>
+            The Component diagram breaks down the API Application into its core modules: Controllers, Services (Business Logic), and Repositories (Data Access).
+        </p>
+        <figure style="margin: 20px 0;">
+            <img src="assets/Diagrama_Componente.png" alt="C4 Component Diagram" style="width:100%; max-width:800px; height:auto; border:1px solid #ddd; border-radius: 4px;">
+            <figcaption style="text-align: center; font-style: italic; margin-top: 5px;">Figure: Component Diagram detailing the internal structure of the API service.</figcaption>
+        </figure>
         
         <h4>Key API Controllers:</h4>
         <ul>
