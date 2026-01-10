@@ -279,6 +279,27 @@ See `contributing.md` for ways to get started.
 Distributed under the MIT License.
 
 
+## :package: Deliverables
+
+Here you can find all the resources and documentation related to the DAVI project.
+
+### Source Code
+The complete source code is hosted on GitHub:
+*   [**Repository Link**](https://github.com/Ana-Maria-C/DAVI)
+
+### Documentation
+*   **Scholarly HTML (Report)**: [scholarly/scholarly.html](scholarly/scholarly.html)
+*   **API Documentation**: [Swagger UI](http://localhost:8000/docs) *(runs locally)*
+*   **OpenAPI Spec**: [openapi.json](http://localhost:8000/openapi.json)
+
+### Demo
+*   **Video Presentation**: [YouTube Link](https://youtu.be/-yhS_3Q5puw)
+
+### References
+*   [MovieLens Dataset](https://grouplens.org/datasets/movielens/)
+*   [W3C SPARQL 1.1](https://www.w3.org/TR/sparql11-query/)
+
+
 ## :gem: Acknowledgements
 
  - [Awesome Readme Template](https://github.com/Louis3797/awesome-readme-template)
