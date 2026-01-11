@@ -1,7 +1,7 @@
 <div class="modal-backdrop" (click)="onClose()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-content" (click)="$event.stopPropagation()" vocab="http://schema.org/" typeof="Movie">
         <div class="modal-header">
-            <h2>{{ movie?.title }}</h2>
+            <h2 property="name">{{ movie?.title }}</h2>
             <button class="close-btn" (click)="onClose()">&times;</button>
         </div>
 
@@ -9,21 +9,14 @@
             <div class="info-grid">
                 <div class="info-item">
                     <span class="label">Year</span>
-                    <span class="value">{{ movie.genres?.includes('Unknown') ? 'Unknown' : ((movie.genres?.length || 0)
+                    <span class="value" property="datePublished">{{ movie.genres?.includes('Unknown') ? 'Unknown' : ((movie.genres?.length || 0)
                         > 0 ? '' : '') }}{{ movie.year || 'Unknown' }}</span>
-                    <!-- We need year passed in movie object, or extract it display -->
-                    <!-- Wait, movie object from get_movie_by_id might not have year explicit if not parsed. 
-                         The repository doesn't extract year in get_movie_by_id, it returns title. 
-                         I should parse year in frontend or service.
-                         Comparison modal did regex in Service. 
-                         I will replicate year extraction in component or Service.
-                         Let's assume component or passed data handles it. -->
                 </div>
                 <div class="info-item">
                     <span class="label">Rating</span>
-                    <span class="value rating">
-                        ⭐ {{ movie.average_rating | number:'1.1-1' }}
-                        <span class="count">({{ movie.review_count }} reviews)</span>
+                    <span class="value rating" property="aggregateRating" typeof="AggregateRating">
+                        ⭐ <span property="ratingValue">{{ movie.average_rating | number:'1.1-1' }}</span>
+                        <span class="count">(<span property="reviewCount">{{ movie.review_count }}</span> reviews)</span>
                     </span>
                 </div>
             </div>
@@ -31,7 +24,7 @@
             <div class="section">
                 <h3>Genres</h3>
                 <div class="chips-container">
-                    <span class="chip genre-chip" *ngFor="let genre of movie.genres">{{ genre }}</span>
+                    <span class="chip genre-chip" *ngFor="let genre of movie.genres" property="genre">{{ genre }}</span>
                     <span *ngIf="!movie.genres?.length" class="empty-text">No genres listed</span>
                 </div>
             </div>
@@ -39,7 +32,7 @@
             <div class="section">
                 <h3>User Tags </h3>
                 <div class="chips-container">
-                    <span class="chip tag-chip" *ngFor="let tag of movie.tags">{{ tag }}</span>
+                    <span class="chip tag-chip" *ngFor="let tag of movie.tags" property="keywords">{{ tag }}</span>
                     <span *ngIf="!movie.tags?.length" class="empty-text">No user tags available</span>
                 </div>
             </div>
