@@ -7,13 +7,8 @@
             <div class="header-section">
                 <h2>Movies Library</h2>
                 <div class="controls">
-                    <input 
-                        type="text" 
-                        class="search-input"
-                        [(ngModel)]="searchTitle" 
-                        (input)="onSearchChange()"
-                        placeholder="Search by title..." 
-                    >
+                    <input type="text" class="search-input" [(ngModel)]="searchTitle" (input)="onSearchChange()"
+                        placeholder="Search by title...">
                     <div class="sort-control">
                         <label>Sort by:</label>
                         <select (change)="onSortChange($event)">
@@ -42,20 +37,22 @@
                 <p>Try running the data upload script or check back later!</p>
             </div>
 
-            <div class="movies-grid">
-                <app-card *ngFor="let movie of movies" [class.selected-card]="isSelected(movie)">
+            <div class="movies-grid" vocab="http://schema.org/" typeof="ItemList">
+                <app-card *ngFor="let movie of movies" [class.selected-card]="isSelected(movie)"
+                    property="itemListElement" typeof="Movie">
                     <div class="movie-card-content">
                         <!-- Icon Placeholder since we don't have posters anymore -->
                         <div class="poster-placeholder">
                             <span class="placeholder-icon">🎬</span>
                         </div>
-                        <h3>{{ movie.title }}</h3>
-                        <p class="meta" *ngIf="movie.genres?.length">
+                        <h3 property="name">{{ movie.title }}</h3>
+                        <p class="meta" *ngIf="movie.genres?.length" property="genre">
                             {{ movie.genres!.join(', ') }}
                         </p>
 
-                        <div class="rating-badge" *ngIf="movie.average_rating">
-                            ⭐ {{ movie.average_rating | number:'1.1-1' }}
+                        <div class="rating-badge" *ngIf="movie.average_rating" property="aggregateRating"
+                            typeof="AggregateRating">
+                            ⭐ <span property="ratingValue">{{ movie.average_rating | number:'1.1-1' }}</span>
                         </div>
                     </div>
                     <div card-actions class="card-actions-row">

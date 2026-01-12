@@ -1,5 +1,5 @@
 <div class="modal-backdrop" (click)="onClose()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-content" (click)="$event.stopPropagation()" vocab="http://schema.org/">
         <div class="modal-header">
             <h2>Movie Comparison</h2>
             <button class="close-btn" (click)="onClose()">&times;</button>
@@ -10,27 +10,33 @@
                 <thead>
                     <tr>
                         <th>Movie Title</th>
-                        <th *ngFor="let movie of data">{{ movie.title }}</th>
+                        <th *ngFor="let movie of data" typeof="Movie"><span property="name">{{ movie.title }}</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="label-cell">Year</td>
-                        <td *ngFor="let movie of data">{{ movie.year }}</td>
+                        <td *ngFor="let movie of data" typeof="Movie"><span property="datePublished">{{ movie.year
+                                }}</span></td>
                     </tr>
                     <tr>
                         <td class="label-cell">Genres</td>
-                        <td *ngFor="let movie of data">{{ movie.genres }}</td>
+                        <td *ngFor="let movie of data" typeof="Movie"><span property="genre">{{ movie.genres }}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td class="label-cell">Rating</td>
-                        <td *ngFor="let movie of data">
-                            <span class="rating-badge">⭐ {{ movie.average_rating | number:'1.1-1' }}</span>
+                        <td *ngFor="let movie of data" typeof="Movie" property="aggregateRating"
+                            typeof="AggregateRating">
+                            <span class="rating-badge">⭐ <span property="ratingValue">{{ movie.average_rating |
+                                    number:'1.1-1' }}</span></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="label-cell">Reviews</td>
-                        <td *ngFor="let movie of data">{{ movie.review_count }}</td>
+                        <td *ngFor="let movie of data" typeof="Movie"><span property="reviewCount">{{ movie.review_count
+                                }}</span></td>
                     </tr>
                 </tbody>
             </table>

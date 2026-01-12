@@ -1,4 +1,4 @@
-<div class="dashboard-container">
+<div class="dashboard-container" vocab="http://schema.org/" typeof="CollectionPage">
     <h1>Layered Visualization Extension</h1>
 
     <ng-container *ngIf="statsData$ | async as stats; else loadingTpl">
@@ -10,17 +10,9 @@
             <div class="graph-section" *ngIf="graphData$ | async as graph">
                 <div class="graph-header">
                     <h2>3D Knowledge Graph</h2>
-                    <input 
-                        type="text" 
-                        class="search-input"
-                        [(ngModel)]="searchQuery" 
-                        placeholder="Search node..." 
-                    >
+                    <input type="text" class="search-input" [(ngModel)]="searchQuery" placeholder="Search node...">
                 </div>
-                <app-network-graph 
-                    [nodes]="graph.nodes" 
-                    [links]="graph.links"
-                    [searchTerm]="searchQuery">
+                <app-network-graph [nodes]="graph.nodes" [links]="graph.links" [searchTerm]="searchQuery">
                 </app-network-graph>
             </div>
         </div>
