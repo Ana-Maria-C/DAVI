@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MovieListComponent } from './pages/movie-list/movie-list';
 
 const routes: Routes = [
-  { path: '', component: MovieListComponent }
+  { path: '', component: MovieListComponent },
+  { path: ':id', component: MovieListComponent }
 ];
 
 @NgModule({

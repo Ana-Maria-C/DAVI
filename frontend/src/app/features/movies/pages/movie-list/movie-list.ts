@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { AnalysisService } from '../../../../core/services/analysis.service';
 import { MoviesService } from '../../../../core/services/movies.service';
 import { Movie } from '../../../../core/models/movie.model';
@@ -22,7 +24,9 @@ export class MovieListComponent implements OnInit {
     private moviesService: MoviesService,
     private analysisService: AnalysisService,
     private cdr: ChangeDetectorRef,
-    private zone: NgZone
+    private zone: NgZone,
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -31,6 +35,18 @@ export class MovieListComponent implements OnInit {
       this.filters = filters;
       this.page = 0; // Reset page on filter change
       this.loadMovies();
+    });
+
+    // Check for ID in route
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        // If we have an ID, we need to load that specific movie's details
+        // We can create a temporary movie object with just the ID to trigger openDetails
+        // openDetails will fetch the full data anyway
+        const tempMovie = { id: id } as Movie;
+        this.openDetails(tempMovie);
+      }
     });
   }
 
@@ -139,6 +155,9 @@ export class MovieListComponent implements OnInit {
   selectedDetailsMovie: any = null;
 
   openDetails(movie: Movie) {
+    // Update URL without reloading
+    this.location.go(`/movies/${movie.id}`);
+
     this.moviesService.getMovieById(movie.id).subscribe({
       next: (data) => {
         setTimeout(() => {
@@ -165,6 +184,8 @@ export class MovieListComponent implements OnInit {
   closeDetails() {
     this.showDetailsModal = false;
     this.selectedDetailsMovie = null;
+    // Revert URL
+    this.location.go('/movies');
   }
 
   onSortChange(event: Event) {
