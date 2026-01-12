@@ -1,4 +1,4 @@
-<div class="trends-container">
+<div class="trends-container" vocab="http://schema.org/" typeof="Dataset">
     <div class="header-section">
         <h1>Trend Analysis</h1>
         <p>Discover the most significant movies across history.</p>
@@ -13,12 +13,14 @@
             </div>
 
             <div class="movie-list scrollable" *ngIf="mostFamousMovies$ | async as movies">
-                <div class="movie-item" *ngFor="let m of movies; let i = index">
+                <div class="movie-item" *ngFor="let m of movies; let i = index" typeof="Movie">
                     <span class="rank">#{{i+1}}</span>
                     <div class="details">
-                        <span class="title">{{ m.title.value }}</span>
-                        <span class="meta">{{ m.reviewCount.value }} reviews • {{ m.avgRating.value | number:'1.1-1' }}
-                            ⭐</span>
+                        <span class="title" property="name">{{ m.title.value }}</span>
+                        <span class="meta" property="aggregateRating" typeof="AggregateRating">
+                            <span property="reviewCount">{{ m.reviewCount.value }}</span> reviews •
+                            <span property="ratingValue">{{ m.avgRating.value | number:'1.1-1' }}</span> ⭐
+                        </span>
                     </div>
                 </div>
             </div>
@@ -32,12 +34,14 @@
             </div>
 
             <div class="movie-list scrollable" *ngIf="highestRatedMovies$ | async as movies">
-                <div class="movie-item" *ngFor="let m of movies; let i = index">
+                <div class="movie-item" *ngFor="let m of movies; let i = index" typeof="Movie">
                     <span class="rank">#{{i+1}}</span>
                     <div class="details">
-                        <span class="title">{{ m.title.value }}</span>
-                        <span class="meta">{{ m.avgRating.value | number:'1.1-1' }} ⭐ • {{ m.reviewCount.value }}
-                            reviews</span>
+                        <span class="title" property="name">{{ m.title.value }}</span>
+                        <span class="meta" property="aggregateRating" typeof="AggregateRating">
+                            <span property="ratingValue">{{ m.avgRating.value | number:'1.1-1' }}</span> ⭐ •
+                            <span property="reviewCount">{{ m.reviewCount.value }}</span> reviews
+                        </span>
                     </div>
                 </div>
             </div>

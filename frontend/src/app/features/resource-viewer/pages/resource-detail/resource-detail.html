@@ -1,4 +1,4 @@
-<div class="resource-container">
+<div class="resource-container" vocab="http://schema.org/" typeof="Thing" [attr.resource]="uri">
     <div *ngIf="uri; else noUri">
         <h2>Resource Details</h2>
         <code class="uri-header">{{ uri }}</code>
@@ -17,12 +17,13 @@
                             <td>
                                 <a [routerLink]="[]" [queryParams]="{ uri: prop.p }">{{ prop.p | slice:0:50 }}...</a>
                             </td>
-                            <td>
+                            <td [attr.property]="prop.p">
                                 <ng-container *ngIf="prop.type === 'uri'; else literal">
-                                    <a [routerLink]="[]" [queryParams]="{ uri: prop.o }">{{ prop.o }}</a>
+                                    <a [routerLink]="[]" [queryParams]="{ uri: prop.o }" [attr.resource]="prop.o">{{
+                                        prop.o }}</a>
                                 </ng-container>
                                 <ng-template #literal>
-                                    {{ prop.o }}
+                                    <span [attr.content]="prop.o">{{ prop.o }}</span>
                                 </ng-template>
                             </td>
                         </tr>

@@ -1,11 +1,11 @@
-<div class="app-root">
-    <app-header></app-header>
+<div class="app-root" vocab="http://schema.org/" typeof="WebSite">
+    <app-header property="hasPart" typeof="WPHeader"></app-header>
     <div class="app-body">
         <div class="sidebar-backdrop" *ngIf="isSidebarOpen$ | async" (click)="closeSidebar()"></div>
-        <app-sidebar [class.open]="isSidebarOpen$ | async"></app-sidebar>
-        <main class="content-area">
+        <app-sidebar [class.open]="isSidebarOpen$ | async" property="hasPart" typeof="WPSideBar"></app-sidebar>
+        <main class="content-area" property="mainContentOfPage">
             <router-outlet></router-outlet>
-            <app-footer></app-footer>
+            <app-footer property="hasPart" typeof="WPFooter"></app-footer>
         </main>
     </div>
 </div>
